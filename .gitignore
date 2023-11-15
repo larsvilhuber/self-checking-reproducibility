@@ -1,0 +1,10 @@
+venv*
+_build
+.Rproj.user
+.libs
+.Rhistory
+.RData
+_publish.R
+_book
+_bookdown_files
+rsconnect

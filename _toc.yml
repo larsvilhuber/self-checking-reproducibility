@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+  - caption: Simple ways to test replication packages
+    chapters: 
+    - file: 01_hands_off_running
+    - file: 02_environments
+  - caption: More complex ways to test replication packages
+    chapters:
+    - file: 29-new-computer
+    - file: 30-docker

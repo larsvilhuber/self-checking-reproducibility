@@ -1,0 +1,13 @@
+{
+    "name": "replication-template",
+    "build": {
+        // Path is relataive to the devcontainer.json file.
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+
+    "settings": {
+        "workbench.colorTheme": "Visual Studio Light",
+        "terminal.integrated.shell.linux": "/bin/bash"
+    }
+}
