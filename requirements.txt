@@ -1,0 +1,5 @@
+jupyter-book
+matplotlib
+numpy
+sphinx-design
+pydata-sphinx-theme==0.13.1
