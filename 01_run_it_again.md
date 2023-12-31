@@ -1,0 +1,14 @@
+# Run it all again
+
+The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
+
+
+## Exceptions
+
+### Code runs for a very long time
+
+What happens when some of these re-runs are very long? See later in this chapter for how to handle this.
+
+### Making the code run takes you a very long time
+
+While the code, once set to run, can do so on its own, *you* might need to spend a lot of time getting all the various pieces to run. This should be a warning sign: if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer. Furthermore, it may suggest that you haven't been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility. We address this partially in the [next section](hands-off-running).
