@@ -6,9 +6,11 @@ root: index
 parts:
   - caption: Simple ways to test replication packages
     chapters: 
-    - file: 01_hands_off_running
-    - file: 02_environments
+    - file: 01-run_it_again
+    - file: 02-hands_off_running
+    - file: 10-environments
   - caption: More complex ways to test replication packages
     chapters:
     - file: 29-new-computer
     - file: 30-docker
+    - file: 40-virtual_machines
