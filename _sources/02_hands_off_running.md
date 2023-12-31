@@ -1,3 +1,4 @@
+(hands-off-running)=
 # Hands-off running
 
 The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
@@ -8,7 +9,7 @@ Many users may not be set up to run in one single top-to-bottom run. It helps to
 We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.
 ```
 
-## Some simple examples of main files
+## Examples
 
 
 

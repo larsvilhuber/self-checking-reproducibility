@@ -61,12 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '01_hands_off_running';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/01_hands_off_running.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_hands_off_running';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/02_hands_off_running.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using environments" href="02_environments.html" />
-    <link rel="prev" title="Introduction" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -163,12 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simple ways to test replication packages</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hands-off running</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_environments.html">Using environments</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="29-new-computer.html">Use a new computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30-docker.html">Use of containers</a></li>
@@ -243,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/01_hands_off_running.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/02_hands_off_running.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -260,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F01_hands_off_running.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F02_hands_off_running.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -290,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/01_hands_off_running.md" target="_blank"
+      <li><a href="_sources/02_hands_off_running.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +375,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-simple-examples-of-main-files">Some simple examples of main files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
@@ -398,15 +391,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hands-off-running">
-<h1>Hands-off running<a class="headerlink" href="#hands-off-running" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Hands-off running<a class="headerlink" href="#hands-off-running" title="Permalink to this heading">#</a></h1>
 <p>The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
 <p>Many users may not be set up to run in one single top-to-bottom run. It helps to have a <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">file</span></code> that runs all the other files, or all code, in the correct order, but is not a pre-requisite.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.</p>
 </div>
-<section id="some-simple-examples-of-main-files">
-<h2>Some simple examples of main files<a class="headerlink" href="#some-simple-examples-of-main-files" title="Permalink to this heading">#</a></h2>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -605,24 +598,6 @@ MATLAB</label><div class="sd-tab-content docutils">
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="02_environments.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using environments</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -638,7 +613,7 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-simple-examples-of-main-files">Some simple examples of main files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
