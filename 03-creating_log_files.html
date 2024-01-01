@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Use of containers &#8212; Self-checking replication packages</title>
+    <title>Creating log files &#8212; Self-checking replication packages</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '30-docker';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/30-docker.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-creating_log_files';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/03-creating_log_files.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Virtual Machines" href="40-virtual_machines.html" />
-    <link rel="prev" title="Use a new computer" href="29-new-computer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,9 +170,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="29-new-computer.html">Use a new computer</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Use of containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-docker.html">Use of containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40-virtual_machines.html">Virtual Machines</a></li>
 </ul>
 
@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/30-docker.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/03-creating_log_files.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -262,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F30-docker.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F03-creating_log_files.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/30-docker.md" target="_blank"
+      <li><a href="_sources/03-creating_log_files.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Use of containers</h1>
+    <h1>Creating log files</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,8 +386,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-log-files">Explicit log files</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -399,44 +401,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="use-of-containers">
-<h1>Use of containers<a class="headerlink" href="#use-of-containers" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-log-files">
+<span id="id1"></span><h1>Creating log files<a class="headerlink" href="#creating-log-files" title="Permalink to this heading">#</a></h1>
+<p>In order to document that you have actually run your code, a log file, a transcript, or some other evidence, may be useful. It may even be required by certain journals.</p>
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Containers are a way to simulate a “computer within a computer”, which can be used to run code in an isolated environment. They are relatively lightweight, and are starting to be used as part of replication packages in economics.</p></li>
-<li><p>They do not work in all situations, and require some more advanced technical skills.</p></li>
-<li><p>Using containers to test for reproducibility is easier, and should be considered as part of a toolkit.</p></li>
-<li><p>Several online services make such testing (and development) easy.</p></li>
+<li><p>Log files are a way to document that you have run your code.</p></li>
+<li><p>In particular for code that runs for a very long time, or that uses data that cannot be shared, log files may be the only way to document basic reproducibility.</p></li>
 </ul>
 </section>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>Coming soon.</p>
-<p>Containers can be shared via online systems (Docker Hub, Singularity Hub, etc.), or via files (<code class="docutils literal notranslate"><span class="pre">.tar</span></code> files, etc.). While the former is convenient, the latter is more robust for archival purposes.</p>
+<p>Most statistical software has ways to keep a record that it has run, with the details of that run. Some make it easier than others. In some cases, you may need to instruct your code to be “verbose”, or to “log” certain events. In other cases, you may need to use a command-line option to the software to create a log file.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Commercial container sharing services regularly purge containers from their services if they are not actively used, or if a subscription is not maintained. While the core infrastructure containers, such as for Python or R, are likely to be maintained for a long time, commercial companies can change their preservation policies at any time, with little warning.</p>
+<p>I do note that we are typically only looking to document what the statistical code does, at a high level. We are not looking to document system calls, fine-grained data access, etc. Computer scientists and IT security mavens may be interested in such details, but economists are typically not.</p>
 </div>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/project<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-w<span class="w"> </span>/project<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>dataeditors/stata17:2023-08-29<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>main.do
-</pre></div>
+<section id="explicit-log-files">
+<h3>Explicit log files<a class="headerlink" href="#explicit-log-files" title="Permalink to this heading">#</a></h3>
+<p>We start by describing how to explicitly generate log files as part of the statistical processing code.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Stata</label><div class="sd-tab-content docutils">
+<p>global logdir “<span class="math notranslate nohighlight">\({rootdir}/logs&quot;
+cap mkdir &quot;\)</span>logdir”<code class="docutils literal notranslate"> <span class="pre">local</span> <span class="pre">c_date</span> <span class="pre">=</span> <span class="pre">c(current_date)</span> <span class="pre">local</span> <span class="pre">cdate</span> <span class="pre">=</span> <span class="pre">subinstr(&quot;</span></code>c_date’”, ” “, “_”, .)
+local c_time = c(current_time)
+local ctime = subinstr(”<code class="docutils literal notranslate"><span class="pre">c_time'&quot;,</span> <span class="pre">&quot;:&quot;,</span> <span class="pre">&quot;_&quot;,</span> <span class="pre">.)</span> <span class="pre">local</span> <span class="pre">globallog</span> <span class="pre">=</span> <span class="pre">&quot;$logdir/logfile_</span></code>cdate’-<code class="docutils literal notranslate"><span class="pre">ctime'-</span></code>c(username)’.log”
+log using “`globallog’”, name(global) replace text</p>
+</div>
 </div>
 </section>
-<section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.docker.com/">Docker</a> is a free, open-source container manager, which allows users to create containers using “recipes” (called <code class="docutils literal notranslate"><span class="pre">Dockerfiles</span></code>). While the underlying technology is usually Linux, <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> (commercial, free for most academic uses) allows users to run containers on Windows, macOS, and Linux.</p></li>
-<li><p><a class="reference external" href="https://www.orbstack.com/">OrbStack</a> is a container manager for macOS (commercial, free for typical academic usage). It is compatible with Docker.</p></li>
-<li><p><a class="reference external" href="https://www.apptainer.io/">Apptainer</a>, formerly known as <a class="reference external" href="https://sylabs.io/singularity/">Singularity</a>, free, open-source container manager. It can use Docker images, but has its own syntax for “recipes”. It is fundamentally Linux based, and available on many university HPC clusters.</p></li>
-</ul>
-<p>Various other container managers are available for both Linux and Windows (Azure) based clouds (<code class="docutils literal notranslate"><span class="pre">podman</span></code>, etc.). They should all be able to run Docker containers.</p>
 </section>
 </section>
 
@@ -468,24 +467,6 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="29-new-computer.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Use a new computer</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="40-virtual_machines.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Virtual Machines</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -503,8 +484,10 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-log-files">Explicit log files</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

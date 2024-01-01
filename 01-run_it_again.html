@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Use of containers &#8212; Self-checking replication packages</title>
+    <title>Run it all again &#8212; Self-checking replication packages</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '30-docker';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/30-docker.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '01-run_it_again';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/01-run_it_again.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Virtual Machines" href="40-virtual_machines.html" />
-    <link rel="prev" title="Use a new computer" href="29-new-computer.html" />
+    <link rel="next" title="Hands-off running" href="02-hands_off_running.html" />
+    <link rel="prev" title="Introduction" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,15 +164,15 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simple ways to test replication packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="29-new-computer.html">Use a new computer</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Use of containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-docker.html">Use of containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40-virtual_machines.html">Virtual Machines</a></li>
 </ul>
 
@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/30-docker.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/01-run_it_again.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -262,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F30-docker.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F01-run_it_again.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/30-docker.md" target="_blank"
+      <li><a href="_sources/01-run_it_again.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Use of containers</h1>
+    <h1>Run it all again</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,9 +385,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-runs-for-a-very-long-time">Code runs for a very long time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-code-run-takes-you-a-very-long-time">Making the code run takes you a very long time</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -399,44 +401,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="use-of-containers">
-<h1>Use of containers<a class="headerlink" href="#use-of-containers" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="run-it-all-again">
+<h1>Run it all again<a class="headerlink" href="#run-it-all-again" title="Permalink to this heading">#</a></h1>
+<p>The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Containers are a way to simulate a “computer within a computer”, which can be used to run code in an isolated environment. They are relatively lightweight, and are starting to be used as part of replication packages in economics.</p></li>
-<li><p>They do not work in all situations, and require some more advanced technical skills.</p></li>
-<li><p>Using containers to test for reproducibility is easier, and should be considered as part of a toolkit.</p></li>
-<li><p>Several online services make such testing (and development) easy.</p></li>
-</ul>
+<p>This is pretty much the most basic test of reproducibility. If you cannot run your code, you cannot reproduce your results, nor can anybody else. So just re-run the code.</p>
 </section>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>Coming soon.</p>
-<p>Containers can be shared via online systems (Docker Hub, Singularity Hub, etc.), or via files (<code class="docutils literal notranslate"><span class="pre">.tar</span></code> files, etc.). While the former is convenient, the latter is more robust for archival purposes.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Commercial container sharing services regularly purge containers from their services if they are not actively used, or if a subscription is not maintained. While the core infrastructure containers, such as for Python or R, are likely to be maintained for a long time, commercial companies can change their preservation policies at any time, with little warning.</p>
-</div>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">#</a></h2>
+<section id="code-runs-for-a-very-long-time">
+<h3>Code runs for a very long time<a class="headerlink" href="#code-runs-for-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<p>What happens when some of these re-runs are very long? See later in this chapter for how to handle this.</p>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/project<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-w<span class="w"> </span>/project<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>dataeditors/stata17:2023-08-29<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>main.do
-</pre></div>
-</div>
+<section id="making-the-code-run-takes-you-a-very-long-time">
+<h3>Making the code run takes you a very long time<a class="headerlink" href="#making-the-code-run-takes-you-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<p>While the code, once set to run, can do so on its own, <em>you</em> might need to spend a lot of time getting all the various pieces to run. This should be a warning sign: if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer. Furthermore, it may suggest that you haven’t been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility. We address this partially in the <a class="reference internal" href="02-hands_off_running.html#hands-off-running"><span class="std std-ref">next section</span></a>.</p>
 </section>
-<section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.docker.com/">Docker</a> is a free, open-source container manager, which allows users to create containers using “recipes” (called <code class="docutils literal notranslate"><span class="pre">Dockerfiles</span></code>). While the underlying technology is usually Linux, <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> (commercial, free for most academic uses) allows users to run containers on Windows, macOS, and Linux.</p></li>
-<li><p><a class="reference external" href="https://www.orbstack.com/">OrbStack</a> is a container manager for macOS (commercial, free for typical academic usage). It is compatible with Docker.</p></li>
-<li><p><a class="reference external" href="https://www.apptainer.io/">Apptainer</a>, formerly known as <a class="reference external" href="https://sylabs.io/singularity/">Singularity</a>, free, open-source container manager. It can use Docker images, but has its own syntax for “recipes”. It is fundamentally Linux based, and available on many university HPC clusters.</p></li>
-</ul>
-<p>Various other container managers are available for both Linux and Windows (Azure) based clouds (<code class="docutils literal notranslate"><span class="pre">podman</span></code>, etc.). They should all be able to run Docker containers.</p>
 </section>
 </section>
 
@@ -469,20 +450,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="29-new-computer.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Use a new computer</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
-       href="40-virtual_machines.html"
+       href="02-hands_off_running.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Virtual Machines</p>
+        <p class="prev-next-title">Hands-off running</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -502,9 +483,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-runs-for-a-very-long-time">Code runs for a very long time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-code-run-takes-you-a-very-long-time">Making the code run takes you a very long time</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
