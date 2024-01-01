@@ -27,6 +27,7 @@ We start by describing how to explicitly generate log files as part of the stati
 
 :::{tab-item} Stata
 
+```stata
 global logdir "${rootdir}/logs"
 cap mkdir "$logdir"`
 local c_date = c(current_date)
@@ -35,7 +36,34 @@ local c_time = c(current_time)
 local ctime = subinstr("`c_time'", ":", "_", .)
 local globallog = "$logdir/logfile_`cdate'-`ctime'-`c(username)'.log"
 log using "`globallog'", name(global) replace text
+```
 
+:::
+
+:::{tab-item} R
+
+```R
+# This will only log output ("stdout") and warnings/messages ("stderr"), but not the commands themselves!
+
+logfile.name <- paste0("logfile_", Sys.Date(),"-",format(as.POSIXct(Sys.time()), format = "%H_%M"),"-",Sys.info()["user"], ".log")
+globallog <- file(file.path(rootdir,logfile.name), open = "wt")
+# Send output to logfile
+sink(globallog, split=TRUE)
+sink(globallog, type = "message")
+
+## revert output back to the console 
+sink(type = "message")
+sink()
+close(globallog)
+```
+
+:::
+
+:::{tab-item} MATLAB
+    
+```matlab
+% The "diary" function should achieve this. Not a MATLAB expert!
+```
 :::
 
 ::::
