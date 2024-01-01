@@ -1,16 +1,22 @@
 (hands-off-running)=
 # Hands-off running
 
-The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
+Let's ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
 
-Many users may not be set up to run in one single top-to-bottom run. It helps to have a `main file` that runs all the other files, or all code, in the correct order, but is not a pre-requisite. 
 
 ```{warning}
 We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.
 ```
 
-## Examples
+## TL;DR
 
+- Create a "main" file that runs all the other files in the correct order.
+- Run this file, without user intervention.
+- It should run without error.
+
+## Creating a main or master script
+
+In order to be able to enable "hands-off running", the main script is key. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.
 
 
 ::::{tab-set}
@@ -159,10 +165,52 @@ run(fullfile(rootdir, '04_figures.m'))
 run(fullfile(rootdir, '05_appendix.m'))
 ```
 
-Follow instructions here to run MATLAB without a GUI, in hands-off mode, creating a log file.
+Run this script, and it should run all the other ones. Note that there are various other ways to achieve a similar goal, for instance, by treating each MATLAB file as a function. 
 
 :::
 
+:::{tab-item} Bash
+
+Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows ("Git Bash"). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
+
+We will discuss software search paths more fully in the [section on environments](environments).
+
+
+```bash
+# main.bash
+# This is a simple example of a main file in Python
+# It runs all the other files in the correct order
+
+# Set the root directory
+rootdir=$(pwd)
+# equivalent:
+# rootdir=$PWD 
+
+# Run the data preparation file
+# Example for calling Stata
+# "stata-mp" must be in your path!
+stata-mp -b do "01_data_prep.do"
+
+# Run the analysis file
+# "python" must be in your path, and it must be the desired Python version!
+python 02_analysis.py
+
+# Run the table file
+# "Rscript" must be in your path. 
+Rscript 03_tables.R
+
+# Run the figure file
+Rscript "04_figures.R"
+
+# Run the appendix file
+# Here, we use MATLAB. Running MATLAB is *never* platform-independent. 
+# Linux:
+matlab -nodisplay -r "addpath(genpath('.')); 05_appendix" 
+# Windows:
+#start matlab -nosplash  -minimize -r  "addpath(genpath('.')); 05_appendix"
+```
+
+:::
 
 ::::
 
@@ -172,12 +220,12 @@ This ensures
 
 - that your code runs without problem, after all the debugging.
 - that your code runs without manual intervention.
-- that your code generates a log file that you can inspect, and that you could share with others.
 
 ## What this does not do
 
 This does not ensure
 
+- that your code generates a log file that you can inspect, and that you could share with others.
 - that it will run on somebody else's computer
   - because it does not guarantee that all the software is there
   - because it does not guarantee that all the directories for input or output are there

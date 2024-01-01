@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/02-hands_off_running.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using environments" href="10-environments.html" />
+    <link rel="next" title="Creating log files" href="03-creating_log_files.html" />
     <link rel="prev" title="Run it all again" href="01-run_it_again.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hands-off running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-creating_log_files.html">Creating log files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
@@ -384,7 +385,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-main-or-master-script">Creating a main or master script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
@@ -401,14 +403,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hands-off-running">
 <span id="id1"></span><h1>Hands-off running<a class="headerlink" href="#hands-off-running" title="Permalink to this heading">#</a></h1>
-<p>The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
-<p>Many users may not be set up to run in one single top-to-bottom run. It helps to have a <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">file</span></code> that runs all the other files, or all code, in the correct order, but is not a pre-requisite.</p>
+<p>Let’s ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.</p>
 </div>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create a “main” file that runs all the other files in the correct order.</p></li>
+<li><p>Run this file, without user intervention.</p></li>
+<li><p>It should run without error.</p></li>
+</ul>
+</section>
+<section id="creating-a-main-or-master-script">
+<h2>Creating a main or master script<a class="headerlink" href="#creating-a-main-or-master-script" title="Permalink to this heading">#</a></h2>
+<p>In order to be able to enable “hands-off running”, the main script is key. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -541,7 +551,46 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="nb">run</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;05_appendix.m&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Follow instructions here to run MATLAB without a GUI, in hands-off mode, creating a log file.</p>
+<p>Run this script, and it should run all the other ones. Note that there are various other ways to achieve a similar goal, for instance, by treating each MATLAB file as a function.</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Bash</label><div class="sd-tab-content docutils">
+<p>Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows (“Git Bash”). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the <code class="docutils literal notranslate"><span class="pre">%PATH%</span></code> by default, and thus may need to be called with the full path to the executable.</p>
+<p>We will discuss software search paths more fully in the <a class="reference internal" href="10-environments.html#environments"><span class="std std-ref">section on environments</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># main.bash</span>
+<span class="c1"># This is a simple example of a main file in Python</span>
+<span class="c1"># It runs all the other files in the correct order</span>
+
+<span class="c1"># Set the root directory</span>
+<span class="nv">rootdir</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="c1"># equivalent:</span>
+<span class="c1"># rootdir=$PWD </span>
+
+<span class="c1"># Run the data preparation file</span>
+<span class="c1"># Example for calling Stata</span>
+<span class="c1"># &quot;stata-mp&quot; must be in your path!</span>
+stata-mp<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="s2">&quot;01_data_prep.do&quot;</span>
+
+<span class="c1"># Run the analysis file</span>
+<span class="c1"># &quot;python&quot; must be in your path, and it must be the desired Python version!</span>
+python<span class="w"> </span>02_analysis.py
+
+<span class="c1"># Run the table file</span>
+<span class="c1"># &quot;Rscript&quot; must be in your path. </span>
+Rscript<span class="w"> </span>03_tables.R
+
+<span class="c1"># Run the figure file</span>
+Rscript<span class="w"> </span><span class="s2">&quot;04_figures.R&quot;</span>
+
+<span class="c1"># Run the appendix file</span>
+<span class="c1"># Here, we use MATLAB. Running MATLAB is *never* platform-independent. </span>
+<span class="c1"># Linux:</span>
+matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;addpath(genpath(&#39;.&#39;)); 05_appendix&quot;</span><span class="w"> </span>
+<span class="c1"># Windows:</span>
+<span class="c1">#start matlab -nosplash  -minimize -r  &quot;addpath(genpath(&#39;.&#39;)); 05_appendix&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -551,13 +600,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>that your code runs without problem, after all the debugging.</p></li>
 <li><p>that your code runs without manual intervention.</p></li>
-<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
 </ul>
 </section>
 <section id="what-this-does-not-do">
 <h2>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h2>
 <p>This does not ensure</p>
 <ul class="simple">
+<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
 <li><p>that it will run on somebody else’s computer</p>
 <ul>
 <li><p>because it does not guarantee that all the software is there</p></li>
@@ -617,11 +666,11 @@ MATLAB</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="10-environments.html"
+       href="03-creating_log_files.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using environments</p>
+        <p class="prev-next-title">Creating log files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -640,7 +689,8 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-main-or-master-script">Creating a main or master script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>

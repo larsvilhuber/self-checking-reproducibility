@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03-creating_log_files';</script>
     <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/03-creating_log_files.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using environments" href="10-environments.html" />
+    <link rel="prev" title="Hands-off running" href="02-hands_off_running.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,9 +164,10 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simple ways to test replication packages</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating log files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
@@ -428,11 +429,41 @@ document.write(`
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Stata</label><div class="sd-tab-content docutils">
-<p>global logdir “<span class="math notranslate nohighlight">\({rootdir}/logs&quot;
-cap mkdir &quot;\)</span>logdir”<code class="docutils literal notranslate"> <span class="pre">local</span> <span class="pre">c_date</span> <span class="pre">=</span> <span class="pre">c(current_date)</span> <span class="pre">local</span> <span class="pre">cdate</span> <span class="pre">=</span> <span class="pre">subinstr(&quot;</span></code>c_date’”, ” “, “_”, .)
-local c_time = c(current_time)
-local ctime = subinstr(”<code class="docutils literal notranslate"><span class="pre">c_time'&quot;,</span> <span class="pre">&quot;:&quot;,</span> <span class="pre">&quot;_&quot;,</span> <span class="pre">.)</span> <span class="pre">local</span> <span class="pre">globallog</span> <span class="pre">=</span> <span class="pre">&quot;$logdir/logfile_</span></code>cdate’-<code class="docutils literal notranslate"><span class="pre">ctime'-</span></code>c(username)’.log”
-log using “`globallog’”, name(global) replace text</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> logdir <span class="s">&quot;</span><span class="vg">${rootdir}</span><span class="s">/logs&quot;</span>
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">&quot;</span><span class="nv">`</span>
+<span class="nv">local c_date = c(current_date)</span>
+<span class="nv">local cdate = subinstr(&quot;`c_date&#39;&quot;, &quot; &quot;, &quot;_&quot;, .)</span>
+<span class="nv">local c_time = c(current_time)</span>
+<span class="nv">local ctime = subinstr(&quot;`c_time&#39;&quot;, &quot;:&quot;, &quot;_&quot;, .)</span>
+<span class="nv">local globallog = &quot;</span><span class="vg">$logdir</span><span class="nv">/logfile_`cdate&#39;-`ctime&#39;-`c(username)&#39;.log&quot;</span>
+<span class="nv">log using &quot;`globallog&#39;&quot;, name(global) replace text</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+R</label><div class="sd-tab-content docutils">
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will only log output (&quot;stdout&quot;) and warnings/messages (&quot;stderr&quot;), but not the commands themselves!</span>
+
+<span class="n">logfile.name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;logfile_&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">Sys.Date</span><span class="p">(),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">format</span><span class="p">(</span><span class="nf">as.POSIXct</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()),</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%H_%M&quot;</span><span class="p">),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">Sys.info</span><span class="p">()[</span><span class="s">&quot;user&quot;</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;.log&quot;</span><span class="p">)</span>
+<span class="n">globallog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">logfile.name</span><span class="p">),</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wt&quot;</span><span class="p">)</span>
+<span class="c1"># Send output to logfile</span>
+<span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">)</span>
+
+<span class="c1">## revert output back to the console </span>
+<span class="nf">sink</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">)</span>
+<span class="nf">sink</span><span class="p">()</span>
+<span class="nf">close</span><span class="p">(</span><span class="n">globallog</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% The &quot;diary&quot; function should achieve this. Not a MATLAB expert!</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -467,6 +498,24 @@ log using “`globallog’”, name(global) replace text</p>
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02-hands_off_running.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hands-off running</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="10-environments.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using environments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
