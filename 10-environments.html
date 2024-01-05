@@ -362,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -378,6 +380,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -389,6 +401,103 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-environments">
 <span id="environments"></span><h1>Using environments<a class="headerlink" href="#using-environments" title="Permalink to this heading">#</a></h1>
+<p>One way to isolate your statistical code in one project from the rest of your installation on your computer is to use “environments”. The term is used here generically, and not every statistical language calls it that. Generically, all “environments” simply modify where the specific software searches for its components, and in particular any supplementary components (packages, libraries, etc.). Formally, this is true for operating systems as well, and in some cases, the operating system and the programming language interact (for instance, in Python).</p>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Using environments allows a researcher to isolate a project (replication package) from the rest of their system.</p></li>
+<li><p>Properly defined environments can therefore help make code more reproducible.</p></li>
+</ul>
+</section>
+<section id="a-simple-example">
+<h2>A simple example<a class="headerlink" href="#a-simple-example" title="Permalink to this heading">#</a></h2>
+<p>Let’s consider a simple example in Python, where this functionality is (nearly) native. We will use the <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> package, which is a standard part of Python. First, let’s consider what happens when we install a package in the “base” environment, the default when you start Python.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># list installed packages</span>
+pip<span class="w"> </span>list
+</pre></div>
+</div>
+<p>outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Package</span>            <span class="n">Version</span>
+<span class="o">------------------</span> <span class="o">----------</span>
+<span class="n">certifi</span>            <span class="mf">2023.11.17</span>
+<span class="n">charset</span><span class="o">-</span><span class="n">normalizer</span> <span class="mf">3.3.2</span>
+<span class="n">idna</span>               <span class="mf">3.6</span>
+<span class="n">pip</span>                <span class="mf">23.2.1</span>
+<span class="n">PyYAML</span>             <span class="mf">6.0.1</span>
+<span class="n">requests</span>           <span class="mf">2.31.0</span>
+<span class="n">urllib3</span>            <span class="mf">2.1.0</span>
+<span class="n">wget</span>               <span class="mf">3.2</span>
+<span class="n">zenodo</span><span class="o">-</span><span class="n">get</span>         <span class="mf">1.5.1</span>
+</pre></div>
+</div>
+<p>These are packages I have installed to work. Now let’s create a new environment, and activate to see what happens:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+POSIX (Linux, macOS, etc.)</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
+<span class="c1"># activate the new environment</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate
+<span class="c1"># list installed packages</span>
+pip<span class="w"> </span>list
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Windows/command</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="sb">```</span>bash
+<span class="c1"># create a new environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
+<span class="c1"># activate the new environment</span>
+myenv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
+<span class="c1"># On Windows/Bash:</span>
+<span class="nb">source</span><span class="w"> </span>myenv/Scripts/activate
+<span class="c1"># list installed packages</span>
+pip<span class="w"> </span>list
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Windows/bash</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
+<span class="c1"># activate the new environment</span>
+<span class="nb">source</span><span class="w"> </span>myenv/Scripts/activate
+<span class="c1"># list installed packages</span>
+pip<span class="w"> </span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>will output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Package</span> <span class="n">Version</span>
+<span class="o">-------</span> <span class="o">-------</span>
+<span class="n">pip</span>     <span class="mf">23.2.1</span>
+</pre></div>
+</div>
+<p>So where did all the other packages go? One hint is if we identify <em>which</em> Python we are using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>which<span class="w"> </span>python
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">lv39</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="bp">self</span><span class="o">-</span><span class="n">checking</span><span class="o">-</span><span class="n">reproducibility</span><span class="o">/</span><span class="n">myenv</span><span class="o">/</span><span class="n">Scripts</span><span class="o">/</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>So it is looking for Python in the <code class="docutils literal notranslate"><span class="pre">myenv</span></code> directory. And this is also where <code class="docutils literal notranslate"><span class="pre">pip</span></code> will look. In fact, all of the packages previously listed are still on my computer - but are not accessible as long as I have this environment active.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Technically, we modified the Python search path: the operating system’s PATH variable. Our environment got added to the top of the various directories listed there, so that the particular location for Python is found first. Python, in turn, then uses that in <code class="docutils literal notranslate"><span class="pre">sys.prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">sys.exec_prefix</span></code> to find the other packages. See <a class="reference external" href="https://docs.python.org/3/library/venv.html#how-venvs-work">Python documentation</a>.</p>
+</div>
+</section>
+<section id="the-equivalent-in-stata">
+<h2>The equivalent in Stata<a class="headerlink" href="#the-equivalent-in-stata" title="Permalink to this heading">#</a></h2>
+<p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code class="docutils literal notranslate"><span class="pre">ado</span></code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,6 +552,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

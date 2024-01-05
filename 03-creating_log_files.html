@@ -387,10 +387,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-log-files">Explicit log files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Creating log files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-explicitly">Creating log files explicitly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
 </ul>
             </nav>
         </div>
@@ -415,28 +419,29 @@ document.write(`
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>Most statistical software has ways to keep a record that it has run, with the details of that run. Some make it easier than others. In some cases, you may need to instruct your code to be “verbose”, or to “log” certain events. In other cases, you may need to use a command-line option to the software to create a log file.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>I do note that we are typically only looking to document what the statistical code does, at a high level. We are not looking to document system calls, fine-grained data access, etc. Computer scientists and IT security mavens may be interested in such details, but economists are typically not.</p>
 </div>
+<p>In almost all cased, the generated log files are simple text files, without any formatting, and can be read by any text editor (e.g., Visual Studio Code, Notepad++, etc.).</p>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<section id="explicit-log-files">
-<h3>Explicit log files<a class="headerlink" href="#explicit-log-files" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h2>Creating log files<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="creating-log-files-explicitly">
+<h3>Creating log files explicitly<a class="headerlink" href="#creating-log-files-explicitly" title="Permalink to this heading">#</a></h3>
 <p>We start by describing how to explicitly generate log files as part of the statistical processing code.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Stata</label><div class="sd-tab-content docutils">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> logdir <span class="s">&quot;</span><span class="vg">${rootdir}</span><span class="s">/logs&quot;</span>
-<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">&quot;</span><span class="nv">`</span>
-<span class="nv">local c_date = c(current_date)</span>
-<span class="nv">local cdate = subinstr(&quot;`c_date&#39;&quot;, &quot; &quot;, &quot;_&quot;, .)</span>
-<span class="nv">local c_time = c(current_time)</span>
-<span class="nv">local ctime = subinstr(&quot;`c_time&#39;&quot;, &quot;:&quot;, &quot;_&quot;, .)</span>
-<span class="nv">local globallog = &quot;</span><span class="vg">$logdir</span><span class="nv">/logfile_`cdate&#39;-`ctime&#39;-`c(username)&#39;.log&quot;</span>
-<span class="nv">log using &quot;`globallog&#39;&quot;, name(global) replace text</span>
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">&quot;</span>
+<span class="k">local</span> c_date = <span class="nf">c</span>(current_date)
+<span class="k">local</span> cdate = <span class="nf">subinstr</span>(<span class="s">&quot;</span><span class="nv">`c_date&#39;</span><span class="s">&quot;</span>, <span class="s">&quot; &quot;</span>, <span class="s">&quot;_&quot;</span>, .)
+<span class="k">local</span> c_time = <span class="nf">c</span>(current_time)
+<span class="k">local</span> ctime = <span class="nf">subinstr</span>(<span class="s">&quot;</span><span class="nv">`c_time&#39;</span><span class="s">&quot;</span>, <span class="s">&quot;:&quot;</span>, <span class="s">&quot;_&quot;</span>, .)
+<span class="k">local</span> globallog = <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">/logfile_</span><span class="nv">`cdate&#39;</span><span class="s">-</span><span class="nv">`ctime&#39;</span><span class="s">-</span><span class="nv">`c(username)&#39;</span><span class="s">.log&quot;</span>
+<span class="k">log</span> using <span class="s">&quot;</span><span class="nv">`globallog&#39;</span><span class="s">&quot;</span>, name(global)<span class="k"> replace</span> text
 </pre></div>
 </div>
 </div>
@@ -446,7 +451,7 @@ R</label><div class="sd-tab-content docutils">
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will only log output (&quot;stdout&quot;) and warnings/messages (&quot;stderr&quot;), but not the commands themselves!</span>
 
 <span class="n">logfile.name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;logfile_&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">Sys.Date</span><span class="p">(),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">format</span><span class="p">(</span><span class="nf">as.POSIXct</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()),</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%H_%M&quot;</span><span class="p">),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">Sys.info</span><span class="p">()[</span><span class="s">&quot;user&quot;</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;.log&quot;</span><span class="p">)</span>
-<span class="n">globallog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">logfile.name</span><span class="p">),</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wt&quot;</span><span class="p">)</span>
+<span class="n">globallog</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">logfile.name</span><span class="p">),</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wt&quot;</span><span class="p">)</span>
 <span class="c1"># Send output to logfile</span>
 <span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">)</span>
@@ -465,8 +470,99 @@ MATLAB</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">The</span> <span class="n">logging</span> <span class="n">module</span> <span class="n">should</span> <span class="n">achieve</span> <span class="n">this</span><span class="o">.</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WARNING:root:Watch out!
+</pre></div>
+</div>
+</div>
+</div>
+<p>While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will only create log files that contain output.</p>
+</section>
+<section id="creating-log-files-automatically">
+<h3>Creating log files automatically<a class="headerlink" href="#creating-log-files-automatically" title="Permalink to this heading">#</a></h3>
+<p>An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the command line to run the software, and thus may be considered an <strong>advanced topic.</strong> The examples below are for Linux/macOS, but similar functionality exists for Windows.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Stata</label><div class="sd-tab-content docutils">
+<p>To automatically create a log file, run Stata from the command line with the <code class="docutils literal notranslate"><span class="pre">-b</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stata<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>main.do
+</pre></div>
+</div>
+<p>which will create a file <code class="docutils literal notranslate"><span class="pre">main.log</span></code> in the same directory as <code class="docutils literal notranslate"><span class="pre">main.do</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For this to work, the filename cannot include spaces.</p>
+</div>
+<p>On Windows, follow instructions <a class="reference external" href="https://www.stata.com/manuals/gswb.pdf#gswB.5">here</a>.</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+R</label><div class="sd-tab-content docutils">
+<p>To automatically create a log file, run R from the command line as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>main.R
+</pre></div>
+</div>
+<p>will create a file <code class="docutils literal notranslate"><span class="pre">main.Rout</span></code> in the same directory as <code class="docutils literal notranslate"><span class="pre">main.R</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there are other commands, such as <code class="docutils literal notranslate"><span class="pre">sink()</span></code>, active in the R code, the <code class="docutils literal notranslate"><span class="pre">main.Rout</span></code> file will not contain some output.</p>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+MATLAB</label><div class="sd-tab-content docutils">
+<p>To automatically create a log file, run MATLAB from the command line as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;addpath(genpath(&#39;.&#39;)); main&quot;</span><span class="w"> </span>-logfile<span class="w"> </span>matlab.log
+</pre></div>
+</div>
+<p>A similar command on Windows would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>start<span class="w"> </span>matlab<span class="w"> </span>-nosplash<span class="w">  </span>-minimize<span class="w"> </span>-r<span class="w">  </span><span class="s2">&quot;addpath(genpath(&#39;.&#39;));main&quot;</span><span class="w">  </span>-logfile<span class="w"> </span>matlab.log
+</pre></div>
+</div>
+</div>
 </div>
 </section>
+</section>
+<section id="what-this-does">
+<h2>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h2>
+<p>This ensures</p>
+<ul class="simple">
+<li><p>that your code runs without problem, after all the debugging.</p></li>
+<li><p>that your code runs without manual intervention.</p></li>
+<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
+</ul>
+</section>
+<section id="what-this-does-not-do">
+<h2>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h2>
+<p>This does not ensure</p>
+<ul class="simple">
+<li><p>that it will run on somebody else’s computer</p>
+<ul>
+<li><p>because it does not guarantee that all the software is there</p></li>
+<li><p>because it does not guarantee that all the directories for input or output are there</p></li>
+<li><p>because many intermediate files might be present that are not in the replication package</p></li>
+<li><p>because it does not guarantee that all the directory names are correctly adjusted everywhere in your code</p></li>
+</ul>
+</li>
+<li><p>that it actually produces all the outputs</p>
+<ul>
+<li><p>because some outputs might be present from test runs</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="what-to-do-next">
+<h2>What to do next<a class="headerlink" href="#what-to-do-next" title="Permalink to this heading">#</a></h2>
+<p>To solve some of these problems, let’s go to the next step.</p>
 </section>
 </section>
 
@@ -533,10 +629,14 @@ MATLAB</label><div class="sd-tab-content docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-log-files">Explicit log files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Creating log files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-explicitly">Creating log files explicitly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
 </ul>
   </nav></div>
 
