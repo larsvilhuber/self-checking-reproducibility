@@ -147,8 +147,9 @@ start matlab -nosplash  -minimize -r  "addpath(genpath('.'));main"  -logfile mat
 ::::
 
 
+## Takeaways
 
-## What this does
+### What this does
 
 This ensures
 
@@ -156,7 +157,7 @@ This ensures
 - that your code runs without manual intervention.
 - that your code generates a log file that you can inspect, and that you could share with others.
 
-## What this does not do
+### What this does not do
 
 This does not ensure
 
@@ -168,6 +169,6 @@ This does not ensure
 - that it actually produces all the outputs
   - because some outputs might be present from test runs
 
-## What to do next
+### What to do next
 
 To solve some of these problems, let's go to the next step.

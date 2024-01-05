@@ -214,14 +214,16 @@ matlab -nodisplay -r "addpath(genpath('.')); 05_appendix"
 
 ::::
 
-## What this does
+## Takeaways
+
+### What this does
 
 This ensures
 
 - that your code runs without problem, after all the debugging.
 - that your code runs without manual intervention.
 
-## What this does not do
+### What this does not do
 
 This does not ensure
 
@@ -234,6 +236,6 @@ This does not ensure
 - that it actually produces all the outputs
   - because some outputs might be present from test runs
 
-## What to do next
+### What to do next
 
 To solve some of these problems, let's go to the next step.

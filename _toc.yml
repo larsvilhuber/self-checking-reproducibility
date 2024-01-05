@@ -9,7 +9,8 @@ parts:
     - file: 01-run_it_again
     - file: 02-hands_off_running
     - file: 03-creating_log_files
-    - file: 10-environments
+    - file: 10-creating-environments
+    - file: 11-reproducing-environments
   - caption: More complex ways to test replication packages
     chapters:
     - file: 29-new-computer
