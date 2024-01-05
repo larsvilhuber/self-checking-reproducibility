@@ -16,13 +16,15 @@ What happens when some of these re-runs are very long? See later in this chapter
 
 While the code, once set to run, can do so on its own, *you* might need to spend a lot of time getting all the various pieces to run. This should be a warning sign: if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer. Furthermore, it may suggest that you haven't been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility. We address this partially in the [next section](hands-off-running).
 
-## What this does
+## Takeaways
+
+### What this does
 
 This ensures
 
 - that your code runs without problem, after all the debugging.
 
-## What this does not do
+### What this does not do
 
 This does not ensure
 

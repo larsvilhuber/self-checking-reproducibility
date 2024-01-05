@@ -168,7 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-creating_log_files.html">Creating log files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-creating-environments.html">Creating and using environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-reproducing-environments.html">Reproducing and documenting environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
 <ul class="nav bd-sidenav">
@@ -391,8 +392,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-code-run-takes-you-a-very-long-time">Making the code run takes you a very long time</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -422,15 +426,17 @@ document.write(`
 <p>While the code, once set to run, can do so on its own, <em>you</em> might need to spend a lot of time getting all the various pieces to run. This should be a warning sign: if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer. Furthermore, it may suggest that you haven’t been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility. We address this partially in the <a class="reference internal" href="02-hands_off_running.html#hands-off-running"><span class="std std-ref">next section</span></a>.</p>
 </section>
 </section>
+<section id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this heading">#</a></h2>
 <section id="what-this-does">
-<h2>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h2>
+<h3>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h3>
 <p>This ensures</p>
 <ul class="simple">
 <li><p>that your code runs without problem, after all the debugging.</p></li>
 </ul>
 </section>
 <section id="what-this-does-not-do">
-<h2>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h2>
+<h3>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h3>
 <p>This does not ensure</p>
 <ul class="simple">
 <li><p>that your code runs without manual intervention.</p></li>
@@ -449,6 +455,7 @@ document.write(`
 </ul>
 </li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -519,8 +526,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-code-run-takes-you-a-very-long-time">Making the code run takes you a very long time</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

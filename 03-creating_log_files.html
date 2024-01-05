@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/03-creating_log_files.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using environments" href="10-environments.html" />
+    <link rel="next" title="Creating and using environments" href="10-creating-environments.html" />
     <link rel="prev" title="Hands-off running" href="02-hands_off_running.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,7 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating log files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-environments.html">Using environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-creating-environments.html">Creating and using environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-reproducing-environments.html">Reproducing and documenting environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
 <ul class="nav bd-sidenav">
@@ -392,9 +393,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -532,8 +536,10 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
+<section id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this heading">#</a></h2>
 <section id="what-this-does">
-<h2>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h2>
+<h3>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h3>
 <p>This ensures</p>
 <ul class="simple">
 <li><p>that your code runs without problem, after all the debugging.</p></li>
@@ -542,7 +548,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </ul>
 </section>
 <section id="what-this-does-not-do">
-<h2>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h2>
+<h3>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h3>
 <p>This does not ensure</p>
 <ul class="simple">
 <li><p>that it will run on somebody else’s computer</p>
@@ -561,8 +567,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 </ul>
 </section>
 <section id="what-to-do-next">
-<h2>What to do next<a class="headerlink" href="#what-to-do-next" title="Permalink to this heading">#</a></h2>
+<h3>What to do next<a class="headerlink" href="#what-to-do-next" title="Permalink to this heading">#</a></h3>
 <p>To solve some of these problems, let’s go to the next step.</p>
+</section>
 </section>
 </section>
 
@@ -604,11 +611,11 @@ MATLAB</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="10-environments.html"
+       href="10-creating-environments.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using environments</p>
+        <p class="prev-next-title">Creating and using environments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -634,9 +641,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

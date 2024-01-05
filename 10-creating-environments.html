@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Using environments &#8212; Self-checking replication packages</title>
+    <title>Creating and using environments &#8212; Self-checking replication packages</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '10-environments';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/10-environments.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '10-creating-environments';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/10-creating-environments.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Use a new computer" href="29-new-computer.html" />
+    <link rel="next" title="Reproducing and documenting environments" href="11-reproducing-environments.html" />
     <link rel="prev" title="Creating log files" href="03-creating_log_files.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,7 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-creating_log_files.html">Creating log files</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using environments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating and using environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-reproducing-environments.html">Reproducing and documenting environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
 <ul class="nav bd-sidenav">
@@ -246,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/10-environments.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/10-creating-environments.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F10-environments.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F10-creating-environments.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/10-environments.md" target="_blank"
+      <li><a href="_sources/10-creating-environments.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Using environments</h1>
+    <h1>Creating and using environments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,8 +388,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-other-languages">Using environments in other languages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -400,8 +408,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-environments">
-<span id="environments"></span><h1>Using environments<a class="headerlink" href="#using-environments" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-and-using-environments">
+<span id="environments"></span><h1>Creating and using environments<a class="headerlink" href="#creating-and-using-environments" title="Permalink to this heading">#</a></h1>
 <p>One way to isolate your statistical code in one project from the rest of your installation on your computer is to use “environments”. The term is used here generically, and not every statistical language calls it that. Generically, all “environments” simply modify where the specific software searches for its components, and in particular any supplementary components (packages, libraries, etc.). Formally, this is true for operating systems as well, and in some cases, the operating system and the programming language interact (for instance, in Python).</p>
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
@@ -492,8 +500,8 @@ pip<span class="w"> </span>list
 <p>Technically, we modified the Python search path: the operating system’s PATH variable. Our environment got added to the top of the various directories listed there, so that the particular location for Python is found first. Python, in turn, then uses that in <code class="docutils literal notranslate"><span class="pre">sys.prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">sys.exec_prefix</span></code> to find the other packages. See <a class="reference external" href="https://docs.python.org/3/library/venv.html#how-venvs-work">Python documentation</a>.</p>
 </div>
 </section>
-<section id="the-equivalent-in-stata">
-<h2>The equivalent in Stata<a class="headerlink" href="#the-equivalent-in-stata" title="Permalink to this heading">#</a></h2>
+<section id="search-paths-in-stata">
+<h2>Search paths in Stata<a class="headerlink" href="#search-paths-in-stata" title="Permalink to this heading">#</a></h2>
 <p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code class="docutils literal notranslate"><span class="pre">ado</span></code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
 <p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> command, and will look something like this:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysdir</span>
@@ -549,6 +557,149 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 </section>
 <section id="using-environments-in-stata">
 <h2>Using environments in Stata<a class="headerlink" href="#using-environments-in-stata" title="Permalink to this heading">#</a></h2>
+<p>But the <code class="docutils literal notranslate"><span class="pre">(PLUS)</span></code> directory can be manipulated, and that creates the opportunity to create an “environment”.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Set the root directory</span>
+
+<span class="k">global</span> rootdir :<span class="k"> pwd</span>
+
+<span class="c1">* Define a location where we will hold all packages in THIS project (the &quot;environment&quot;)</span>
+
+<span class="k">global</span> adodir <span class="s">&quot;</span><span class="vg">$rootdir</span><span class="s">/ado&quot;</span>
+
+<span class="c1">* make sure it exists, if not create it.</span>
+
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+
+<span class="c1">* Now let&#39;s simplify the adopath</span>
+<span class="c1">* - remove the OLDPLACE and PERSONAL paths</span>
+<span class="c1">* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+
+<span class="k">adopath</span> <span class="o">-</span> OLDPLACE
+<span class="k">adopath</span> <span class="o">-</span> PERSONAL
+
+<span class="c1">* modify the PLUS path to point to our new location, and move it up in the order</span>
+
+<span class="k">sysdir set</span> PLUS <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">++</span> PLUS
+
+<span class="c1">* verify the path</span>
+
+<span class="k">adopath</span>
+</pre></div>
+</div>
+<p>which should show something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">adopath</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39\Documents/ado/&quot;</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="p">(</span><span class="n">BASE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do</span><span class="se">\b</span><span class="s2">ase/&quot;</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="p">(</span><span class="n">SITE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do\site/&quot;</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>              <span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>Let’s verify again where the <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> package is:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">which</span> <span class="n">reghdfe</span>
+<span class="n">command</span> <span class="n">reghdfe</span> <span class="ow">not</span> <span class="n">found</span> <span class="k">as</span> <span class="n">either</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="ow">or</span> <span class="n">ado</span><span class="o">-</span><span class="n">file</span>
+<span class="n">r</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>So it is no longer found. Why? Because we have removed the previous location (the old <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> path) from the search sequence. It’s as if it didn’t exist.</p>
+<p>Let’s imagine we need an older version of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code>. We will leverage the SSC Snapshot maintained by Lars Vilhuber on Github (<a class="github reference external" href="https://github.com/labordynamicsinstitute/ssc-mirror/">labordynamicsinstitute/ssc-mirror</a>) (details are for a different tutorial):</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* define the date</span>
+<span class="k">global</span> sscdate <span class="s">&quot;2021-12-21&quot;</span>
+<span class="k">net</span> install reghdfe, from(https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>labordynamicsinstitute<span class="o">/</span>ssc<span class="o">-</span>mirror<span class="o">/</span><span class="vg">${sscdate}</span><span class="o">/</span>fmwww<span class="m">.</span>bc<span class="m">.</span>edu<span class="o">/</span>repec<span class="o">/</span>bocode<span class="o">/</span>r)
+</pre></div>
+</div>
+<p>which gives us</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinsti
+&gt; tute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents/ado\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents/ado\r\reghdfe.ado
+*! version 5.7.3 13nov2019
+</pre></div>
+</div>
+<p>So we now have TWO different version of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> installed:</p>
+<ul class="simple">
+<li><p>Version 5.7.3 from Nov 2019 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\Documents/ado\r\reghdfe.ado</span></code></p></li>
+<li><p>Version 6.12.3 from Aug 2023 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\ado\plus\r\reghdfe.ado</span></code></p></li>
+</ul>
+<p>Only the former is used by the “environment” we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of <em>this</em> project, that functionality can now be relied upon - as long as we take care to use the same “environment” for all code run within this project. This can be achieved by using the <code class="docutils literal notranslate"><span class="pre">main.do</span></code> defined in <a class="reference internal" href="02-hands_off_running.html#hands-off-running"><span class="std std-ref">one of the previous sections</span></a>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* main.do</span>
+<span class="c1">* This is a simple example of a main file in Stata</span>
+<span class="c1">* It runs all the other files in the correct order</span>
+
+<span class="c1">* Set the root directory</span>
+
+<span class="k">global</span> rootdir :<span class="k"> pwd</span>
+
+<span class="c1">* Define a location where we will hold all packages in THIS project (the &quot;environment&quot;)</span>
+
+<span class="k">global</span> adodir <span class="s">&quot;</span><span class="vg">$rootdir</span><span class="s">/ado&quot;</span>
+
+<span class="c1">* Enable project environment</span>
+
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">-</span> OLDPLACE
+<span class="k">adopath</span> <span class="o">-</span> PERSONAL
+<span class="k">sysdir set</span> PLUS <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">++</span> PLUS
+<span class="k">adopath</span>
+
+<span class="c1">* Run the data preparation file</span>
+<span class="k">do</span> <span class="vg">$rootdir</span><span class="o">/</span>01_data_prep<span class="m">.</span>do
+
+<span class="c1">// etc. etc.</span>
+</pre></div>
+</div>
+</section>
+<section id="using-environments-in-other-languages">
+<h2>Using environments in other languages<a class="headerlink" href="#using-environments-in-other-languages" title="Permalink to this heading">#</a></h2>
+<p>R (via the <code class="docutils literal notranslate"><span class="pre">renv</span></code>) functionality, and Julia (natively, using the <code class="docutils literal notranslate"><span class="pre">Project</span></code> functionality) have similar functionality. MATLAB programs can also manipulate the <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/path.html">search path</a>, which is done for plugins and other functionality, for instance when adding <a class="reference external" href="https://www.dynare.org/">Dynare</a> as a plugin. They all work the same way.</p>
+</section>
+<section id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this heading">#</a></h2>
+<section id="what-this-does">
+<h3>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h3>
+<p>This ensures</p>
+<ul class="simple">
+<li><p>that your code runs without problem, after all the debugging.</p></li>
+<li><p>that your code runs without manual intervention.</p></li>
+<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
+<li><p>that it will run on somebody else’s computer</p>
+<ul>
+<li><p>because it guarantees that all the software is there (but with a caveat we will discuss next)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="what-this-does-not-do">
+<h3>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h3>
+<p>This does not ensure</p>
+<ul class="simple">
+<li><p>that it will run on somebody else’s computer</p>
+<ul>
+<li><p>because it does not guarantee that the next person can install the environment!</p></li>
+<li><p>because it does not guarantee that all the directories for input or output are there</p></li>
+<li><p>because many intermediate files might be present that are not in the replication package</p></li>
+<li><p>because it does not guarantee that all the directory names are correctly adjusted everywhere in your code</p></li>
+</ul>
+</li>
+<li><p>that it actually produces all the outputs</p>
+<ul>
+<li><p>because some outputs might be present from test runs</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="what-to-do-next">
+<h3>What to do next<a class="headerlink" href="#what-to-do-next" title="Permalink to this heading">#</a></h3>
+<p>To solve some of these problems, let’s go to the next step.</p>
+</section>
 </section>
 </section>
 
@@ -590,11 +741,11 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
       </div>
     </a>
     <a class="right-next"
-       href="29-new-computer.html"
+       href="11-reproducing-environments.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Use a new computer</p>
+        <p class="prev-next-title">Reproducing and documenting environments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -615,8 +766,15 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-other-languages">Using environments in other languages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
