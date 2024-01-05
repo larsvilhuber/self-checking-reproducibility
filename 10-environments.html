@@ -388,6 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
 </ul>
             </nav>
         </div>
@@ -494,9 +495,60 @@ pip<span class="w"> </span>list
 <section id="the-equivalent-in-stata">
 <h2>The equivalent in Stata<a class="headerlink" href="#the-equivalent-in-stata" title="Permalink to this heading">#</a></h2>
 <p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code class="docutils literal notranslate"><span class="pre">ado</span></code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+<p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> command, and will look something like this:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysdir</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">STATA</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\
+    <span class="n">BASE</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\<span class="n">ado</span>\<span class="n">base</span>\
+    <span class="n">SITE</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\<span class="n">ado</span>\<span class="n">site</span>\
+    <span class="n">PLUS</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lv39</span>\<span class="n">ado</span>\<span class="n">plus</span>\
+<span class="n">PERSONAL</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lv39</span>\<span class="n">ado</span>\<span class="n">personal</span>\
+<span class="n">OLDPLACE</span><span class="p">:</span>  <span class="n">c</span><span class="p">:</span>\<span class="n">ado</span>\
+</pre></div>
+</div>
+<p>The search path where Stata looks for commands is queried by <code class="docutils literal notranslate"><span class="pre">adopath</span></code>, and looks similar, but now has an order assigned to each entry:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">adopath</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">BASE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do</span><span class="se">\b</span><span class="s2">ase/&quot;</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="p">(</span><span class="n">SITE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do\site/&quot;</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>              <span class="s2">&quot;.&quot;</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="p">(</span><span class="n">PERSONAL</span><span class="p">)</span>  <span class="s2">&quot;C:\Users\lv39</span><span class="se">\a</span><span class="s2">do\personal/&quot;</span>
+  <span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39</span><span class="se">\a</span><span class="s2">do\plus/&quot;</span>
+  <span class="p">[</span><span class="mi">6</span><span class="p">]</span>  <span class="p">(</span><span class="n">OLDPLACE</span><span class="p">)</span>  <span class="s2">&quot;c:</span><span class="se">\a</span><span class="s2">do/&quot;</span>
+</pre></div>
+</div>
+<p>To look for a command, say <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code>, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> explicitly with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command</span> <span class="n">reghdfe</span> <span class="ow">not</span> <span class="n">found</span> <span class="k">as</span> <span class="n">either</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="ow">or</span> <span class="n">ado</span><span class="o">-</span><span class="n">file</span>
+<span class="n">r</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When we install a package, only one of the paths is relevant: <code class="docutils literal notranslate"><span class="pre">PLUS</span></code>. So if we install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> with <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">reghdfe</span></code>, it will be installed in the <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> directory, and we can see that with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">ssc</span> install reghdfe
+<span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is important here to recognize that it is the value of the special entry <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> in the <code class="docutils literal notranslate"><span class="pre">adopath</span></code> that determines where Stata looks for commands, not the specific location!</p>
+</div>
+</section>
+<section id="using-environments-in-stata">
+<h2>Using environments in Stata<a class="headerlink" href="#using-environments-in-stata" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -564,6 +616,7 @@ pip<span class="w"> </span>list
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equivalent-in-stata">The equivalent in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
 </ul>
   </nav></div>
 
