@@ -117,6 +117,67 @@ Technically, we modified the Python search path: the operating system's PATH var
 
 In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the `ado` directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we've shown how environments work in Stata, this will become a lot simpler!
 
+The default set of directories which can be searched, from a freshly installed Stata, can be queried with the `sysdir` command, and will look something like this:
+
 ```stata
+sysdir
+```
 
 ```
+   STATA:  C:\Program Files\Stata18\
+    BASE:  C:\Program Files\Stata18\ado\base\
+    SITE:  C:\Program Files\Stata18\ado\site\
+    PLUS:  C:\Users\lv39\ado\plus\
+PERSONAL:  C:\Users\lv39\ado\personal\
+OLDPLACE:  c:\ado\
+```
+
+The search path where Stata looks for commands is queried by `adopath`, and looks similar, but now has an order assigned to each entry:
+
+```stata
+adopath
+```
+
+```
+  [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [3]              "."
+  [4]  (PERSONAL)  "C:\Users\lv39\ado\personal/"
+  [5]  (PLUS)      "C:\Users\lv39\ado\plus/"
+  [6]  (OLDPLACE)  "c:\ado/"
+```
+
+To look for a command, say `reghdfe`, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of `reghdfe` explicitly with `which`:
+
+```stata
+which reghdfe
+```
+
+```
+command reghdfe not found as either built-in or ado-file
+r(111);
+```
+
+When we install a package, only one of the paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
+
+```stata
+ssc install reghdfe
+which reghdfe
+```
+
+```
+. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+```
+
+```{important}
+It is important here to recognize that it is the value of the special entry `PLUS` in the `adopath` that determines where Stata looks for commands, not the specific location!
+```
+
+## Using environments in Stata
