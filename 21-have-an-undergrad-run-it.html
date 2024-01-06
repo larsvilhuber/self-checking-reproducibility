@@ -364,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -380,6 +382,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -395,6 +412,39 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>This is a great exercise for an undergraduate student, plus providing you with the benefit of testing your replication package.</p>
 </div>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ask an undergraduate student (with some experience using statistical software) to run your replication package, based entirely on the documentation you provide, without interacting with you in any other way.</p></li>
+<li><p>Pay that undergraduate student!</p></li>
+</ul>
+</section>
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this heading">#</a></h2>
+<p>The AEA Data Editor runs the reproducibility check with undergraduate students. While there is some training involved in order to do such an activity reliably and at scale, simply running the code should not involve much. Interested parties can consult the <a class="reference external" href="https://labordynamicsinstitute.github.io/ldilab-manual/">LDI Lab Training manual</a> for some guidance on how to train students on this.</p>
+</section>
+<section id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this heading">#</a></h2>
+<section id="what-this-does">
+<h3>What this does<a class="headerlink" href="#what-this-does" title="Permalink to this heading">#</a></h3>
+<p>This verifies</p>
+<ul class="simple">
+<li><p>that your code runs without problem, after all the debugging.</p></li>
+<li><p>that your code runs without (too much) manual intervention.</p></li>
+<li><p>that your code generates a log file that you can inspect, and that you could share with others (if you prepared that as per <a class="reference internal" href="03-creating_log_files.html#creating-log-files"><span class="std std-ref">a previous section</span></a>)</p></li>
+<li><p>that it will run on somebody else’s computer!!</p></li>
+<li><p>that it actually produces all the outputs</p></li>
+</ul>
+</section>
+<section id="what-this-does-not-do">
+<h3>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h3>
+<p>Well, it’s not perfect, because sometimes undergraduates get things wrong. But that’s fine. It’s a teaching moment!</p>
+</section>
+<section id="what-to-do-next">
+<h3>What to do next<a class="headerlink" href="#what-to-do-next" title="Permalink to this heading">#</a></h3>
+<p>If you want to do something similar without the human touch, check out the next section.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,6 +499,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-do-next">What to do next</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

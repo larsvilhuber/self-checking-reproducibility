@@ -424,7 +424,9 @@ document.write(`
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p>While Docker is usually mentioned in the context of free open-source software such as Python or R, it can be used with commercial software. For example, the AEA Data Editor provides a <a class="reference external" href="https://hub.docker.com/r/dataeditors/stata17">Docker image</a> for Stata 17, together with instructions on how to run it. You do need a license file, but if you are going to run a Stata replication package, you probably already have that.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;/path/to/stata.lic&quot;</span>:/usr/local/stata/stata.lic<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/project<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-w<span class="w"> </span>/project<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>dataeditors/stata17:2023-08-29<span class="w"> </span><span class="se">\</span>
@@ -438,6 +440,7 @@ document.write(`
 <li><p><a class="reference external" href="https://www.docker.com/">Docker</a> is a free, open-source container manager, which allows users to create containers using “recipes” (called <code class="docutils literal notranslate"><span class="pre">Dockerfiles</span></code>). While the underlying technology is usually Linux, <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> (commercial, free for most academic uses) allows users to run containers on Windows, macOS, and Linux.</p></li>
 <li><p><a class="reference external" href="https://www.orbstack.com/">OrbStack</a> is a container manager for macOS (commercial, free for typical academic usage). It is compatible with Docker.</p></li>
 <li><p><a class="reference external" href="https://www.apptainer.io/">Apptainer</a>, formerly known as <a class="reference external" href="https://sylabs.io/singularity/">Singularity</a>, free, open-source container manager. It can use Docker images, but has its own syntax for “recipes”. It is fundamentally Linux based, and available on many university HPC clusters.</p></li>
+<li><p><a class="reference external" href="https://wholetale.org/">WholeTale</a> is Docker-based academic service providing free online resources to create (and use) reproducible research. While it does not allow you to directly run Docker, it does provide for free instances of Stata and MATLAB.</p></li>
 </ul>
 <p>Various other container managers are available for both Linux and Windows (Azure) based clouds (<code class="docutils literal notranslate"><span class="pre">podman</span></code>, etc.). They should all be able to run Docker containers.</p>
 </section>
