@@ -13,6 +13,7 @@ parts:
     - file: 11-reproducing-environments
   - caption: More complex ways to test replication packages
     chapters:
-    - file: 29-new-computer
+    - file: 20-new-computer
+    - file: 21-have-an-undergrad-run-it
     - file: 30-docker
     - file: 40-virtual_machines
