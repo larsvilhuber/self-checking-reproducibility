@@ -20,6 +20,10 @@ Content is [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x1
 
 The table of contents goes initially from easy to more complex. Each section should be seen as one  method of running, with varying levels of "trust" in how robust it is to replicators' environments. Some can be combined, others may not work well together.
 
+## TL;DR
+
+Techy lingo for "too long, didn't read". A summary of the most important takeaways will be at the top of each section.
+
 ## How to contribute
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/larsvilhuber/self-checking-reproducibility.svg?style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/larsvilhuber/self-checking-reproducibility.svg?style=flat) 
