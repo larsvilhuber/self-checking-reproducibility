@@ -1,5 +1,5 @@
 (hands-off-running)=
-# Hands-off running
+# Hands-off running: Creating a controller script
 
 Let's ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
 
