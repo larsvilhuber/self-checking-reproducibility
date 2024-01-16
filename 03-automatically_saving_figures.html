@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Creating log files &#8212; Self-checking replication packages</title>
+    <title>Hands-off running: Automatically saving figures &#8212; Self-checking replication packages</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '03-creating_log_files';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/03-creating_log_files.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-automatically_saving_figures';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/03-automatically_saving_figures.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Creating and using environments" href="10-creating-environments.html" />
+    <link rel="next" title="Creating log files" href="04-creating_log_files.html" />
     <link rel="prev" title="Hands-off running: Creating a controller script" href="02-hands_off_running.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -167,7 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running: Creating a controller script</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating log files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hands-off running: Automatically saving figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-creating_log_files.html">Creating log files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-creating-environments.html">Creating and using environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11-reproducing-environments.html">Reproducing and documenting environments</a></li>
 </ul>
@@ -248,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/03-creating_log_files.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/03-automatically_saving_figures.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -265,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F03-creating_log_files.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F03-automatically_saving_figures.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +296,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/03-creating_log_files.md" target="_blank"
+      <li><a href="_sources/03-automatically_saving_figures.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Creating log files</h1>
+    <h1>Hands-off running: Automatically saving figures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,12 +389,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Creating log files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-explicitly">Creating log files explicitly</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-figures-programmatically">Saving figures programmatically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
@@ -411,131 +407,75 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="creating-log-files">
-<span id="id1"></span><h1>Creating log files<a class="headerlink" href="#creating-log-files" title="Permalink to this heading">#</a></h1>
-<p>In order to document that you have actually run your code, a log file, a transcript, or some other evidence, may be useful. It may even be required by certain journals.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hands-off-running-automatically-saving-figures">
+<span id="auto-saving-figures"></span><h1>Hands-off running: Automatically saving figures<a class="headerlink" href="#hands-off-running-automatically-saving-figures" title="Permalink to this heading">#</a></h1>
+<p>Say you have 53 figures and 23 tables, the latter created from 161 different specifications. That makes for a lot of work when re-running the code, if you haven’t automated the saving of said figures and tables.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We have seen instructions that tell the replicator to right-click and save the figures. While there is no substitute for comparing all these figures, that’s too much work!</p>
+</div>
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Log files are a way to document that you have run your code.</p></li>
-<li><p>In particular for code that runs for a very long time, or that uses data that cannot be shared, log files may be the only way to document basic reproducibility.</p></li>
+<li><p>Save all figures using commands, rather than manually.</p></li>
+<li><p>It’s easy.</p></li>
 </ul>
 </section>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>Most statistical software has ways to keep a record that it has run, with the details of that run. Some make it easier than others. In some cases, you may need to instruct your code to be “verbose”, or to “log” certain events. In other cases, you may need to use a command-line option to the software to create a log file.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I do note that we are typically only looking to document what the statistical code does, at a high level. We are not looking to document system calls, fine-grained data access, etc. Computer scientists and IT security mavens may be interested in such details, but economists are typically not.</p>
-</div>
-<p>In almost all cased, the generated log files are simple text files, without any formatting, and can be read by any text editor (e.g., Visual Studio Code, Notepad++, etc.).</p>
-</section>
-<section id="id2">
-<h2>Creating log files<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<section id="creating-log-files-explicitly">
-<h3>Creating log files explicitly<a class="headerlink" href="#creating-log-files-explicitly" title="Permalink to this heading">#</a></h3>
-<p>We start by describing how to explicitly generate log files as part of the statistical processing code.</p>
+<section id="saving-figures-programmatically">
+<h2>Saving figures programmatically<a class="headerlink" href="#saving-figures-programmatically" title="Permalink to this heading">#</a></h2>
+<p>In order to be able to enable “hands-off running”, saving figures (and tables) automatically is important. I will show here a few simple examples for various statistical programming languages.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Stata</label><div class="sd-tab-content docutils">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> logdir <span class="s">&quot;</span><span class="vg">${rootdir}</span><span class="s">/logs&quot;</span>
-<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">&quot;</span>
-<span class="k">local</span> c_date = <span class="nf">c</span>(current_date)
-<span class="k">local</span> cdate = <span class="nf">subinstr</span>(<span class="s">&quot;</span><span class="nv">`c_date&#39;</span><span class="s">&quot;</span>, <span class="s">&quot; &quot;</span>, <span class="s">&quot;_&quot;</span>, .)
-<span class="k">local</span> c_time = <span class="nf">c</span>(current_time)
-<span class="k">local</span> ctime = <span class="nf">subinstr</span>(<span class="s">&quot;</span><span class="nv">`c_time&#39;</span><span class="s">&quot;</span>, <span class="s">&quot;:&quot;</span>, <span class="s">&quot;_&quot;</span>, .)
-<span class="k">local</span> globallog = <span class="s">&quot;</span><span class="vg">$logdir</span><span class="s">/logfile_</span><span class="nv">`cdate&#39;</span><span class="s">-</span><span class="nv">`ctime&#39;</span><span class="s">-</span><span class="nv">`c(username)&#39;</span><span class="s">.log&quot;</span>
-<span class="k">log</span> using <span class="s">&quot;</span><span class="nv">`globallog&#39;</span><span class="s">&quot;</span>, name(global)<span class="k"> replace</span> text
+<p>After having created the graph (”<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">twoway</span></code>”, “<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">bar</span></code>”, etc.), simply add “<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">export</span> <span class="pre">&quot;name_of_file.graph-extension&quot;,</span> <span class="pre">replace</span></code>”. Many formats are available, as required by journal requirements.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> auto
+<span class="k">graph twoway</span> (lfitci mpg<span class="k"> disp</span>) (scatter mpg<span class="k"> disp</span>)
+<span class="k">graph</span> export <span class="s">&quot;path/to/figure1.png&quot;</span>
 </pre></div>
 </div>
+<p>For more information, see <a class="reference external" href="https://www.stata.com/manuals/g-2graphexport.pdf">https://www.stata.com/manuals/g-2graphexport.pdf</a>.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 R</label><div class="sd-tab-content docutils">
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will only log output (&quot;stdout&quot;) and warnings/messages (&quot;stderr&quot;), but not the commands themselves!</span>
-
-<span class="n">logfile.name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;logfile_&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">Sys.Date</span><span class="p">(),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">format</span><span class="p">(</span><span class="nf">as.POSIXct</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()),</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%H_%M&quot;</span><span class="p">),</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="nf">Sys.info</span><span class="p">()[</span><span class="s">&quot;user&quot;</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;.log&quot;</span><span class="p">)</span>
-<span class="n">globallog</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">logfile.name</span><span class="p">),</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wt&quot;</span><span class="p">)</span>
-<span class="c1"># Send output to logfile</span>
-<span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="nf">sink</span><span class="p">(</span><span class="n">globallog</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">)</span>
-
-<span class="c1">## revert output back to the console </span>
-<span class="nf">sink</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">)</span>
-<span class="nf">sink</span><span class="p">()</span>
-<span class="nf">close</span><span class="p">(</span><span class="n">globallog</span><span class="p">)</span>
+<p>Methods vary, but the two main ones are redefining the graphics device for the desired format, or using the <code class="docutils literal notranslate"><span class="pre">ggsave</span></code> wrapper. Examples for both, below.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">attach</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
+<span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">disp</span><span class="p">)</span>
+<span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="nf">file.path</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">,</span><span class="s">&quot;to&quot;</span><span class="p">,</span><span class="s">&quot;figure1.png&quot;</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>(for more information, see help pages for “?png”, “?eps”, or “?pdf”)</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">here</span><span class="p">)</span>
+<span class="n">figures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&quot;figures&quot;</span><span class="p">)</span>
+
+<span class="n">ggp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="n">disp</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">       </span><span class="nf">geom_point</span><span class="p">()</span><span class="o">+</span><span class="w"> </span>
+<span class="w">       </span><span class="nf">stat_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;smooth&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">ggp</span><span class="p">,</span><span class="nf">file.path</span><span class="p">(</span><span class="n">figures</span><span class="p">,</span><span class="s">&quot;figure1.png&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>(for more information, see <a class="reference external" href="https://ggplot2.tidyverse.org/reference/ggsave.html">https://ggplot2.tidyverse.org/reference/ggsave.html</a>)</p>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% The &quot;diary&quot; function should achieve this. Not a MATLAB expert!</span>
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Need</span> <span class="n">example</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">The</span> <span class="n">logging</span> <span class="n">module</span> <span class="n">should</span> <span class="n">achieve</span> <span class="n">this</span><span class="o">.</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Watch out!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>will output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WARNING:root:Watch out!
-</pre></div>
-</div>
-</div>
-</div>
-<p>While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will only create log files that contain output.</p>
-</section>
-<section id="creating-log-files-automatically">
-<h3>Creating log files automatically<a class="headerlink" href="#creating-log-files-automatically" title="Permalink to this heading">#</a></h3>
-<p>An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the command line to run the software, and thus may be considered an <strong>advanced topic.</strong> The examples below are for Linux/macOS, but similar functionality exists for Windows.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
-Stata</label><div class="sd-tab-content docutils">
-<p>To automatically create a log file, run Stata from the command line with the <code class="docutils literal notranslate"><span class="pre">-b</span></code> option:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stata<span class="w"> </span>-b<span class="w"> </span><span class="k">do</span><span class="w"> </span>main.do
-</pre></div>
-</div>
-<p>which will create a file <code class="docutils literal notranslate"><span class="pre">main.log</span></code> in the same directory as <code class="docutils literal notranslate"><span class="pre">main.do</span></code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>For this to work, the filename cannot include spaces.</p>
-</div>
-<p>On Windows, follow instructions <a class="reference external" href="https://www.stata.com/manuals/gswb.pdf#gswB.5">here</a>.</p>
-</div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
-R</label><div class="sd-tab-content docutils">
-<p>To automatically create a log file, run R from the command line as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>R<span class="w"> </span>CMD<span class="w"> </span>BATCH<span class="w"> </span>main.R
-</pre></div>
-</div>
-<p>will create a file <code class="docutils literal notranslate"><span class="pre">main.Rout</span></code> in the same directory as <code class="docutils literal notranslate"><span class="pre">main.R</span></code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If there are other commands, such as <code class="docutils literal notranslate"><span class="pre">sink()</span></code>, active in the R code, the <code class="docutils literal notranslate"><span class="pre">main.Rout</span></code> file will not contain some output.</p>
-</div>
-</div>
-<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
 MATLAB</label><div class="sd-tab-content docutils">
-<p>To automatically create a log file, run MATLAB from the command line as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;addpath(genpath(&#39;.&#39;)); main&quot;</span><span class="w"> </span>-logfile<span class="w"> </span>matlab.log
-</pre></div>
-</div>
-<p>A similar command on Windows would be:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>start<span class="w"> </span>matlab<span class="w"> </span>-nosplash<span class="w">  </span>-minimize<span class="w"> </span>-r<span class="w">  </span><span class="s2">&quot;addpath(genpath(&#39;.&#39;));main&quot;</span><span class="w">  </span>-logfile<span class="w"> </span>matlab.log
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">bar</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="nb">saveas</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="nb">fullfile</span><span class="p">(</span><span class="s">&#39;path&#39;</span><span class="p">,</span><span class="s">&#39;to&#39;</span><span class="p">,</span><span class="s">&#39;figure1.png&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="takeaways">
 <h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this heading">#</a></h2>
@@ -545,13 +485,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>that your code runs without problem, after all the debugging.</p></li>
 <li><p>that your code runs without manual intervention.</p></li>
-<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
+<li><p>that you do not impose fallible and onerous work on replicators</p></li>
 </ul>
 </section>
 <section id="what-this-does-not-do">
 <h3>What this does not do<a class="headerlink" href="#what-this-does-not-do" title="Permalink to this heading">#</a></h3>
 <p>This does not ensure</p>
 <ul class="simple">
+<li><p>that your code generates a log file that you can inspect, and that you could share with others.</p></li>
 <li><p>that it will run on somebody else’s computer</p>
 <ul>
 <li><p>because it does not guarantee that all the software is there</p></li>
@@ -612,11 +553,11 @@ MATLAB</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="10-creating-environments.html"
+       href="04-creating_log_files.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Creating and using environments</p>
+        <p class="prev-next-title">Creating log files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -636,12 +577,7 @@ MATLAB</label><div class="sd-tab-content docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Creating log files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-explicitly">Creating log files explicitly</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-log-files-automatically">Creating log files automatically</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-figures-programmatically">Saving figures programmatically</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does">What this does</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-does-not-do">What this does not do</a></li>
