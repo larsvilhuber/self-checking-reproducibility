@@ -169,6 +169,42 @@ Run this script, and it should run all the other ones. Note that there are vario
 
 :::
 
+:::{tab-item} Julia
+
+In Julia, we can do something similar:
+
+```julia
+# This is a simple example of a main file in Julia
+# It runs all the other files in the correct order
+
+# Set the root directory
+rootdir = pwd()
+
+# Run the data preparation file
+include(joinpath(rootdir, "01_data_prep.jl"))
+
+# Run the analysis file
+include(joinpath(rootdir, "02_analysis.jl"))
+
+# Run the table file
+include(joinpath(rootdir, "03_tables.jl"))
+
+# Run the figure file
+include(joinpath(rootdir, "04_figures.jl"))
+
+# Run the appendix file
+include(joinpath(rootdir, "05_appendix.jl"))
+```
+
+Run this from your favorite IDE or from a terminal:
+
+```bash
+cd /where/my/code/is
+julia main.jl
+```
+
+:::
+
 :::{tab-item} Bash
 
 Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows ("Git Bash"). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.

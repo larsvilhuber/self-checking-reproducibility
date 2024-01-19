@@ -561,6 +561,38 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
+Julia</label><div class="sd-tab-content docutils">
+<p>In Julia, we can do something similar:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># This is a simple example of a main file in Julia</span>
+<span class="c"># It runs all the other files in the correct order</span>
+
+<span class="c"># Set the root directory</span>
+<span class="n">rootdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pwd</span><span class="p">()</span>
+
+<span class="c"># Run the data preparation file</span>
+<span class="n">include</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;01_data_prep.jl&quot;</span><span class="p">))</span>
+
+<span class="c"># Run the analysis file</span>
+<span class="n">include</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;02_analysis.jl&quot;</span><span class="p">))</span>
+
+<span class="c"># Run the table file</span>
+<span class="n">include</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;03_tables.jl&quot;</span><span class="p">))</span>
+
+<span class="c"># Run the figure file</span>
+<span class="n">include</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;04_figures.jl&quot;</span><span class="p">))</span>
+
+<span class="c"># Run the appendix file</span>
+<span class="n">include</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;05_appendix.jl&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Run this from your favorite IDE or from a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/where/my/code/is
+julia<span class="w"> </span>main.jl
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 Bash</label><div class="sd-tab-content docutils">
 <p>Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows (“Git Bash”). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the <code class="docutils literal notranslate"><span class="pre">%PATH%</span></code> by default, and thus may need to be called with the full path to the executable.</p>
 <p>We will discuss software search paths more fully in the <a class="reference internal" href="10-creating-environments.html#environments"><span class="std std-ref">section on environments</span></a>.</p>
