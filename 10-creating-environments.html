@@ -591,7 +591,7 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 </div>
 <p>which should show something like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">adopath</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39\Documents/ado/&quot;</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39\Documents/PROJECT123/ado/&quot;</span>
   <span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="p">(</span><span class="n">BASE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do</span><span class="se">\b</span><span class="s2">ase/&quot;</span>
   <span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="p">(</span><span class="n">SITE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do\site/&quot;</span>
   <span class="p">[</span><span class="mi">4</span><span class="p">]</span>              <span class="s2">&quot;.&quot;</span>
@@ -607,6 +607,18 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 </pre></div>
 </div>
 <p>So it is no longer found. Why? Because we have removed the previous location (the old <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> path) from the search sequence. It’s as if it didn’t exist.</p>
+<p>When we now install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+</pre></div>
+</div>
+<p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project (more on that later).</p>
 <p>Let’s imagine we need an older version of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code>. We will leverage the SSC Snapshot maintained by Lars Vilhuber on Github (<a class="github reference external" href="https://github.com/labordynamicsinstitute/ssc-mirror/">labordynamicsinstitute/ssc-mirror</a>) (details are for a different tutorial):</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* define the date</span>
 <span class="k">global</span> sscdate <span class="s">&quot;2021-12-21&quot;</span>

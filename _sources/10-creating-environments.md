@@ -221,7 +221,7 @@ which should show something like this:
 
 ```
 . adopath
-  [1]  (PLUS)      "C:\Users\lv39\Documents/ado/"
+  [1]  (PLUS)      "C:\Users\lv39\Documents/PROJECT123/ado/"
   [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
   [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
   [4]              "."
@@ -240,6 +240,21 @@ r(111);
 ```
 
 So it is no longer found. Why? Because we have removed the previous location (the old `PLUS` path) from the search sequence. It's as if it didn't exist.
+
+When we now install `reghdfe` again:
+
+```
+. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+```
+
+We now see it in the **project-specific** directory, which we can distribute with the whole project (more on that later). 
 
 Let's imagine we need an older version of `reghdfe`. We will leverage the SSC Snapshot maintained by Lars Vilhuber on Github ([https://github.com/labordynamicsinstitute/ssc-mirror/](https://github.com/labordynamicsinstitute/ssc-mirror/)) (details are for a different tutorial):
 
