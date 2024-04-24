@@ -56,7 +56,7 @@ html:
   use_issues_button         : true  # Whether to add an "open an issue" button
   use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
   #extra_navbar              : <a href="https://labordynamicsinstitute.github.io/replicability-training-curriculum/">Link to old documentation</a>  # Will be displayed underneath the left navbar.
-  extra_footer              : ""  # Will be displayed underneath the footer.
+  extra_footer              : "Partially funded by Alfred P Sloan Foundation, G-2023-22326."  # Will be displayed underneath the footer.
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : "https://larsvilhuber.github.io/self-checking-reproducibility/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
