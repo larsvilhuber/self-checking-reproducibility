@@ -11,10 +11,15 @@ parts:
     - file: 03-automatically_saving_figures
     - file: 04-creating_log_files
     - file: 10-creating-environments
-    - file: 11-reproducing-environments
+      sections:
+      - file: 11-simple-example
+      - file: 12-environments-in-stata
+      - file: 13-environments-in-other
+      - file: 19-environments-takeaway
+    - file: 20-reproducing-environments
   - caption: More complex ways to test replication packages
     chapters:
-    - file: 20-new-computer
-    - file: 21-have-an-undergrad-run-it
-    - file: 30-docker
-    - file: 40-virtual_machines
+    - file: 70-new-computer
+    - file: 71-have-an-undergrad-run-it
+    - file: 72-virtual_machines
+    - file: 80-docker
