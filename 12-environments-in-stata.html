@@ -394,7 +394,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sysdir-directories">The <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> directories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-adopath-search-order">The <code class="docutils literal notranslate"><span class="pre">adopath</span></code> search order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-packages-installed">Where are packages installed?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-when-an-environment-is-active">Installing packages when an environment is active</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precise-versions-of-packages">Installing precise versions of packages</a></li>
@@ -414,6 +419,8 @@ document.write(`
 <section id="search-paths-in-stata">
 <h2>Search paths in Stata<a class="headerlink" href="#search-paths-in-stata" title="Permalink to this heading">#</a></h2>
 <p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code class="docutils literal notranslate"><span class="pre">ado</span></code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
+<section id="the-sysdir-directories">
+<h3>The <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> directories<a class="headerlink" href="#the-sysdir-directories" title="Permalink to this heading">#</a></h3>
 <p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> command, and will look something like this:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysdir</span>
 </pre></div>
@@ -426,7 +433,10 @@ document.write(`
 <span class="n">OLDPLACE</span><span class="p">:</span>  <span class="n">c</span><span class="p">:</span>\<span class="n">ado</span>\
 </pre></div>
 </div>
-<p>The search path where Stata looks for commands is queried by <code class="docutils literal notranslate"><span class="pre">adopath</span></code>, and looks similar, but now has an order assigned to each entry:</p>
+</section>
+<section id="the-adopath-search-order">
+<h3>The <code class="docutils literal notranslate"><span class="pre">adopath</span></code> search order<a class="headerlink" href="#the-adopath-search-order" title="Permalink to this heading">#</a></h3>
+<p>The search paths where Stata looks for commands is queried by <code class="docutils literal notranslate"><span class="pre">adopath</span></code>, and looks similar, but now has an order assigned to each entry:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">adopath</span>
 </pre></div>
 </div>
@@ -446,7 +456,10 @@ document.write(`
 <span class="n">r</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>When we install a package, only one of the paths is relevant: <code class="docutils literal notranslate"><span class="pre">PLUS</span></code>. So if we install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> with <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">reghdfe</span></code>, it will be installed in the <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> directory, and we can see that with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
+</section>
+<section id="where-are-packages-installed">
+<h3>Where are packages installed?<a class="headerlink" href="#where-are-packages-installed" title="Permalink to this heading">#</a></h3>
+<p>When we install a package, using one of the various package installation commands (<code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">install</span></code>, <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span></code>)<a class="footnote-reference brackets" href="#net-ref" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, only one of the (<code class="docutils literal notranslate"><span class="pre">sysdir</span></code>) paths is relevant: <code class="docutils literal notranslate"><span class="pre">PLUS</span></code>. So if we install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> with <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">reghdfe</span></code>, it will be installed in the <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> directory, and we can see that with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">ssc</span> install reghdfe
 <span class="k">which</span> reghdfe
 </pre></div>
@@ -463,8 +476,9 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>It is important here to recognize that it is the value of the special entry <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> in the <code class="docutils literal notranslate"><span class="pre">adopath</span></code> that determines where Stata looks for commands, not the specific location!</p>
+<p>It is important here to recognize that it is the value of the special <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> directory <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> that determines where Stata installs commands, but the separate list of <code class="docutils literal notranslate"><span class="pre">adopath</span></code>  locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!</p>
 </div>
+</section>
 </section>
 <section id="using-environments-in-stata">
 <h2>Using environments in Stata<a class="headerlink" href="#using-environments-in-stata" title="Permalink to this heading">#</a></h2>
@@ -558,6 +572,14 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 <li><p>Version 5.7.3 from Nov 2019 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\Documents/ado\r\reghdfe.ado</span></code></p></li>
 <li><p>Version 6.12.3 from Aug 2023 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\ado\plus\r\reghdfe.ado</span></code></p></li>
 </ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Stata can get confused about how to write paths…</p>
+<p>Stata on Windows can understand two types of path syntax: the “Windows” syntax, with backslashes <code class="docutils literal notranslate"><span class="pre">\</span></code>, and the “Unix” syntax, with forward slashes ‘/’. It will usually report paths in the “Windows” syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the “weird”  mixed notation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lv39</span>\<span class="n">Documents</span><span class="o">/</span><span class="n">ado</span>\<span class="n">r</span>\<span class="n">reghdfe</span><span class="o">.</span><span class="n">ado</span>
+</pre></div>
+</div>
+<p>Other software (e.g, R), will consistently use the forward slash, even on Windows, when paths are coded internally.</p>
+</div>
 <p>Only the former is used by the “environment” we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of <em>this</em> project, that functionality can now be relied upon - as long as we take care to use the same “environment” for all code run within this project. This can be achieved by using the <code class="docutils literal notranslate"><span class="pre">main.do</span></code> defined in <a class="reference internal" href="02-hands_off_running.html#hands-off-running"><span class="std std-ref">one of the previous sections</span></a>:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* main.do</span>
 <span class="c1">* This is a simple example of a main file in Stata</span>
@@ -586,6 +608,15 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 <span class="c1">// etc. etc.</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While we used interactive commands to install the various packages here, that was only for illustrative purposes. <strong>Always</strong> script the installation of packages in a <code class="docutils literal notranslate"><span class="pre">setup.do</span></code> file. We will address how and when to run that file in the <a class="reference internal" href="20-reproducing-environments.html#reproducing-environments"><span class="std std-ref">next section</span></a>.</p>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="net-ref" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.stata.com/manuals/rnet.pdf"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">install</span></code> refererence</a>. Strictly speaking, the location where ado packages are installed can be changed via the <code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">set</span> <span class="pre">ado</span></code> command, but this is rarely done in practice, and we won’t do it here.</p>
+</aside>
 </section>
 </section>
 
@@ -650,7 +681,12 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sysdir-directories">The <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> directories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-adopath-search-order">The <code class="docutils literal notranslate"><span class="pre">adopath</span></code> search order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-packages-installed">Where are packages installed?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-when-an-environment-is-active">Installing packages when an environment is active</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precise-versions-of-packages">Installing precise versions of packages</a></li>

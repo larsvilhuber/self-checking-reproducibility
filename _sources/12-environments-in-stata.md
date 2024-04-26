@@ -5,6 +5,8 @@
 
 In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the `ado` directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we've shown how environments work in Stata, this will become a lot simpler!
 
+### The `sysdir` directories
+
 The default set of directories which can be searched, from a freshly installed Stata, can be queried with the `sysdir` command, and will look something like this:
 
 ```stata
@@ -20,7 +22,9 @@ PERSONAL:  C:\Users\lv39\ado\personal\
 OLDPLACE:  c:\ado\
 ```
 
-The search path where Stata looks for commands is queried by `adopath`, and looks similar, but now has an order assigned to each entry:
+### The `adopath` search order
+
+The search paths where Stata looks for commands is queried by `adopath`, and looks similar, but now has an order assigned to each entry:
 
 ```stata
 adopath
@@ -46,7 +50,12 @@ command reghdfe not found as either built-in or ado-file
 r(111);
 ```
 
-When we install a package, only one of the paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
+### Where are packages installed?
+
+[^net-ref]: [`net install` refererence](https://www.stata.com/manuals/rnet.pdf). Strictly speaking, the location where ado packages are installed can be changed via the `net set ado` command, but this is rarely done in practice, and we won't do it here. 
+
+
+When we install a package, using one of the various package installation commands (`net install`, `ssc install`)[^net-ref], only one of the (`sysdir`) paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
 
 ```stata
 ssc install reghdfe
@@ -65,7 +74,7 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 ```
 
 ```{important}
-It is important here to recognize that it is the value of the special entry `PLUS` in the `adopath` that determines where Stata looks for commands, not the specific location!
+It is important here to recognize that it is the value of the special `sysdir` directory `PLUS` that determines where Stata installs commands, but the separate list of `adopath`  locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!
 ```
 
 ## Using environments in Stata
@@ -130,6 +139,7 @@ r(111);
 So it is no longer found. Why? Because we have removed the previous location (the old `PLUS` path) from the search sequence. It's as if it didn't exist.
 
 
+
 ## Installing packages when an environment is active
 
 
@@ -181,7 +191,7 @@ So we now have TWO different version of `reghdfe` installed:
 - Version 5.7.3 from Nov 2019 is installed at `C:\Users\lv39\Documents/ado\r\reghdfe.ado` 
 - Version 6.12.3 from Aug 2023 is installed at `C:\Users\lv39\ado\plus\r\reghdfe.ado`
 
-:::{adnonition} Stata can get confused about how to write paths...
+:::{admonition} Stata can get confused about how to write paths...
 :class: dropdown
 
 Stata on Windows can understand two types of path syntax: the "Windows" syntax, with backslashes `\`, and the "Unix" syntax, with forward slashes '/'. It will usually report paths in the "Windows" syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the "weird"  mixed notation:
@@ -223,3 +233,10 @@ do $rootdir/01_data_prep.do
 
 // etc. etc.
 ```
+
+:::{warning}
+
+While we used interactive commands to install the various packages here, that was only for illustrative purposes. **Always** script the installation of packages in a `setup.do` file. We will address how and when to run that file in the [next section](reproducing-environments).
+
+:::
+
