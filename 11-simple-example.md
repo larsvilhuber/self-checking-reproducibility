@@ -120,3 +120,10 @@ Walk through the steps to install specific versions of packages, and where they 
 ## Making environments portable and reproducible
 
 This is deferred to [later](reproducing-environments).
+
+
+:::{warning}
+
+While we used interactive commands to install the various packages here, that was only for illustrative purposes. **Always** using a `requirements.txt` file to specify the packages to be installed. We will address how and when to use that file in the [next section](reproducing-environments).
+
+:::
