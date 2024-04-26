@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Environments in Stata &#8212; Self-checking replication packages</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12-environments-in-stata';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/12-environments-in-stata.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using environments in other languages" href="13-environments-in-other.html" />
+    <link rel="prev" title="A simple example" href="11-simple-example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">This is not yet fully debugged - report any issues!</div>
+  </div>
+
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ssde-logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/ssde-logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simple ways to test replication packages</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-run_it_again.html">Run it all again</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-hands_off_running.html">Hands-off running: Creating a controller script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-automatically_saving_figures.html">Hands-off running: Automatically saving figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-creating_log_files.html">Creating log files</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="10-creating-environments.html">Creating and using environments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11-simple-example.html">A simple example</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Environments in Stata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13-environments-in-other.html">Using environments in other languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19-environments-takeaway.html">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="20-reproducing-environments.html">Reproducing and documenting environments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="70-new-computer.html">Use a new computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="71-have-an-undergrad-run-it.html">Have an undergraduate student run it</a></li>
+<li class="toctree-l1"><a class="reference internal" href="72-virtual_machines.html">Virtual Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-docker.html">Use of containers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/12-environments-in-stata.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F12-environments-in-stata.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/12-environments-in-stata.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Environments in Stata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-when-an-environment-is-active">Installing packages when an environment is active</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precise-versions-of-packages">Installing precise versions of packages</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="environments-in-stata">
+<span id="stata-environments"></span><h1>Environments in Stata<a class="headerlink" href="#environments-in-stata" title="Permalink to this heading">#</a></h1>
+<section id="search-paths-in-stata">
+<h2>Search paths in Stata<a class="headerlink" href="#search-paths-in-stata" title="Permalink to this heading">#</a></h2>
+<p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code class="docutils literal notranslate"><span class="pre">ado</span></code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
+<p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> command, and will look something like this:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysdir</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">STATA</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\
+    <span class="n">BASE</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\<span class="n">ado</span>\<span class="n">base</span>\
+    <span class="n">SITE</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">Stata18</span>\<span class="n">ado</span>\<span class="n">site</span>\
+    <span class="n">PLUS</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lv39</span>\<span class="n">ado</span>\<span class="n">plus</span>\
+<span class="n">PERSONAL</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lv39</span>\<span class="n">ado</span>\<span class="n">personal</span>\
+<span class="n">OLDPLACE</span><span class="p">:</span>  <span class="n">c</span><span class="p">:</span>\<span class="n">ado</span>\
+</pre></div>
+</div>
+<p>The search path where Stata looks for commands is queried by <code class="docutils literal notranslate"><span class="pre">adopath</span></code>, and looks similar, but now has an order assigned to each entry:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">adopath</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">BASE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do</span><span class="se">\b</span><span class="s2">ase/&quot;</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="p">(</span><span class="n">SITE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do\site/&quot;</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>              <span class="s2">&quot;.&quot;</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="p">(</span><span class="n">PERSONAL</span><span class="p">)</span>  <span class="s2">&quot;C:\Users\lv39</span><span class="se">\a</span><span class="s2">do\personal/&quot;</span>
+  <span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39</span><span class="se">\a</span><span class="s2">do\plus/&quot;</span>
+  <span class="p">[</span><span class="mi">6</span><span class="p">]</span>  <span class="p">(</span><span class="n">OLDPLACE</span><span class="p">)</span>  <span class="s2">&quot;c:</span><span class="se">\a</span><span class="s2">do/&quot;</span>
+</pre></div>
+</div>
+<p>To look for a command, say <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code>, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> explicitly with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command</span> <span class="n">reghdfe</span> <span class="ow">not</span> <span class="n">found</span> <span class="k">as</span> <span class="n">either</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="ow">or</span> <span class="n">ado</span><span class="o">-</span><span class="n">file</span>
+<span class="n">r</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When we install a package, only one of the paths is relevant: <code class="docutils literal notranslate"><span class="pre">PLUS</span></code>. So if we install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> with <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">reghdfe</span></code>, it will be installed in the <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> directory, and we can see that with <code class="docutils literal notranslate"><span class="pre">which</span></code>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">ssc</span> install reghdfe
+<span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is important here to recognize that it is the value of the special entry <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> in the <code class="docutils literal notranslate"><span class="pre">adopath</span></code> that determines where Stata looks for commands, not the specific location!</p>
+</div>
+</section>
+<section id="using-environments-in-stata">
+<h2>Using environments in Stata<a class="headerlink" href="#using-environments-in-stata" title="Permalink to this heading">#</a></h2>
+<p>But the <code class="docutils literal notranslate"><span class="pre">(PLUS)</span></code> directory can be manipulated, and that creates the opportunity to create an “environment”.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* Set the root directory</span>
+
+<span class="k">global</span> rootdir :<span class="k"> pwd</span>
+
+<span class="c1">* Define a location where we will hold all packages in THIS project (the &quot;environment&quot;)</span>
+
+<span class="k">global</span> adodir <span class="s">&quot;</span><span class="vg">$rootdir</span><span class="s">/ado&quot;</span>
+
+<span class="c1">* make sure it exists, if not create it.</span>
+
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+
+<span class="c1">* Now let&#39;s simplify the adopath</span>
+<span class="c1">* - remove the OLDPLACE and PERSONAL paths</span>
+<span class="c1">* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+
+<span class="k">adopath</span> <span class="o">-</span> OLDPLACE
+<span class="k">adopath</span> <span class="o">-</span> PERSONAL
+
+<span class="c1">* modify the PLUS path to point to our new location, and move it up in the order</span>
+
+<span class="k">sysdir set</span> PLUS <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">++</span> PLUS
+
+<span class="c1">* verify the path</span>
+
+<span class="k">adopath</span>
+</pre></div>
+</div>
+<p>which should show something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">adopath</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="p">(</span><span class="n">PLUS</span><span class="p">)</span>      <span class="s2">&quot;C:\Users\lv39\Documents/PROJECT123/ado/&quot;</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="p">(</span><span class="n">BASE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do</span><span class="se">\b</span><span class="s2">ase/&quot;</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="p">(</span><span class="n">SITE</span><span class="p">)</span>      <span class="s2">&quot;C:\Program Files\Stata18</span><span class="se">\a</span><span class="s2">do\site/&quot;</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>              <span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>Let’s verify again where the <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> package is:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">which</span> reghdfe
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">which</span> <span class="n">reghdfe</span>
+<span class="n">command</span> <span class="n">reghdfe</span> <span class="ow">not</span> <span class="n">found</span> <span class="k">as</span> <span class="n">either</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="ow">or</span> <span class="n">ado</span><span class="o">-</span><span class="n">file</span>
+<span class="n">r</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>So it is no longer found. Why? Because we have removed the previous location (the old <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> path) from the search sequence. It’s as if it didn’t exist.</p>
+</section>
+<section id="installing-packages-when-an-environment-is-active">
+<h2>Installing packages when an environment is active<a class="headerlink" href="#installing-packages-when-an-environment-is-active" title="Permalink to this heading">#</a></h2>
+<p>When we now install <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+</pre></div>
+</div>
+<p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project (more on that <a class="reference internal" href="20-reproducing-environments.html#reproducing-environments"><span class="std std-ref">later</span></a>).</p>
+</section>
+<section id="installing-precise-versions-of-packages">
+<h2>Installing precise versions of packages<a class="headerlink" href="#installing-precise-versions-of-packages" title="Permalink to this heading">#</a></h2>
+<p>Let’s imagine we need an older version of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code>. In general, it is <strong>not</strong> possible in Stata to install an older version of a package in a straightforward fashion. You <em>may</em> have success with the <a class="reference external" href="https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/">Wayback Machine archive of SSC</a>, which in some cases goes back to 2000, by carefully reconstructing the necessary files.</p>
+<p>Here, we will leverage the <strong>SSC Snapshot</strong> maintained by Lars Vilhuber on Github (<a class="github reference external" href="https://github.com/labordynamicsinstitute/ssc-mirror/">labordynamicsinstitute/ssc-mirror</a>), which has been capturing snapshots of SSC since <a class="reference external" href="https://github.com/labordynamicsinstitute/ssc-mirror/releases/tag/2021-12-21">late 2021</a> (details are for a different tutorial):</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* define the date</span>
+<span class="k">global</span> sscdate <span class="s">&quot;2021-12-21&quot;</span>
+<span class="k">net</span> install reghdfe, from(https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>labordynamicsinstitute<span class="o">/</span>ssc<span class="o">-</span>mirror<span class="o">/</span><span class="vg">${sscdate}</span><span class="o">/</span>fmwww<span class="m">.</span>bc<span class="m">.</span>edu<span class="o">/</span>repec<span class="o">/</span>bocode<span class="o">/</span>r)
+</pre></div>
+</div>
+<p>which gives us</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinsti
+&gt; tute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents/ado\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents/ado\r\reghdfe.ado
+*! version 5.7.3 13nov2019
+</pre></div>
+</div>
+<p>So we now have TWO different version of <code class="docutils literal notranslate"><span class="pre">reghdfe</span></code> installed:</p>
+<ul class="simple">
+<li><p>Version 5.7.3 from Nov 2019 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\Documents/ado\r\reghdfe.ado</span></code></p></li>
+<li><p>Version 6.12.3 from Aug 2023 is installed at <code class="docutils literal notranslate"><span class="pre">C:\Users\lv39\ado\plus\r\reghdfe.ado</span></code></p></li>
+</ul>
+<p>Only the former is used by the “environment” we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of <em>this</em> project, that functionality can now be relied upon - as long as we take care to use the same “environment” for all code run within this project. This can be achieved by using the <code class="docutils literal notranslate"><span class="pre">main.do</span></code> defined in <a class="reference internal" href="02-hands_off_running.html#hands-off-running"><span class="std std-ref">one of the previous sections</span></a>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* main.do</span>
+<span class="c1">* This is a simple example of a main file in Stata</span>
+<span class="c1">* It runs all the other files in the correct order</span>
+
+<span class="c1">* Set the root directory</span>
+
+<span class="k">global</span> rootdir :<span class="k"> pwd</span>
+
+<span class="c1">* Define a location where we will hold all packages in THIS project (the &quot;environment&quot;)</span>
+
+<span class="k">global</span> adodir <span class="s">&quot;</span><span class="vg">$rootdir</span><span class="s">/ado&quot;</span>
+
+<span class="c1">* Enable project environment</span>
+
+<span class="k">cap mkdir</span> <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">-</span> OLDPLACE
+<span class="k">adopath</span> <span class="o">-</span> PERSONAL
+<span class="k">sysdir set</span> PLUS <span class="s">&quot;</span><span class="vg">$adodir</span><span class="s">&quot;</span>
+<span class="k">adopath</span> <span class="o">++</span> PLUS
+<span class="k">adopath</span>
+
+<span class="c1">* Run the data preparation file</span>
+<span class="k">do</span> <span class="vg">$rootdir</span><span class="o">/</span>01_data_prep<span class="m">.</span>do
+
+<span class="c1">// etc. etc.</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11-simple-example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">A simple example</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13-environments-in-other.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using environments in other languages</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-paths-in-stata">Search paths in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environments-in-stata">Using environments in Stata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-when-an-environment-is-active">Installing packages when an environment is active</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precise-versions-of-packages">Installing precise versions of packages</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Vilhuber
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Partially funded by Alfred P Sloan Foundation, G-2023-22326.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
