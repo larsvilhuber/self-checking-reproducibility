@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Virtual Machines &#8212; Self-checking replication packages</title>
+    <title>Multi-software projects &#8212; Self-checking replication packages</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '72-virtual_machines';</script>
-    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/72-virtual_machines.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '90-multi-software';</script>
+    <link rel="canonical" href="https://larsvilhuber.github.io/self-checking-reproducibility/90-multi-software.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Use of containers" href="80-docker.html" />
-    <link rel="prev" title="Have an undergraduate student run it" href="71-have-an-undergrad-run-it.html" />
+    <link rel="next" title="Big data and testing" href="91-big-data.html" />
+    <link rel="prev" title="Use of containers" href="80-docker.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,15 +179,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="20-reproducing-environments.html">Reproducing and documenting environments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex ways to test replication packages</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="70-new-computer.html">Use a new computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="71-have-an-undergrad-run-it.html">Have an undergraduate student run it</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Virtual Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="72-virtual_machines.html">Virtual Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80-docker.html">Use of containers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">More complex setups</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="90-multi-software.html">Multi-software projects</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multi-software projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="91-big-data.html">Big data and testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="92-long-computation.html">Long computations and testing</a></li>
 </ul>
@@ -261,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/72-virtual_machines.md" target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/edit/main/90-multi-software.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F72-virtual_machines.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility/issues/new?title=Issue%20on%20page%20%2F90-multi-software.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +308,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/72-virtual_machines.md" target="_blank"
+      <li><a href="_sources/90-multi-software.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -390,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Virtual Machines</h1>
+    <h1>Multi-software projects</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -400,10 +400,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-software-a-from-within-software-b">Calling software A from within software B</a></li>
 </ul>
             </nav>
         </div>
@@ -415,37 +412,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="virtual-machines">
-<span id="id1"></span><h1>Virtual Machines<a class="headerlink" href="#virtual-machines" title="Permalink to this heading">#</a></h1>
-<section id="tl-dr">
-<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Virtual machines are a way to create a “computer within a computer”, which can be used to run code in an isolated environment. They are not usually part of replication packages in economics, and I do not suggest you use them as such, but they can be used to test replication packages.</p></li>
-</ul>
-</section>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>For sake of completeness, we will mention that you can also achieve the same outcome as using a brand-new computer by using a virtual machine, on your own system. Virtual machines are routinely used in computer science and other domains (including as class assignments in CS courses). Basic software is free, and there are standards on sharing virtual machine files (the specifications and the actual contents).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Virtual machines are not typically used in economics, and in particular not as a key component of replication packages. They are presented here primarily as an advanced tool to <strong>test</strong> replication packages.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-software-projects">
+<h1>Multi-software projects<a class="headerlink" href="#multi-software-projects" title="Permalink to this heading">#</a></h1>
+<p>Many projects will use multiple softwares, along the lines of “use what is appropriate for specific tasks.” This may pose particular challenges. I showed that a generic <code class="docutils literal notranslate"><span class="pre">bash</span></code> script can handle running multiple softwares in the right sequence, but some researchers may be more comfortable in a main software package, or may not want to incur the additional complication of relying on <code class="docutils literal notranslate"><span class="pre">bash</span></code>, or worse, restricting reproducibility to a particular platform, for instance by choosing <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> (<code class="docutils literal notranslate"><span class="pre">.bat</span></code> files) or Powershell scripts.</p>
+<section id="calling-software-a-from-within-software-b">
+<h2>Calling software A from within software B<a class="headerlink" href="#calling-software-a-from-within-software-b" title="Permalink to this heading">#</a></h2>
+<p>In order to call external software from within a statistical programming language, it is necessary to know where, on a system, the software can be found. In “Environments”, we discussed <em>search paths</em>, but in many computing environments, not each piece of software is on that search path.</p>
+<p>However, it is possible to explicitly address this. Each software does know where it is installed. In R,</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">R.home</span><span class="p">(</span><span class="s">&quot;bin&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<p>None at this point.</p>
-</section>
-<section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.virtualbox.org/">Oracle VirtualBox</a> is a free, open-source virtual machine software, originally developed by Sun Microsystems. It is available for Windows, macOS, and Linux.</p></li>
-<li><p><a class="reference external" href="https://www.vmware.com/products/workstation-player.html">VMWare Workstation Player</a> is commercial virtual machine software, with a free “player” version for Windows and Linux</p></li>
-</ul>
-<p>Naturally, one would like to have virtual machines be reproducibly created, and this is possible using tools such as:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.vagrantup.com/">Vagrant</a> is a free, open-source virtual machine manager, which allows users to create virtual machines using “recipes”, similar to Dockerfiles. It is available for Windows, macOS, and Linux.</p></li>
-<li><p><a class="reference external" href="https://multipass.run/">Multipass</a> is a free, open-source virtual machine manager. While it can only handle creating Linux VMs, the tool itself is available for Windows, macOS, and Linux.</p></li>
-</ul>
+<p>will yield the location of the <code class="docutils literal notranslate"><span class="pre">R</span></code> executable, for instance
+<code class="docutils literal notranslate"><span class="pre">C:/Program</span> <span class="pre">Files/R/R-4.4.0/bin/x64/R</span></code>. Note that it will vary by version!</p>
+<p>Typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>where<span class="w"> </span>python
+</pre></div>
+</div>
+<p>into a Bash or Zsh terminal (and appropriate commands in Powershell) might yield <code class="docutils literal notranslate"><span class="pre">C:/Program</span> <span class="pre">Files/Python312/python.exe</span></code> on a particular windows system. This can then be used, for instance, to call <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">python</span></code> from a Stata program:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> Rterm_path <span class="s">&quot;C:\Program Files\R\R-4.3.1\bin\x64&quot;</span>
+<span class="c1">* Set path to python executable here:</span>
+<span class="k">global</span> python_ex <span class="s">&quot;C:\Program Files\Python312\python.exe&quot;</span>
+
+<span class="k">ssc</span> install rsource
+<span class="k">ssc</span> install python
+
+
+python<span class="k"> set</span> exec <span class="s">&quot;</span><span class="vg">$python_ex</span><span class="s">&quot;</span>
+python script <span class="s">&quot;code/run_geo_clean.py&quot;</span>
+
+rsource using <span class="s">&quot;code/figure1.R&quot;</span>
+</pre></div>
+</div>
+<p>where the Stata packages <a class="reference external" href="https://ideas.repec.org/c/boc/bocode/s457688.html"><code class="docutils literal notranslate"><span class="pre">python</span></code></a> and <a class="reference external" href="https://ideas.repec.org/c/boc/bocode/s456847.html"><code class="docutils literal notranslate"><span class="pre">rsource</span></code></a> are used.<a class="footnote-reference brackets" href="#pythonstata" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="pythonstata" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Note that Stata has <a class="reference external" href="https://www.stata.com/manuals/ppystataintegration.pdf">integrated Python functionality</a> since version 16. The example referenced uses an older Stata package that works for Stata since 2013.</p>
+</aside>
 </section>
 </section>
 
@@ -478,20 +481,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="71-have-an-undergrad-run-it.html"
+       href="80-docker.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Have an undergraduate student run it</p>
+        <p class="prev-next-title">Use of containers</p>
       </div>
     </a>
     <a class="right-next"
-       href="80-docker.html"
+       href="91-big-data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Use of containers</p>
+        <p class="prev-next-title">Big data and testing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,10 +513,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-software-a-from-within-software-b">Calling software A from within software B</a></li>
 </ul>
   </nav></div>
 
