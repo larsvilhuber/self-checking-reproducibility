@@ -23,3 +23,8 @@ parts:
     - file: 71-have-an-undergrad-run-it
     - file: 72-virtual_machines
     - file: 80-docker
+  - caption: More complex setups
+    chapters:
+    - file: 90-multi-software
+    - file: 91-big-data
+    - file: 92-long-computation
