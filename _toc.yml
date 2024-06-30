@@ -18,6 +18,9 @@ parts:
       - file: 13-environments-in-other
       - file: 19-environments-takeaway
     - file: 20-reproducing-environments
+      sections:
+      - file: 21-reproducing-environments-python
+      - file: 22-reproducing-environments-stata
   - caption: More complex ways to test replication packages
     chapters:
     - file: 70-new-computer
