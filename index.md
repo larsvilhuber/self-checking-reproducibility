@@ -3,7 +3,10 @@
 
 This document describes a few *possible* steps to self-check replication packages before submitting them to a journal. It is not meant to be exhaustive, and it is not meant to be prescriptive. There are many ways to construct a replication package, and many more to check that it works.
 
+## Computational Empathy
 The key ingredient is what I call "**computational empathy**" - thinking about what an unknown person attempting to reproduce the results in your paper might face, what they might know and assume, and more importantly, what they might not know or know to assume. While the replication package might very well run on your computer, that is by no means evidence that it will run on someone else's computer. 
+
+## Prerequisites
 
 In what follows, we will assume that the replicator satisfies the following conditions:
 

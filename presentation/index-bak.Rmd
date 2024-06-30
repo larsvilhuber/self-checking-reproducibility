@@ -1,0 +1,56 @@
+---
+title: "Checking reproducibility on Day T-1"
+author: 
+  - "Lars Vilhuber"
+date: June 2024
+bibliography: "paper.bib"
+
+---
+
+```{r, child=c(here::here('index.md'))}
+```
+
+```{r, child=c(here::here('01-run_it_again.md'))}
+```
+
+```{r, child=c(here::here('02-hands_off_running.md'))}
+``` 
+```{r, child=c(here::here('03-automatically_saving_figures.md'))}
+``` 
+```{r, child=c(here::here('04-creating_log_files.md'))}
+``` 
+```{r, child=c(here::here('10-creating-environments.md'))}
+``` 
+```{r, child=c(here::here('11-simple-example.md'))}
+``` 
+```{r, child=c(here::here('12-environments-in-stata.md'))}
+``` 
+```{r, child=c(here::here('13-environments-in-other.md'))}
+``` 
+```{r, child=c(here::here('19-environments-takeaway.md'))}
+``` 
+```{r, child=c(here::here('20-reproducing-environments.md'))}
+``` 
+```{r, child=c(here::here('70-new-computer.md'))}
+``` 
+```{r, child=c(here::here('71-have-an-undergrad-run-it.md'))}
+``` 
+```{r, child=c(here::here('72-virtual_machines.md'))}
+``` 
+```{r, child=c(here::here('80-docker.md'))}
+``` 
+```{r, child=c(here::here('90-multi-software.md'))}
+``` 
+```{r, child=c(here::here('91-big-data.md'))}
+``` 
+```{r, child=c(here::here('92-long-computation.md'))}
+``` 
+
+# This presentation
+
+- [Github](https://github.com/larsvilhuber/NBER-2024-presentation)
+- [Presentation](https://larsvilhuber.github.io/NBER-2024-presentation/)
+  - [Dockerfile!](https://github.com/larsvilhuber/NBER-2024-presentation/blob/cae14a22485c2bdf1cb91e1ade5df5893a85f424/build/Dockerfile)
+  - [Container!](https://hub.docker.com/r/larsvilhuber/nber-presentation)
+
+# References

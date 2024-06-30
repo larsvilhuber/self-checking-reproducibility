@@ -34,6 +34,17 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build .
+    # Let's do the Quarto
+    - name: Set up Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+    - name: Render Quarto Project
+      uses: quarto-dev/quarto-actions/render@v2
+      with:
+        path: ./presentation
+    - name: Move outputs around
+      run: |
+        mv presentation _build/html/presentation
+
     # Book is now in _build/html
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
@@ -49,6 +60,7 @@ jobs:
   #     with:
   #       github_token: ${{ secrets.GITHUB_TOKEN }}
   #       publish_dir: ./_build/html
+
 
   publish:
     needs: deploy-book

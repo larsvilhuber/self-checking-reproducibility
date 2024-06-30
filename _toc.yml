@@ -6,6 +6,7 @@ root: index
 parts:
   - caption: Simple ways to test replication packages
     chapters: 
+    - file: 00-targets
     - file: 01-run_it_again
     - file: 02-hands_off_running
     - file: 03-automatically_saving_figures

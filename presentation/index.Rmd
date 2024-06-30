@@ -1,0 +1,30 @@
+---
+title: "Checking reproducibility on Day T-1"
+author: 
+  - "Lars Vilhuber"
+date: June 2024
+bibliography: "paper.bib"
+
+---
+
+```{r, child=c(here::here('index.md'))}
+```
+
+```{r, child=c(here::here('00-targets.md'))}	
+```
+
+```{r, child=c('01-run_it_again.md')}
+```
+
+```{r, child=c('02-00-intermezzo.md')}
+
+
+```{r, child=c('02-hands_off_running.md')}
+``` 
+
+# This presentation
+
+- [Github](https://github.com/larsvilhuber/self-checking-reproducibility)
+- [Presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
+
+# References
