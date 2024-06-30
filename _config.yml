@@ -5,7 +5,7 @@ title: Self-checking replication packages
 author: Lars Vilhuber
 logo: assets/ssde-logo.jpeg
 copyright: "2023"
-exclude_patterns          : ["*venv*",".git*",".devcontainer"]
+exclude_patterns          : ["*venv*",".git*",".devcontainer","presentation"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
