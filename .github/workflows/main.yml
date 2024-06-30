@@ -38,9 +38,12 @@ jobs:
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
     - name: Render Quarto Project
-      uses: quarto-dev/quarto-actions/render@v2
-      with:
-        path: ./presentation
+    #   uses: quarto-dev/quarto-actions/render@v2
+    #   with:
+    #     path: ./presentation
+      run: |
+        cd presentation
+        quarto render index.Rmd
     - name: Move outputs around
       run: |
         mkdir _build/html/presentation
