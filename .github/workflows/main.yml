@@ -43,7 +43,8 @@ jobs:
         path: ./presentation
     - name: Move outputs around
       run: |
-        mv presentation _build/html/presentation
+        mkdir _build/html/presentation
+        mv presentation/index* _build/html/presentation/
 
     # Book is now in _build/html
     - name: prepare GitHub Pages action
