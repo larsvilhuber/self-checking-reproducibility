@@ -4,9 +4,9 @@
 Say you have 53 figures and 23 tables, the latter created from 161 different specifications. That makes for a lot of work when re-running the code, if you haven't automated the saving of said figures and tables. 
 
 
-```{warning}
+:::{warning}
 We have seen instructions that tell the replicator to right-click and save the figures. While there is no substitute for comparing all these figures, that's too much work!
-```
+:::
 
 ## TL;DR
 
@@ -71,8 +71,16 @@ ggsave(ggp,file.path(figures,"figure1.png"))
 
 :::{tab-item} Python
 
+There are many ways to do this in Python, which is often geared towards "head-less" processing. Even if using Jupyter notebooks, you should save the figures!
+
 ```python
-Need example
+import matplotlib.pyplot as plt
+import os
+
+plt.plot([1, 2, 3], [1, 4, 9])
+plt.show()
+plt.savefig(os.path.join("figures",'foo.png'))
+plt.savefig(os.path.join("figures",'foo.pdf'))
 ```
 
 

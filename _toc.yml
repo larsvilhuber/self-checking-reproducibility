@@ -11,6 +11,9 @@ parts:
     - file: 02-hands_off_running
     - file: 03-automatically_saving_figures
     - file: 04-creating_log_files
+      sections:
+        - file: 04-01-creating_log_files_manually
+        - file: 04-02-creating_log_files_automatically
     - file: 10-creating-environments
       sections:
       - file: 11-simple-example
