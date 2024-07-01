@@ -79,8 +79,8 @@ jobs:
       with:
           name: artifact-presentation
           path: |
-            index_files/
-            index.html
+            presentation/index_files/
+            presentation/index.html
           retention-days: 1
 
   deploy-book:
