@@ -4,11 +4,17 @@
 
 Do you know your rights?
 
+## TL;DR
+
+- be able to separate the confidential data from other (to be made public) components
+- all code must be available
+- do not publish what you are not allowed to!
+
 ## Permissions
 
 These will be noted in the **data use agreement (DUA), license, or non-disclosure agreement (NDA)** that you **signed or clicked through** to obtain access to the data from the data provider. 
 
-- Careful: scraped or downloaded data that did not have an explicit license!
+> Careful: scraped or downloaded data that did not have an explicit license!
 
 ## Keep in mind
 
@@ -17,7 +23,7 @@ Just because
 - you (and the entire world) can **download the data** 
 - does **NOT** give you the (automatic) right to **re-publish** the data. 
 
-## Permissions
+## Permissions {.smaller}
 
 - Do NOT **transfer or publish** data that you have no rights to transfer. Always carefully read your data use agreement (DUA), license, or non-disclosure agreement (NDA) that you signed.
 - Do NOT upload restricted-access data to the journal's platform. 
@@ -97,7 +103,7 @@ data/
 
 ::::
 
-## Strategy {auto-animate=true}
+## Strategy {auto-animate=true .smaller}
 
 When the replication package relies on confidential data that cannot be shared, or is shared under different conditions, you should
 
@@ -151,7 +157,7 @@ data/
 
 :::{.column width=50%}
 
-Prepare a **non-confidential replication package** that contains all code, and any data that is not subject to publication controls
+Prepare a **non-confidential replication package** that contains **all code**, and **any data** that is not subject to publication controls
 
 ::: 
 

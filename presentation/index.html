@@ -12,7 +12,7 @@
 
   <meta name="author" content="Lars Vilhuber">
   <meta name="dcterms.date" content="2024-06-30">
-  <title>Checking reproducibility on Day T-1</title>
+  <title>Checking reproducibility on Day T</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Checking reproducibility on Day T-1</h1>
+  <h1 class="title">Checking reproducibility on Day T</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,6 +404,16 @@ Lars Vilhuber
 </div>
 
   <p class="date">2024-06-30</p>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="https://teleseries.com.br/wp-content/uploads/2013/11/tumblr_lr9o5nVNb41qknbv6.gif" class="r-stretch"></section>
+<section id="day-t" class="slide level2 smaller center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Day T</h2>
+</section>
+<section id="day-t-1" class="slide level2 smaller center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Day T<strong>-1</strong></h2>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
@@ -482,21 +492,22 @@ Lars Vilhuber
 </section>
 <section class="slide level2 center">
 
-<p><img data-src="images/Red-Warning-PNG-Clipart.png"></p>
-<p><em>This should be a warning sign:</em> if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer.<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
+<p><img data-src="images/Red-Warning-PNG-Clipart.png" class="center" width="350" height="300"></p>
+<p><em>This should be a warning sign:</em></p>
+<p>If it takes you a long time to get it to run, or to manually reproduce the results, it <strong>might take others even longer</strong>.<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
 <aside></aside></section>
 <section class="slide level2 center">
 
-<p>Furthermore, it may suggest that you haven’t been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility.</p>
+<p>Furthermore, it may suggest that you <strong>haven’t been able to re-run</strong> your own code very often, which can be indicate <strong>fragility</strong> or even <strong>lack of reproducibility</strong>.</p>
 </section>
-<section id="takeaways" class="slide level2 center">
+<section id="takeaways" class="slide level2 smaller center">
 <h2>Takeaways</h2>
 <div>
-<ul>
-<li class="fragment">✅ your code runs without problem, after all the debugging.</li>
+<ul class="task-list">
+<li class="fragment"><label><input type="checkbox" checked="">your code runs without problem, after all the debugging.</label></li>
 <li class="fragment"><label><input type="checkbox">your code runs without manual intervention, and with low effort</label></li>
 <li class="fragment"><label><input type="checkbox">it actually produces all the outputs</label></li>
-<li class="fragment">[ ]your code generates a log file that you can inspect, and that you could share with others.</li>
+<li class="fragment"><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
 <li class="fragment"><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
 </div>
@@ -514,7 +525,7 @@ Lars Vilhuber
 <h2>Can you provide evidence that you ran it?</h2>
 <p>Generating a log file means that you can inspect it, and you can share it with others. Also helps in debugging, for you and others.</p>
 </section>
-<section id="will-it-run-on-somebody-elses-computer" class="slide level2 center">
+<section id="will-it-run-on-somebody-elses-computer" class="slide level2 smaller center">
 <h2>Will it run on somebody else’s computer?</h2>
 <p>Running it again does not help:</p>
 <div>
@@ -527,16 +538,18 @@ Lars Vilhuber
 </ul>
 </div>
 </section></section>
+<section>
 <section id="hands-off-running-creating-a-controller-script" class="title-slide slide level1 center">
 <h1>Hands-off running: Creating a controller script</h1>
 <p>Did it take you a long time to run everything again?</p>
 
 <img data-src="https://c.tenor.com/4qs0klfg8nMAAAAC/tenor.gif" class="r-stretch quarto-figure-center"><p class="caption">⏳</p></section>
-
-<section>
-<section id="lets-ramp-it-up-a-bit." class="title-slide slide level1 center">
-<h1>Let’s ramp it up a bit.</h1>
-<p>Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
+<section id="lets-ramp-it-up-a-bit." class="slide level2 center">
+<h2>Let’s ramp it up a bit.</h2>
+<ul>
+<li><p>Your code must run, <strong>beginning to end</strong>, top to bottom, without error, and <strong>without any user intervention</strong>.</p></li>
+<li><p>This should in principle (re)create all <strong>figures</strong>, <strong>tables</strong>, and <strong>in-text numbers</strong> you include in your paper.</p></li>
+</ul>
 <aside class="notes">
 <p>We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.</p>
 <style type="text/css">
@@ -551,6 +564,12 @@ Lars Vilhuber
           display:block!important;
       }</style></aside>
 </section>
+<section id="seem-trivial" class="slide level2 center">
+<h2>Seem trivial?</h2>
+<blockquote>
+<p>Out of <strong>8280</strong> replication packages in ~20 top econ journals, only <strong>2594</strong> (<strong>31.33%</strong>) had a main/controller script.<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a></p>
+</blockquote>
+<aside></aside></section>
 <section id="tldr-2" class="slide level2 center">
 <h2>TL;DR</h2>
 <ul>
@@ -561,7 +580,7 @@ Lars Vilhuber
 </section>
 <section id="creating-a-main-or-master-script" class="slide level2 center">
 <h2>Creating a main or master script</h2>
-<p>In order to be able to enable “hands-off running”, the main script is key. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.</p>
+<p>In order to be able to enable “hands-off running”, the <strong>main (controller) script is key</strong>. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.</p>
 </section>
 <section id="examples" class="slide level2 center">
 <h2>Examples</h2>
@@ -698,11 +717,11 @@ Lars Vilhuber
 <h2>Other examples</h2>
 <p>For examples for <strong>Julia, Python, MATLAB,</strong> and <strong>multi-software scripts</strong>, see the <a href="https://larsvilhuber.github.io/self-checking-reproducibility/02-hands_off_running.html">full text</a>.</p>
 </section>
-<section id="takeaways-1" class="slide level2 center">
+<section id="takeaways-1" class="slide level2 smaller center">
 <h2>Takeaways</h2>
-<ul>
-<li>✅ your code runs without problem, after all the debugging.</li>
-<li>✅your code runs without manual intervention, and with low effort</li>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">your code runs without problem, after all the debugging.</label></li>
+<li><label><input type="checkbox" checked="">your code runs without manual intervention, and with low effort</label></li>
 <li><label><input type="checkbox">it actually produces all the outputs</label></li>
 <li><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
 <li><label><input type="checkbox">it will run on somebody else’s computer</label></li>
@@ -802,17 +821,15 @@ Lars Vilhuber
 <h3 id="r-3">R</h3>
 <p><code>xtable</code>, <code>stargazer</code>, others.</p>
 </section>
-<section id="takeaways-2" class="slide level2 center">
+<section id="takeaways-2" class="slide level2 smaller center">
 <h2>Takeaways</h2>
-<div>
-<ul>
-<li class="fragment">✅ your code runs without problem, after all the debugging.</li>
-<li class="fragment">✅your code runs without manual intervention, and with low effort</li>
-<li class="fragment">✅it actually produces all the outputs</li>
-<li class="fragment"><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
-<li class="fragment"><label><input type="checkbox">it will run on somebody else’s computer</label></li>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">your code runs without problem, after all the debugging.</label></li>
+<li><label><input type="checkbox" checked="">your code runs without manual intervention, and with low effort</label></li>
+<li><label><input type="checkbox" checked="">it actually produces all the outputs</label></li>
+<li><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
+<li><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
-</div>
 </section></section>
 <section>
 <section id="next" class="title-slide slide level1 center">
@@ -988,13 +1005,13 @@ Lars Vilhuber
 </div>
 </div>
 </section>
-<section id="takeaways-3" class="slide level2 center">
+<section id="takeaways-3" class="slide level2 smaller center">
 <h2>Takeaways</h2>
-<ul>
-<li>✅ your code runs without problem, after all the debugging.</li>
-<li>✅your code runs without manual intervention, and with low effort</li>
-<li>✅it actually produces all the outputs</li>
-<li>✅your code generates a log file that you can inspect, and that you could share with others.</li>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">your code runs without problem, after all the debugging.</label></li>
+<li><label><input type="checkbox" checked="">your code runs without manual intervention, and with low effort</label></li>
+<li><label><input type="checkbox" checked="">it actually produces all the outputs</label></li>
+<li><label><input type="checkbox" checked="">your code generates a log file that you can inspect, and that you could share with others.</label></li>
 <li><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
 </section></section>
@@ -1035,7 +1052,7 @@ Lars Vilhuber
 </section>
 <section id="understanding-search-paths" class="slide level2 center">
 <h2>Understanding search paths</h2>
-<p>Generically, all “environments” simply modify where the specific <strong>software searches</strong> (the “search path”) for its components, and in particular any supplementary components (packages, libraries, etc.).<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a></p>
+<p>Generically, all “environments” simply modify where the specific <strong>software searches</strong> (the “search path”) for its components, and in particular any supplementary components (packages, libraries, etc.).<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a></p>
 <aside></aside></section>
 <section id="search-paths" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Search paths</h2>
@@ -1109,166 +1126,259 @@ Lars Vilhuber
 <li>Doing so stabilizes the code, and makes it more transportable</li>
 </ul>
 </section>
-<section id="search-paths-in-stata" class="slide level2 center">
+<section id="search-paths-in-stata" class="slide level2 smaller center">
 <h2>Search paths in Stata</h2>
-<p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code>ado</code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
-<h3 id="the-sysdir-directories">The <code>sysdir</code> directories</h3>
+<p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands.</p>
+</section>
+<section id="search-paths-in-stata-1" class="slide level2 smaller center">
+<h2>Search paths in Stata</h2>
+<p>Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path.</p>
+</section>
+<section id="the-sysdir-directories" class="slide level2 smaller center">
+<h2>The <code>sysdir</code> directories</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code>sysdir</code> command, and will look something like this:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href=""></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>   STATA:  C:\Program Files\Stata18\
-    BASE:  C:\Program Files\Stata18\ado\base\
-    SITE:  C:\Program Files\Stata18\ado\site\
-    PLUS:  C:\Users\lv39\ado\plus\
-PERSONAL:  C:\Users\lv39\ado\personal\
-OLDPLACE:  c:\ado\</code></pre>
-<h3 id="the-adopath-search-order">The <code>adopath</code> search order</h3>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href=""></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata18\</span>
+<span id="cb24-2"><a href=""></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata18\ado\base\</span>
+<span id="cb24-3"><a href=""></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata18\ado\site\</span>
+<span id="cb24-4"><a href=""></a>    <span class="ot">PLUS</span>:  C:\Users\lv39\ado\plus\</span>
+<span id="cb24-5"><a href=""></a><span class="ot">PERSONAL</span>:  C:\Users\lv39\ado\<span class="kw">personal</span>\</span>
+<span id="cb24-6"><a href=""></a>OLDPLACE:  c:\ado\</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="the-adopath-search-order" class="slide level2 smaller center">
+<h2>The <code>adopath</code> search order</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <p>The search paths where Stata looks for commands is queried by <code>adopath</code>, and looks similar, but now has an order assigned to each entry:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>  [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
-  [3]              "."
-  [4]  (PERSONAL)  "C:\Users\lv39\ado\personal/"
-  [5]  (PLUS)      "C:\Users\lv39\ado\plus/"
-  [6]  (OLDPLACE)  "c:\ado/"</code></pre>
-<p>To look for a command, say <code>reghdfe</code>, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of <code>reghdfe</code> explicitly with <code>which</code>:</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb26-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb26-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
+<span id="cb26-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
+<span id="cb26-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
+<span id="cb26-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="the-path-at-work" class="slide level2 smaller center">
+<h2>The path at work</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>To look for a command, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
 <pre><code>command reghdfe not found as either built-in or ado-file
 r(111);</code></pre>
-<h3 id="where-are-packages-installed">Where are packages installed?</h3>
-<p>When we install a package, using one of the various package installation commands (<code>net install</code>, <code>ssc install</code>)<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>, only one of the (<code>sysdir</code>) paths is relevant: <code>PLUS</code>. So if we install <code>reghdfe</code> with <code>ssc install reghdfe</code>, it will be installed in the <code>PLUS</code> directory, and we can see that with <code>which</code>:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href=""></a><span class="kw">ssc</span> install reghdfe</span>
-<span id="cb29-2"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>. ssc install reghdfe
-checking reghdfe consistency and verifying not already installed...
-installing into C:\Users\lv39\ado\plus\...
-installation complete.
-
-. which reghdfe
-C:\Users\lv39\ado\plus\r\reghdfe.ado
-*! version 6.12.3 08aug2023</code></pre>
-<div class="important">
-<p>It is important here to recognize that it is the value of the special <code>sysdir</code> directory <code>PLUS</code> that determines where Stata installs commands, but the separate list of <code>adopath</code> locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!</p>
+</div>
+</div>
+</section>
+<section id="where-are-packages-installed" class="slide level2 center">
+<h2>Where are packages installed?</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>When we install a package (<code>net install</code>, <code>ssc install</code>)<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a>, only one of the (<code>sysdir</code>) paths is relevant: <code>PLUS</code>.</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb29" data-code-line-numbers="5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb29-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb29-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
+<span id="cb29-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
+<span id="cb29-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
+<span id="cb29-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <aside></aside></section>
-<section id="using-environments-in-stata" class="slide level2 center">
-<h2>Using environments in Stata</h2>
-<p>But the <code>(PLUS)</code> directory can be manipulated, and that creates the opportunity to create an “environment”.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href=""></a></span>
-<span id="cb31-2"><a href=""></a>* Set the root directory</span>
-<span id="cb31-3"><a href=""></a></span>
-<span id="cb31-4"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<section id="installing-packages" class="slide level2 smaller center">
+<h2>Installing packages</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href=""></a><span class="kw">ssc</span> install reghdfe</span>
+<span id="cb30-2"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb31" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
+<span id="cb31-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
+<span id="cb31-3"><a href=""></a>installing into C:\Users\lv39\ado\plus\...</span>
+<span id="cb31-4"><a href=""></a>installation complete.</span>
 <span id="cb31-5"><a href=""></a></span>
-<span id="cb31-6"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
-<span id="cb31-7"><a href=""></a></span>
-<span id="cb31-8"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
-<span id="cb31-9"><a href=""></a></span>
-<span id="cb31-10"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
-<span id="cb31-11"><a href=""></a></span>
-<span id="cb31-12"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
-<span id="cb31-13"><a href=""></a></span>
-<span id="cb31-14"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
-<span id="cb31-15"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
-<span id="cb31-16"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
-<span id="cb31-17"><a href=""></a></span>
-<span id="cb31-18"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
-<span id="cb31-19"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
-<span id="cb31-20"><a href=""></a></span>
-<span id="cb31-21"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
-<span id="cb31-22"><a href=""></a></span>
-<span id="cb31-23"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
-<span id="cb31-24"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
-<span id="cb31-25"><a href=""></a></span>
-<span id="cb31-26"><a href=""></a>* verify the path</span>
-<span id="cb31-27"><a href=""></a></span>
-<span id="cb31-28"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which should show something like this:</p>
-<pre><code>. adopath
-  [1]  (PLUS)      "C:\Users\lv39\Documents/PROJECT123/ado/"
-  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
-  [4]              "."</code></pre>
-<p>Let’s verify again where the <code>reghdfe</code> package is:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>. which reghdfe
-command reghdfe not found as either built-in or ado-file
-r(111);</code></pre>
-<p>So it is no longer found. Why? Because we have removed the previous location (the old <code>PLUS</code> path) from the search sequence. It’s as if it didn’t exist.</p>
+<span id="cb31-6"><a href=""></a>. which reghdfe</span>
+<span id="cb31-7"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb31-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
-<section id="installing-packages-when-an-environment-is-active" class="slide level2 center">
+<section id="using-environments-in-stata" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Using environments in Stata</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>But the <code>(PLUS)</code> directory can be manipulated</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb32" data-code-line-numbers="4|13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb32-1" class="hljs-ln-code"><a href=""></a>* Set the root directory</span>
+<span id="cb32-2" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb32-3" class="hljs-ln-code"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb32-4" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb32-5" class="hljs-ln-code"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
+<span id="cb32-6" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb32-7" class="hljs-ln-code"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
+<span id="cb32-8" class="hljs-ln-code"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
+<span id="cb32-9" class="hljs-ln-code"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+<span id="cb32-10" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb32-11" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb32-12" class="hljs-ln-code"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
+<span id="cb32-13" class="hljs-ln-code"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb32-14" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb32-15" class="hljs-ln-code"><a href=""></a>* verify the path</span>
+<span id="cb32-16" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="using-environments-in-stata-1" class="slide level2 smaller center" data-auto-animate="true" data-transition="none">
+<h2 data-id="quarto-animate-title">Using environments in Stata</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="sourceCode" id="cb33" data-code-line-numbers="13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href=""></a>* Set the root directory</span>
+<span id="cb33-2"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb33-3"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb33-4"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb33-5"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
+<span id="cb33-6"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb33-7"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
+<span id="cb33-8"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
+<span id="cb33-9"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+<span id="cb33-10"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb33-11"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb33-12"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
+<span id="cb33-13"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb33-14"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb33-15"><a href=""></a>* verify the path</span>
+<span id="cb33-16"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb34" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href=""></a>. <span class="kw">adopath</span></span>
+<span id="cb34-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
+<span id="cb34-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb34-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb34-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="using-environments-in-stata-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Using environments in Stata</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Let’s verify again where the <code>reghdfe</code> package is:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb35-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb36" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href=""></a>. which reghdfe</span>
+<span id="cb36-2"><a href=""></a>command reghdfe <span class="kw">not</span> found <span class="kw">as</span> either built-<span class="kw">in</span> <span class="kw">or</span> ado-file</span>
+<span id="cb36-3"><a href=""></a><span class="fu">r</span>(111);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="using-environments-in-stata-3" class="slide level2 smaller center" data-auto-animate="true" data-transition="none">
+<h2 data-id="quarto-animate-title">Using environments in Stata</h2>
+<p>So it is no longer found. Why? Because we have removed the previous location (the old <code>PLUS</code> path) from the search sequence. It’s as if it didn’t exist.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Previously:</p>
+<div class="sourceCode" id="cb37" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb37-1"><a href=""></a>. which reghdfe</span>
+<span id="cb37-2"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb37-3"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb38" data-code-line-numbers="2|3|4|5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href=""></a>. <span class="kw">adopath</span></span>
+<span id="cb38-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
+<span id="cb38-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb38-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb38-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="installing-packages-when-an-environment-is-active" class="slide level2 smaller center">
 <h2>Installing packages when an environment is active</h2>
 <p>When we now install <code>reghdfe</code> again:</p>
-<pre><code>. ssc install reghdfe
-checking reghdfe consistency and verifying not already installed...
-installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
-installation complete.
-
-. which reghdfe
-C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
-*! version 6.12.3 08aug2023</code></pre>
-<p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project (more on that <a href="reproducing-environments">later</a>).</p>
+<div class="sourceCode" id="cb39" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
+<span id="cb39-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
+<span id="cb39-3"><a href=""></a>installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...</span>
+<span id="cb39-4"><a href=""></a>installation complete.</span>
+<span id="cb39-5"><a href=""></a></span>
+<span id="cb39-6"><a href=""></a>. which reghdfe</span>
+<span id="cb39-7"><a href=""></a>C:\Users\lv39\Documents\PROJECT123\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb39-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project.</p>
 </section>
-<section id="installing-precise-versions-of-packages" class="slide level2 center">
-<h2>Installing precise versions of packages</h2>
-<p>Let’s imagine we need an older version of <code>reghdfe</code>. In general, it is <strong>not</strong> possible in Stata to install an older version of a package in a straightforward fashion. You <em>may</em> have success with the <a href="https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/">Wayback Machine archive of SSC</a>, which in some cases goes back to 2000, by carefully reconstructing the necessary files.</p>
-<p>Here, we will leverage the <strong>SSC Snapshot</strong> maintained by Lars Vilhuber on Github (<a href="https://github.com/labordynamicsinstitute/ssc-mirror/">https://github.com/labordynamicsinstitute/ssc-mirror/</a>), which has been capturing snapshots of SSC since <a href="https://github.com/labordynamicsinstitute/ssc-mirror/releases/tag/2021-12-21">late 2021</a> (details are for a different tutorial):</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href=""></a>* <span class="kw">define</span> the <span class="fu">date</span></span>
-<span id="cb36-2"><a href=""></a><span class="kw">global</span> sscdate <span class="st">"2021-12-21"</span></span>
-<span id="cb36-3"><a href=""></a>net install reghdfe, from(https:<span class="co">//raw.githubusercontent.com/labordynamicsinstitute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which gives us</p>
-<pre><code>. net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinsti
-&gt; tute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
-checking reghdfe consistency and verifying not already installed...
-installing into C:\Users\lv39\Documents/ado\...
-installation complete.
-
-. which reghdfe
-C:\Users\lv39\Documents/ado\r\reghdfe.ado
-*! version 5.7.3 13nov2019</code></pre>
-<p>So we now have TWO different version of <code>reghdfe</code> installed:</p>
+<section id="installing-precise-versions-of-stata-packages" class="slide level2 smaller center">
+<h2>Installing precise versions of Stata packages</h2>
+<p>Let’s imagine we need an older version of <code>reghdfe</code>.</p>
 <ul>
-<li>Version 5.7.3 from Nov 2019 is installed at <code>C:\Users\lv39\Documents/ado\r\reghdfe.ado</code></li>
-<li>Version 6.12.3 from Aug 2023 is installed at <code>C:\Users\lv39\ado\plus\r\reghdfe.ado</code></li>
+<li>In general, it is <strong>not</strong> possible in Stata to install an older version of a package in a straightforward fashion.</li>
+<li>You <em>may</em> have success with the <a href="https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/">Wayback Machine archive of SSC</a>.</li>
 </ul>
-<p>:::{admonition} Stata can get confused about how to write paths… :class: dropdown</p>
-<p>Stata on Windows can understand two types of path syntax: the “Windows” syntax, with backslashes <code>\</code>, and the “Unix” syntax, with forward slashes ‘/’. It will usually report paths in the “Windows” syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the “weird” mixed notation:</p>
-<pre><code>C:\Users\lv39\Documents/ado\r\reghdfe.ado</code></pre>
-<p>Other software (e.g, R), will consistently use the forward slash, even on Windows, when paths are coded internally.</p>
-<p>Only the former is used by the “environment” we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of <em>this</em> project, that functionality can now be relied upon - as long as we take care to use the same “environment” for all code run within this project. This can be achieved by using the <code>main.do</code> defined in <a href="hands-off-running">one of the previous sections</a>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href=""></a>* main.<span class="kw">do</span></span>
-<span id="cb39-2"><a href=""></a>* This is a simple example <span class="kw">of</span> a main file <span class="kw">in</span> Stata</span>
-<span id="cb39-3"><a href=""></a>* It runs <span class="ot">all</span> the other files <span class="kw">in</span> the correct <span class="kw">order</span></span>
-<span id="cb39-4"><a href=""></a></span>
-<span id="cb39-5"><a href=""></a>* Set the root directory</span>
-<span id="cb39-6"><a href=""></a></span>
-<span id="cb39-7"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
-<span id="cb39-8"><a href=""></a></span>
-<span id="cb39-9"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
-<span id="cb39-10"><a href=""></a></span>
-<span id="cb39-11"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
-<span id="cb39-12"><a href=""></a></span>
-<span id="cb39-13"><a href=""></a>* Enable project <span class="ot">environment</span></span>
-<span id="cb39-14"><a href=""></a></span>
-<span id="cb39-15"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
-<span id="cb39-16"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
-<span id="cb39-17"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
-<span id="cb39-18"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
-<span id="cb39-19"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
-<span id="cb39-20"><a href=""></a><span class="kw">adopath</span></span>
-<span id="cb39-21"><a href=""></a></span>
-<span id="cb39-22"><a href=""></a>* Run the <span class="kw">data</span> preparation file</span>
-<span id="cb39-23"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/01_data_prep.<span class="kw">do</span></span>
-<span id="cb39-24"><a href=""></a></span>
-<span id="cb39-25"><a href=""></a><span class="co">// etc. etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::{.notes}</p>
-<p>While we used interactive commands to install the various packages here, that was only for illustrative purposes. <strong>Always</strong> script the installation of packages in a <code>setup.do</code> file. We will address how and when to run that file in the <a href="reproducing-environments">next section</a>.</p>
 </section>
-<section id="takeaways-4" class="slide level2 center">
-<h2>Takeaways</h2>
+<section id="package-repositories" class="slide level2 center">
+<h2>Package repositories</h2>
+<p>Most package repositories are versioned:</p>
+<ul>
+<li>R: CRAN, Bioconductor</li>
+<li>Python: PyPI</li>
+<li>Julia: “General” default Julia package registry.</li>
+</ul>
+<p>Stata does not (as of 2024). <strong>But</strong> see <a href="https://larsvilhuber.github.io/self-checking-reproducibility/12-environments-in-stata.html#installing-precise-versions-of-packages">the full site</a> for one approach.</p>
+</section>
+<section id="takeaways-4" class="slide level2 smaller center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Takeaways</h2>
 <p>From the earlier desiderata of <em>environments</em>:</p>
 <ul>
 <li>✅ <strong>Isolated</strong>: Installing a new or updated package for one project won’t break your other projects, and vice versa.</li>
 <li>✅ <strong>Portable</strong>: Easily transport your projects from one computer to another, <em>even across different platforms</em>.</li>
 <li>❌ <strong>Reproducible</strong>: Records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.</li>
+</ul>
+</section>
+<section id="takeaways-5" class="slide level2 smaller center">
+<h2>Takeaways</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">your code runs without problem, after all the debugging.</label></li>
+<li><label><input type="checkbox" checked="">your code runs without manual intervention, and with low effort</label></li>
+<li><label><input type="checkbox" checked="">it actually produces all the outputs</label></li>
+<li><label><input type="checkbox" checked="">your code generates a log file that you can inspect, and that you could share with others.</label></li>
+<li><label><input type="checkbox" checked="">❓ it will run on somebody else’s computer</label></li>
+</ul>
+</section></section>
+<section>
+<section id="other-methods" class="title-slide slide level1 center">
+<h1>Other methods</h1>
+
+</section>
+<section id="non-technical-means" class="slide level2 center">
+<h2>Non-technical means</h2>
+<ul>
+<li>Use a new computer</li>
+<li>Have an undergraduate student run it</li>
+<li>Ask your office neighbor to run it</li>
+</ul>
+</section>
+<section id="more-technical-means" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">More technical means</h2>
+<ul>
+<li><a href="https://larsvilhuber.github.io/self-checking-reproducibility/72-virtual_machines.html">Virtual Machines</a></li>
+<li><a href="https://larsvilhuber.github.io/self-checking-reproducibility/80-docker.html">Use of containers</a></li>
+</ul>
+</section>
+<section id="use-of-containers" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Use of containers</h2>
+<ul>
+<li><strong>Containers</strong> are a way to simulate a “computer within a computer”, which can be used to run code in an isolated environment.</li>
+<li>They are relatively lightweight, and are <em>starting</em> to be used as part of replication packages in economics (but <strong>only 0.13% of 8280 packages</strong>…)</li>
+</ul>
+</section>
+<section id="use-of-containers-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Use of containers</h2>
+<ul>
+<li>They do not work in all situations, and require some <strong>more advanced technical skills</strong> (typically Linux, in addition to the statistical software).</li>
+<li>Using containers to test for reproducibility is easier, and should be considered as part of a toolkit.</li>
+<li>Several <strong>online services</strong> make such testing (and development) easy.</li>
 </ul>
 </section></section>
 <section>
@@ -1280,12 +1390,20 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 <h2>Confidential data</h2>
 <p>Do you know your rights?</p>
 </section>
+<section id="tldr-7" class="slide level2 center">
+<h2>TL;DR</h2>
+<ul>
+<li>be able to separate the confidential data from other (to be made public) components</li>
+<li>all code must be available</li>
+<li>do not publish what you are not allowed to!</li>
+</ul>
+</section>
 <section id="permissions" class="slide level2 center">
 <h2>Permissions</h2>
 <p>These will be noted in the <strong>data use agreement (DUA), license, or non-disclosure agreement (NDA)</strong> that you <strong>signed or clicked through</strong> to obtain access to the data from the data provider.</p>
-<ul>
-<li>Careful: scraped or downloaded data that did not have an explicit license!</li>
-</ul>
+<blockquote>
+<p>Careful: scraped or downloaded data that did not have an explicit license!</p>
+</blockquote>
 </section>
 <section id="keep-in-mind" class="slide level2 center">
 <h2>Keep in mind</h2>
@@ -1295,7 +1413,7 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 <li>does <strong>NOT</strong> give you the (automatic) right to <strong>re-publish</strong> the data.</li>
 </ul>
 </section>
-<section id="permissions-1" class="slide level2 center">
+<section id="permissions-1" class="slide level2 smaller center">
 <h2>Permissions</h2>
 <ul>
 <li>Do NOT <strong>transfer or publish</strong> data that you have no rights to transfer. Always carefully read your data use agreement (DUA), license, or non-disclosure agreement (NDA) that you signed.</li>
@@ -1356,13 +1474,13 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 </div>
 </div>
 </section>
-<section id="strategy" class="slide level2 center" data-auto-animate="true">
+<section id="strategy" class="slide level2 smaller center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Strategy</h2>
 <p>When the replication package relies on confidential data that cannot be shared, or is shared under different conditions, you should</p>
 <ul>
 <li>preserve (archive) the confidential replication package
 <ul>
-<li>If the data cannot be removed from a secure enclave, they should nevertheless be archived wherever the confidential data are kept<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a></li>
+<li>If the data cannot be removed from a secure enclave, they should nevertheless be archived wherever the confidential data are kept<a href="#/footnotes" class="footnote-ref" id="fnref5" role="doc-noteref" data-footnote-href="#/fn5" onclick=""><sup>5</sup></a></li>
 <li>If the data can be shared, but are subject to access restrictions, follow <a href="creating-separate-data-deposit">this guide on creating a separate data deposit</a> and, when creating the restricted deposit at ICPSR, follow <a href="creating-restricted-data-deposit-icpsr">these instructions on how to do so</a>.</li>
 </ul></li>
 </ul>
@@ -1394,7 +1512,7 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 <h2 data-id="quarto-animate-title">Strategy</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Prepare a <strong>non-confidential replication package</strong> that contains all code, and any data that is not subject to publication controls</p>
+<p>Prepare a <strong>non-confidential replication package</strong> that contains <strong>all code</strong>, and <strong>any data</strong> that is not subject to publication controls</p>
 </div><div class="column" style="width:50%;">
 <div class="sourceCode" id="cb43" data-code-line-numbers="1-10"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb43-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
 <span id="cb43-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
@@ -1492,9 +1610,10 @@ C:\Users\lv39\Documents/ado\r\reghdfe.ado
 
 <ol>
 <li id="fn1"><p>Source: <a href="https://www.pngall.com/warning-sign-png/download/69408">Red Warning PNG Clipart</a>, CC-BY.</p></li>
-<li id="fn2"><p>Formally, this is true for operating systems as well, and in some cases, the operating system and the programming language interact (for instance, in Python).</p></li>
-<li id="fn3"><p><a href="https://www.stata.com/manuals/rnet.pdf"><code>net install</code> refererence</a>. Strictly speaking, the location where ado packages are installed can be changed via the <code>net set ado</code> command, but this is rarely done in practice, and we won’t do it here.</p></li>
-<li id="fn4"><p><a href="https://social-science-data-editors.github.io/guidance/FAQ.html#how-can-i-ensure-that-the-confidential-data-is-preserved">see this FAQ</a>)</p></li>
+<li id="fn2"><p>Results computed on Nov 26, 2023 based on a scan of replication packages conducted by Sebastian Kranz. 2023. “Economic Articles with Data”. https://ejd.econ.mathematik.uni-ulm.de/, searching for the words <code>main</code>, <code>master</code>, <code>makefile</code>, <code>dockerfile</code>, <code>apptainer</code>, <code>singularity</code> in any of the program files in those replication packages. Code not yet integrated into this presentation.</p></li>
+<li id="fn3"><p>Formally, this is true for operating systems as well, and in some cases, the operating system and the programming language interact (for instance, in Python).</p></li>
+<li id="fn4"><p><a href="https://www.stata.com/manuals/rnet.pdf"><code>net install</code> refererence</a>. Strictly speaking, the location where ado packages are installed can be changed via the <code>net set ado</code> command, but this is rarely done in practice, and we won’t do it here.</p></li>
+<li id="fn5"><p><a href="https://social-science-data-editors.github.io/guidance/FAQ.html#how-can-i-ensure-that-the-confidential-data-is-preserved">see this FAQ</a>)</p></li>
 </ol>
 </section>
     </div>

@@ -9,7 +9,7 @@ Automation and robustness checks, as well as efficiency.
 
 Generating a log file means that you can inspect it, and you can share it with others. Also helps in debugging, for you and others.
 
-## Will it run on somebody else's computer?
+## Will it run on somebody else's computer? {.smaller}
 
 Running it again does not help:
 

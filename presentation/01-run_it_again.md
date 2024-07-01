@@ -18,26 +18,28 @@ While the code, once set to run, can do so on its own, *you* might need to spend
 
 ---
 
-![](images/Red-Warning-PNG-Clipart.png)
+![](images/Red-Warning-PNG-Clipart.png){.center width="350" height="300"}
 
 
-*This should be a warning sign:* if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer.[^warning-sign] 
+*This should be a warning sign:* 
+
+If it takes you a long time to get it to run, or to manually reproduce the results, it **might take others even longer**.[^warning-sign] 
 
 
 [^warning-sign]: Source: [Red Warning PNG Clipart](https://www.pngall.com/warning-sign-png/download/69408), CC-BY.
 
 ---
 
-Furthermore, it may suggest that you haven't been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility. 
+Furthermore, it may suggest that you **haven't been able to re-run** your own code very often, which can be indicate  **fragility** or even **lack of reproducibility**. 
 
-## Takeaways
+## Takeaways {.smaller}
 
 ::: {.incremental}
 
-- ✅ your code runs without problem, after all the debugging.
+- [x] your code runs without problem, after all the debugging.
 - [ ] your code runs without manual intervention, and with low effort
 - [ ] it actually produces all the outputs
-- [ ]your code generates a log file that you can inspect, and that you could share with others.
+- [ ] your code generates a log file that you can inspect, and that you could share with others.
 - [ ] it will run on somebody else's computer
 
 :::

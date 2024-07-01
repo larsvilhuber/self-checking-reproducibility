@@ -30,4 +30,4 @@ sed 's/{note}/{.notes}/' > presentation/$arg
 ```
 
 
-🎲✅❌
+🎲❓✅ ❌

@@ -4,14 +4,22 @@ Did it take you a long time to run everything again?
 
 ![⏳](https://c.tenor.com/4qs0klfg8nMAAAAC/tenor.gif)
 
-# Let's ramp it up a bit. 
+## Let's ramp it up a bit. 
 
-Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
+- Your code must run, **beginning to end**, top to bottom, without error, and **without any user intervention**. 
+
+- This should in principle (re)create all **figures**, **tables**, and **in-text numbers** you include in your paper. 
 
 
 ::: {.notes}
 We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.
 :::
+
+## Seem trivial?
+
+> Out of **8280** replication packages in ~20 top econ journals, only  **2594** (**31.33%**) had a main/controller script.[^resultsmain]
+
+[^resultsmain]: Results computed on Nov 26, 2023 based on a scan of replication packages conducted by Sebastian Kranz. 2023. "Economic Articles with Data". https://ejd.econ.mathematik.uni-ulm.de/, searching for the words `main`, `master`, `makefile`, `dockerfile`, `apptainer`, `singularity` in any of the program files in those replication packages. Code not yet integrated into this presentation.
 
 ## TL;DR
 
@@ -21,7 +29,7 @@ We have seen users who appear to highlight code and to run it interactively, in 
 
 ## Creating a main or master script
 
-In order to be able to enable "hands-off running", the main script is key. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.
+In order to be able to enable "hands-off running", the **main (controller) script is key**. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.
 
 ## Examples
 
@@ -210,11 +218,11 @@ Do not use `Rscript`, as it will not generate enough output!
 
 For examples for **Julia, Python, MATLAB,** and **multi-software scripts**, see the [full text](https://larsvilhuber.github.io/self-checking-reproducibility/02-hands_off_running.html).
 
-## Takeaways
+## Takeaways {.smaller}
 
 
-- ✅ your code runs without problem, after all the debugging.
-- ✅your code runs without manual intervention, and with low effort
+- [x]  your code runs without problem, after all the debugging.
+- [x] your code runs without manual intervention, and with low effort
 - [ ] it actually produces all the outputs
 - [ ] your code generates a log file that you can inspect, and that you could share with others.
 - [ ] it will run on somebody else's computer

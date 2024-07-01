@@ -5,19 +5,30 @@
 - Creating virtual environments in Stata is feasible
 - Doing so stabilizes the code, and makes it more transportable
 
-## Search paths in Stata
+## Search paths in Stata {.smaller}
 
-In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the `ado` directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we've shown how environments work in Stata, this will become a lot simpler!
+In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. 
 
-### The `sysdir` directories
+## Search paths in Stata {.smaller}
 
+Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. 
+
+
+## The `sysdir` directories {.smaller}
+
+:::: {.columns}
+
+::: {.column width=40%}
 The default set of directories which can be searched, from a freshly installed Stata, can be queried with the `sysdir` command, and will look something like this:
 
 ```stata
 sysdir
 ```
+:::
 
-```
+::: {.column width=60%}
+
+```{.stata}
    STATA:  C:\Program Files\Stata18\
     BASE:  C:\Program Files\Stata18\ado\base\
     SITE:  C:\Program Files\Stata18\ado\site\
@@ -25,8 +36,15 @@ sysdir
 PERSONAL:  C:\Users\lv39\ado\personal\
 OLDPLACE:  c:\ado\
 ```
+:::
 
-### The `adopath` search order
+::::
+
+## The `adopath` search order {.smaller}
+
+:::: {.columns}
+
+::: {.column width=40%}
 
 The search paths where Stata looks for commands is queried by `adopath`, and looks similar, but now has an order assigned to each entry:
 
@@ -34,7 +52,11 @@ The search paths where Stata looks for commands is queried by `adopath`, and loo
 adopath
 ```
 
-```
+:::
+
+::: {.column width=60%}
+
+```{.stata}
   [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
   [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
   [3]              "."
@@ -43,30 +65,78 @@ adopath
   [6]  (OLDPLACE)  "c:\ado/"
 ```
 
-To look for a command, say `reghdfe`, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of `reghdfe` explicitly with `which`:
+:::
+
+::::
+
+## The path at work {.smaller}
+
+:::: {.columns}
+
+::: {.column width=40%}
+
+
+To look for a command, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. 
 
 ```stata
 which reghdfe
 ```
+:::
+
+::: {.column width=60%}
 
 ```
 command reghdfe not found as either built-in or ado-file
 r(111);
 ```
 
-### Where are packages installed?
+:::
+
+::::
+
+## Where are packages installed?
 
 [^net-ref]: [`net install` refererence](https://www.stata.com/manuals/rnet.pdf). Strictly speaking, the location where ado packages are installed can be changed via the `net set ado` command, but this is rarely done in practice, and we won't do it here. 
 
+:::: {.columns}
 
-When we install a package, using one of the various package installation commands (`net install`, `ssc install`)[^net-ref], only one of the (`sysdir`) paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
+::: {.column width=40%}
+
+When we install a package (`net install`, `ssc install`)[^net-ref], only one of the (`sysdir`) paths is relevant: `PLUS`. 
+
+:::
+
+::: {.column width=60%}
+
+```{.stata code-line-numbers="5"}
+  [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [3]              "."
+  [4]  (PERSONAL)  "C:\Users\lv39\ado\personal/"
+  [5]  (PLUS)      "C:\Users\lv39\ado\plus/"
+  [6]  (OLDPLACE)  "c:\ado/"
+```
+
+:::
+
+::::
+
+## Installing packages {.smaller}
+
+:::: {.columns}
+
+::: {.column width=40%}
 
 ```stata
 ssc install reghdfe
 which reghdfe
 ```
 
-```
+:::
+
+::: {.column width=60%}
+
+```{.stata code-line-numbers="3|7"} 
 . ssc install reghdfe
 checking reghdfe consistency and verifying not already installed...
 installing into C:\Users\lv39\ado\plus\...
@@ -76,51 +146,79 @@ installation complete.
 C:\Users\lv39\ado\plus\r\reghdfe.ado
 *! version 6.12.3 08aug2023
 ```
-
-:::{.important}
-It is important here to recognize that it is the value of the special `sysdir` directory `PLUS` that determines where Stata installs commands, but the separate list of `adopath`  locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!
 :::
 
-## Using environments in Stata
+::::
 
-But the `(PLUS)` directory can be manipulated, and that creates the opportunity to create an "environment". 
+## Using environments in Stata {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width=40%}
+
+But the `(PLUS)` directory can be manipulated
+
+:::
+
+::: {.column width=60%}
 
 
-
-```stata
-
+```{.stata code-line-numbers="4|13-14"}
 * Set the root directory
-
 global rootdir : pwd
-
 * Define a location where we will hold all packages in THIS project (the "environment")
-
 global adodir "$rootdir/ado"
-
 * make sure it exists, if not create it.
-
 cap mkdir "$adodir"
-
 * Now let's simplify the adopath
 * - remove the OLDPLACE and PERSONAL paths
 * - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!
-
 adopath - OLDPLACE
 adopath - PERSONAL
-
 * modify the PLUS path to point to our new location, and move it up in the order
-
 sysdir set PLUS "$adodir"
 adopath ++ PLUS
-
 * verify the path
-
 adopath
 ```
 
-which should show something like this:
+:::
 
+::::
+
+## Using environments in Stata {.smaller auto-animate=true transition="none"}
+
+:::: {.columns}
+
+
+::: {.column width=40%}
+
+
+```{.stata code-line-numbers="13-14"}
+* Set the root directory
+global rootdir : pwd
+* Define a location where we will hold all packages in THIS project (the "environment")
+global adodir "$rootdir/ado"
+* make sure it exists, if not create it.
+cap mkdir "$adodir"
+* Now let's simplify the adopath
+* - remove the OLDPLACE and PERSONAL paths
+* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!
+adopath - OLDPLACE
+adopath - PERSONAL
+* modify the PLUS path to point to our new location, and move it up in the order
+sysdir set PLUS "$adodir"
+adopath ++ PLUS
+* verify the path
+adopath
 ```
+
+:::
+
+::: {.column width=60%}
+
+
+```{.stata code-line-numbers="2"}
 . adopath
   [1]  (PLUS)      "C:\Users\lv39\Documents/PROJECT123/ado/"
   [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
@@ -128,28 +226,72 @@ which should show something like this:
   [4]              "."
 ```
 
+:::
+::::
+
+## Using environments in Stata {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width=40%}
+
 Let's verify again where the `reghdfe` package is:
 
 ```stata
 which reghdfe
 ```
+:::
 
-```
+::: {.column width=60%}
+
+```{.stata code-line-numbers="2"}
 . which reghdfe
 command reghdfe not found as either built-in or ado-file
 r(111);
 ```
 
+:::
+
+::::
+
+## Using environments in Stata {.smaller auto-animate=true transition="none"}
+
 So it is no longer found. Why? Because we have removed the previous location (the old `PLUS` path) from the search sequence. It's as if it didn't exist.
 
+:::: {.columns}
+
+::: {.column width=50%}
+
+Previously:
+
+```{.stata code-line-numbers="2"} 
+. which reghdfe
+C:\Users\lv39\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023
+```
+:::
+
+::: {.column width=50%}
 
 
-## Installing packages when an environment is active
+```{.stata code-line-numbers="2|3|4|5"}
+. adopath
+  [1]  (PLUS)      "C:\Users\lv39\Documents/PROJECT123/ado/"
+  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [4]              "."
+```
+
+:::
+
+::::
+
+## Installing packages when an environment is active {.smaller}
 
 
 When we now install `reghdfe` again:
 
-```
+```{.stata code-line-numbers="3|7"}
 . ssc install reghdfe
 checking reghdfe consistency and verifying not already installed...
 installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
@@ -160,92 +302,40 @@ C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
 *! version 6.12.3 08aug2023
 ```
 
-We now see it in the **project-specific** directory, which we can distribute with the whole project (more on that [later](reproducing-environments)). 
+We now see it in the **project-specific** directory, which we can distribute with the whole project. 
 
 
-## Installing precise versions of packages
+## Installing precise versions of Stata packages {.smaller}
 
+Let's imagine we need an older version of `reghdfe`. 
 
-Let's imagine we need an older version of `reghdfe`. In general, it is **not** possible in Stata to install an older version of a package in a straightforward fashion. You *may* have success with the [Wayback Machine archive of SSC](https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/), which in some cases goes back to 2000, by carefully reconstructing the necessary files. 
+- In general, it is **not** possible in Stata to install an older version of a package in a straightforward fashion. 
+- You *may* have success with the [Wayback Machine archive of SSC](https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/). 
 
-Here, we will leverage the **SSC Snapshot** maintained by Lars Vilhuber on Github ([https://github.com/labordynamicsinstitute/ssc-mirror/](https://github.com/labordynamicsinstitute/ssc-mirror/)), which has been capturing snapshots of SSC since [late 2021](https://github.com/labordynamicsinstitute/ssc-mirror/releases/tag/2021-12-21) (details are for a different tutorial):
+## Package repositories
 
-```stata
-* define the date
-global sscdate "2021-12-21"
-net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinstitute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
-```
+Most package repositories are versioned:
 
-which gives us
+- R: CRAN, Bioconductor
+- Python: PyPI
+- Julia: "General" default Julia package registry.
 
-```
-. net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinsti
-> tute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
-checking reghdfe consistency and verifying not already installed...
-installing into C:\Users\lv39\Documents/ado\...
-installation complete.
+Stata does not (as of 2024). **But** see [the full site](https://larsvilhuber.github.io/self-checking-reproducibility/12-environments-in-stata.html#installing-precise-versions-of-packages) for one approach.
 
-. which reghdfe
-C:\Users\lv39\Documents/ado\r\reghdfe.ado
-*! version 5.7.3 13nov2019
-```
-
-So we now have TWO different version of `reghdfe` installed:
-
-- Version 5.7.3 from Nov 2019 is installed at `C:\Users\lv39\Documents/ado\r\reghdfe.ado` 
-- Version 6.12.3 from Aug 2023 is installed at `C:\Users\lv39\ado\plus\r\reghdfe.ado`
-
-:::{admonition} Stata can get confused about how to write paths...
-:class: dropdown
-
-Stata on Windows can understand two types of path syntax: the "Windows" syntax, with backslashes `\`, and the "Unix" syntax, with forward slashes '/'. It will usually report paths in the "Windows" syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the "weird"  mixed notation:
-
-```
-C:\Users\lv39\Documents/ado\r\reghdfe.ado
-```
-
-Other software (e.g, R), will consistently use the forward slash, even on Windows, when paths are coded internally.
-
-
-
-Only the former is used by the "environment" we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of *this* project, that functionality can now be relied upon - as long as we take care to use the same "environment" for all code run within this project. This can be achieved by using the `main.do` defined in [one of the previous sections](hands-off-running):
-
-```stata
-* main.do
-* This is a simple example of a main file in Stata
-* It runs all the other files in the correct order
-
-* Set the root directory
-
-global rootdir : pwd
-
-* Define a location where we will hold all packages in THIS project (the "environment")
-
-global adodir "$rootdir/ado"
-
-* Enable project environment
-
-cap mkdir "$adodir"
-adopath - OLDPLACE
-adopath - PERSONAL
-sysdir set PLUS "$adodir"
-adopath ++ PLUS
-adopath
-
-* Run the data preparation file
-do $rootdir/01_data_prep.do
-
-// etc. etc.
-```
-
-:::{.notes}
-
-While we used interactive commands to install the various packages here, that was only for illustrative purposes. **Always** script the installation of packages in a `setup.do` file. We will address how and when to run that file in the [next section](reproducing-environments).
-
-## Takeaways
+## Takeaways {auto-animate=true .smaller}
 
 From the earlier desiderata of *environments*:
 
--  ✅ **Isolated**: Installing a new or updated package for one project won't break your other projects, and vice versa. 
--  ✅ **Portable**: Easily transport your projects from one computer to another, *even across different platforms*. 
+-  ✅  **Isolated**: Installing a new or updated package for one project won't break your other projects, and vice versa. 
+-  ✅  **Portable**: Easily transport your projects from one computer to another, *even across different platforms*. 
 -  ❌ **Reproducible**: Records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.
+
+
+## Takeaways {.smaller}
+
+
+- [x]  your code runs without problem, after all the debugging.
+- [x] your code runs without manual intervention, and with low effort
+- [x] it actually produces all the outputs
+- [x] your code generates a log file that you can inspect, and that you could share with others.
+- [x] ❓ it will run on somebody else's computer

@@ -1,11 +1,19 @@
 ---
-title: "Checking reproducibility on Day T-1"
+title: "Checking reproducibility on Day T"
 author: 
   - "Lars Vilhuber"
 date: June 30 2024
 bibliography: "paper.bib"
 
 ---
+
+![](https://teleseries.com.br/wp-content/uploads/2013/11/tumblr_lr9o5nVNb41qknbv6.gif)
+
+---
+
+## Day T {auto-animate=true .smaller}
+
+## Day T**-1** {auto-animate=true .smaller}
 
 ```{r, child=c('00-index-mod.md')}
 ```
@@ -61,6 +69,9 @@ Unpredictable things happening to your computing environment:
 ```
 
 ```{r, child=c('12-environments-in-stata.md')}
+```
+
+```{r, child=c('70-other_methods.md')}	
 ```
 
 ```{r, child=c('99-confidential_data.md')}	
