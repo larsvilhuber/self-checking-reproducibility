@@ -45,3 +45,9 @@ background-color:#c0cbf87d;
       background-color: #f5b3b8;
     }
 /* end of customizations */
+
+.reveal strong {
+  color: black;
+  background-color: lemonchiffon;
+  font-weight: bolder;
+}

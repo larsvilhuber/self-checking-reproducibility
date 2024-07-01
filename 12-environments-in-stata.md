@@ -73,9 +73,9 @@ C:\Users\lv39\ado\plus\r\reghdfe.ado
 *! version 6.12.3 08aug2023
 ```
 
-```{important}
+:::{important}
 It is important here to recognize that it is the value of the special `sysdir` directory `PLUS` that determines where Stata installs commands, but the separate list of `adopath`  locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!
-```
+:::
 
 ## Using environments in Stata
 

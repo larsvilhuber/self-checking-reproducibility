@@ -6,6 +6,24 @@
 
 - Tab-sets need to be translated
 
+arg=filename
+cat $arg |\
 sed 's/:::{tab-set}/::: {.panel-tabset}/' |\
-sed 's/:::{tab-item}/###/g' presentation/notes.md |\
-sed 's/warning/notes/' > presentation/notes.md
+sed 's/:::{tab-item}/###/' |\
+sed 's/^:::$//' |\
+sed 's/warning/.notes/' |\
+sed 's/\{note\}/{.notes}/ > presentation/$arg
+
+# Running from the command line
+
+## Powershell
+
+```
+& "C:\Program Files\RStudio\resources\app\bin\quarto\bin\quarto.exe" render index.Rmd
+```
+
+## Bash
+
+```
+/c/Program\ Files/RStudio/resources/app/bin/quarto/bin/quarto.exe render index.Rmd 
+```
