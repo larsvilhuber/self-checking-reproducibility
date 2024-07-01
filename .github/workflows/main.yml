@@ -14,8 +14,10 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  deploy-book:
+  compile-jupyterbook:
     runs-on: ubuntu-22.04
+    outputs:
+      bookurl: ${{ steps.artifact-upload-step1.outputs.artifact-url }}
     steps:
     - uses: actions/checkout@v2
 
@@ -34,6 +36,20 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build .
+    - name: Upload Artifact
+      id: artifact-upload-step1
+      uses: actions/upload-artifact@v4
+      with:
+          name: artifact-book
+          path: _build/html
+          retention-days: 1
+
+  compile-presentation:
+    runs-on: ubuntu-22.04
+    outputs:
+      presentationurl: ${{ steps.artifact-upload-step2.outputs.artifact-url }}
+    steps:
+    - uses: actions/checkout@v2
     # Let's do the Quarto
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
@@ -43,10 +59,9 @@ jobs:
         r-version: '4.4.0'
 
     - name: Install R Dependencies
-      uses: r-lib/actions/setup-renv@v2
-      with:
-        cache-version: 1
-
+      run: |
+        Rscript presentation/libraries.R
+        
     - name: Render Quarto Project
     #   uses: quarto-dev/quarto-actions/render@v2
     #   with:
@@ -54,16 +69,38 @@ jobs:
       run: |
         cd presentation
         quarto render index.Rmd
-    - name: Move outputs around
-      run: |
-        mkdir _build/html/presentation
-        mv presentation/index* _build/html/presentation/
+    - name: Upload Artifact
+      id: artifact-upload-step2
+      uses: actions/upload-artifact@v4
+      with:
+          name: artifact-presentation
+          path: |
+            index_files/
+            index.html
+          retention-days: 1
 
-    # Book is now in _build/html
+  deploy-book:
+    runs-on: ubuntu-22.04
+    needs: 
+      - compile-jupyterbook
+      - compile-presentation
+    steps:
+    # Pull down both artifacts
+    - name: Download Book Artifacts
+      uses: actions/download-artifact@v4
+      with:
+            path: .
+            pattern: artifact-book
+    - name: Download Pres Artifacts
+      uses: actions/download-artifact@v4
+      with:
+            path: presentation
+            pattern: artifact-presentation
+    # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
       with:
-        path: ./_build/html
+        path: .
   # publish:
   #   needs: deploy-book
   #   runs-on: ubuntu-latest
