@@ -58,11 +58,14 @@ jobs:
       with:
         r-version: '4.4.0'
 
-    - name: Install R Dependencies
-      run: |
-        Rscript presentation/libraries.R
+    - name: Install R Dependencies 
+      uses: r-lib/actions/setup-renv@v2
+      with:
+        cache-version: 1
         
     - name: Render Quarto Project
+      env:
+        QUARTO_PRINT_STACK: true
     #   uses: quarto-dev/quarto-actions/render@v2
     #   with:
     #     path: ./presentation
