@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Lars Vilhuber">
-  <meta name="dcterms.date" content="2024-06-01">
+  <meta name="dcterms.date" content="2024-06-30">
   <title>Checking reproducibility on Day T-1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -403,57 +403,60 @@ Lars Vilhuber
 </div>
 </div>
 
-  <p class="date">2024-06-01</p>
+  <p class="date">2024-06-30</p>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
-<p>This document describes a few <em>possible</em> steps to self-check replication packages before submitting them to a journal. It is not meant to be exhaustive, and it is not meant to be prescriptive. There are many ways to construct a replication package, and many more to check that it works.</p>
+<p>This document describes a few <strong>possible</strong> steps to self-check replication packages before submitting them to a journal. It is not meant to be exhaustive, and it is not meant to be prescriptive. There are <strong>many ways to construc</strong>t a replication package, and many more to check that it works.</p>
 </section>
 <section id="computational-empathy" class="slide level2 center">
 <h2>Computational Empathy</h2>
-<p>The key ingredient is what I call “<strong>computational empathy</strong>” - thinking about what an unknown person attempting to reproduce the results in your paper might face, what they might know and assume, and more importantly, what they might not know or know to assume. While the replication package might very well run on your computer, that is by no means evidence that it will run on someone else’s computer.</p>
+<p>The key ingredient is what I call “<strong>computational empathy</strong>” - thinking about what an unknown person attempting to reproduce the results in your paper might face, <strong>what they might know and assume</strong>, and more importantly, <strong>what they might not know</strong> or know to assume. While the replication package might very well run on your computer, that is by no means evidence that it will run on someone else’s computer.</p>
 </section>
-<section id="prerequisites" class="slide level2 center">
+<section id="prerequisites" class="slide level2 smaller center">
 <h2>Prerequisites</h2>
 <p>In what follows, we will assume that the replicator satisfies the following conditions:</p>
+<div>
 <ul>
-<li>they are familiar with their own operating system
-<ul>
-<li>though that operating system may not be same as yours!</li>
-</ul></li>
-<li>they are somewhat familiar with how to run code in the “dominant” programming language in your field
-<ul>
-<li>though that does not mean that they and you run code the same way!</li>
-</ul></li>
-<li>they are not necessarily familiar with cutting edge methods of running software that you might be using</li>
-<li>they likely have some experience with how social scientists write code and prepare data, but may not have your years of experience</li>
+<li class="fragment">they are familiar with their own <strong>operating system</strong> (not yours!)</li>
+<li class="fragment">they are somewhat familiar with <strong>how to run code</strong> in the “dominant” programming language in your field (but…)</li>
+<li class="fragment">they are <strong>probably not familiar</strong> with cutting edge methods of running software that you might be using (but want to learn!)</li>
+<li class="fragment">they likely have some experience with <strong>how social scientists write code</strong> and prepare data, but may not have your years of experience</li>
 </ul>
-<p>Content is <a href="https://creativecommons.org/licenses/by-nc/4.0/"><img data-src="https://licensebuttons.net/l/by-nc/4.0/80x15.png" alt="License: CC BY-NC 4.0"></a>.</p>
-</section>
-<section id="how-to-read-this-document" class="slide level2 center">
-<h2>How to read this document</h2>
-<p>The table of contents goes initially from easy to more complex. Each section should be seen as one method of running, with varying levels of “trust” in how robust it is to replicators’ environments. Some can be combined, others may not work well together.</p>
+</div>
 </section>
 <section id="tldr" class="slide level2 center">
 <h2>TL;DR</h2>
-<p>Techy lingo for “too long, didn’t read”. A summary of the most important takeaways will be at the top of each section.</p>
-</section>
-<section id="how-to-contribute" class="slide level2 center">
-<h2>How to contribute</h2>
-<p><img data-src="https://img.shields.io/github/issues-raw/larsvilhuber/self-checking-reproducibility.svg?style=flat" alt="GitHub issues"> <img data-src="https://img.shields.io/github/last-commit/larsvilhuber/self-checking-reproducibility.svg?style=flat" alt="GitHub last commit"></p>
+<p>Techy lingo for “<strong>too long, didn’t read</strong>”. A summary of the most important takeaways will be at the top of each section.</p>
 </section></section>
-<section id="targets" class="title-slide slide level1 center">
+<section id="targets" class="title-slide slide level1 smaller center">
 <h1>Targets</h1>
-<p>We want to check</p>
+<p>We want to check that</p>
 <div>
-<ul>
-<li class="fragment">that your code runs without problem, after all the debugging.</li>
-<li class="fragment">that your code runs without manual intervention.</li>
-<li class="fragment">that your code generates a log file that you can inspect, and that you could share with others.</li>
-<li class="fragment">that it will run on somebody else’s computer</li>
-<li class="fragment">that it actually produces all the outputs</li>
+<ul class="task-list">
+<li class="fragment"><label><input type="checkbox">your code runs without problem, after all the debugging.</label></li>
+<li class="fragment"><label><input type="checkbox">it actually produces all the outputs</label></li>
+<li class="fragment"><label><input type="checkbox">your code runs without manual intervention, and with low effort.</label></li>
+<li class="fragment"><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
+<li class="fragment"><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
+</div>
+</section>
+
+<section id="why" class="title-slide slide level1 center">
+<h1>Why</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Unpredictable things happening to your computing environment:</p>
+<ul>
+<li>Software updates</li>
+<li>Change of employer</li>
+<li>Sudden need for a new computer</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="https://media1.tenor.com/m/1L7rJphSMxQAAAAC/fail-fall.gif"></p>
+</div>
 </div>
 </section>
 
@@ -479,8 +482,9 @@ Lars Vilhuber
 </section>
 <section class="slide level2 center">
 
-<p><em>This should be a warning sign:</em> if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer.</p>
-</section>
+<p><img data-src="images/Red-Warning-PNG-Clipart.png"></p>
+<p><em>This should be a warning sign:</em> if it takes you a long time to get it to run, or to manually reproduce the results, it might take others even longer.<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
+<aside></aside></section>
 <section class="slide level2 center">
 
 <p>Furthermore, it may suggest that you haven’t been able to re-run your own code very often, which can be correlated with fragility or even lack of reproducibility.</p>
@@ -490,10 +494,10 @@ Lars Vilhuber
 <div>
 <ul>
 <li class="fragment">✅ your code runs without problem, after all the debugging.</li>
-<li class="fragment">❓your code runs without manual intervention.</li>
-<li class="fragment">❓your code generates a log file that you can inspect, and that you could share with others.</li>
-<li class="fragment">❓it will run on somebody else’s computer</li>
-<li class="fragment">❓it actually produces all the outputs</li>
+<li class="fragment"><label><input type="checkbox">your code runs without manual intervention, and with low effort</label></li>
+<li class="fragment"><label><input type="checkbox">it actually produces all the outputs</label></li>
+<li class="fragment">[ ]your code generates a log file that you can inspect, and that you could share with others.</li>
+<li class="fragment"><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
 </div>
 </section></section>
@@ -523,19 +527,30 @@ Lars Vilhuber
 </ul>
 </div>
 </section></section>
-<section>
 <section id="hands-off-running-creating-a-controller-script" class="title-slide slide level1 center">
 <h1>Hands-off running: Creating a controller script</h1>
 <p>Did it take you a long time to run everything again?</p>
 
 <img data-src="https://c.tenor.com/4qs0klfg8nMAAAAC/tenor.gif" class="r-stretch quarto-figure-center"><p class="caption">⏳</p></section>
-<section class="slide level2 center">
 
-<p>Let’s ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
-
-<aside><div>
+<section>
+<section id="lets-ramp-it-up-a-bit." class="title-slide slide level1 center">
+<h1>Let’s ramp it up a bit.</h1>
+<p>Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper.</p>
+<aside class="notes">
 <p>We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.</p>
-</div></aside></section>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="tldr-2" class="slide level2 center">
 <h2>TL;DR</h2>
 <ul>
@@ -550,206 +565,936 @@ Lars Vilhuber
 </section>
 <section id="examples" class="slide level2 center">
 <h2>Examples</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Stata</a></li><li><a href="#tabset-1-2">R</a></li><li><a href="#tabset-1-3">Python</a></li><li><a href="#tabset-1-4">MATLAB</a></li><li><a href="#tabset-1-5">Julia</a></li><li><a href="#tabset-1-6">Bash</a><a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href=""></a>* main.<span class="kw">do</span></span>
-<span id="cb1-2"><a href=""></a>* This is a simple example <span class="kw">of</span> a main file <span class="kw">in</span> Stata</span>
-<span id="cb1-3"><a href=""></a>* It runs <span class="ot">all</span> the other files <span class="kw">in</span> the correct <span class="kw">order</span></span>
-<span id="cb1-4"><a href=""></a></span>
-<span id="cb1-5"><a href=""></a>* Set the root directory</span>
-<span id="cb1-6"><a href=""></a></span>
-<span id="cb1-7"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
-<span id="cb1-8"><a href=""></a></span>
-<span id="cb1-9"><a href=""></a>* Run the <span class="kw">data</span> preparation file</span>
-<span id="cb1-10"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/01_data_prep.<span class="kw">do</span></span>
-<span id="cb1-11"><a href=""></a></span>
-<span id="cb1-12"><a href=""></a>* Run the analysis file</span>
-<span id="cb1-13"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/02_analysis.<span class="kw">do</span></span>
-<span id="cb1-14"><a href=""></a></span>
-<span id="cb1-15"><a href=""></a>* Run the <span class="kw">table</span> file</span>
-<span id="cb1-16"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/03_tables.<span class="kw">do</span></span>
-<span id="cb1-17"><a href=""></a></span>
-<span id="cb1-18"><a href=""></a>* Run the figure file</span>
-<span id="cb1-19"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/04_figures.<span class="kw">do</span></span>
-<span id="cb1-20"><a href=""></a></span>
-<span id="cb1-21"><a href=""></a>* Run the appendix file</span>
-<span id="cb1-22"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/05_appendix.<span class="kw">do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The use of <code>do</code> (instead of <code>run</code> or even <code>capture run</code>) is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.</p>
-<p>Run this using the <a href="https://labordynamicsinstitute.github.io/ldilab-manual/96-02-running-stata-code.html#step-6-run-the-code">right-click method</a> (Windows) or from the terminal (macOS, Linux):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
-<span id="cb2-2"><a href=""></a><span class="ex">stata-mp</span> <span class="at">-b</span> do main.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stata" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stata</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Set the root directory (dynamically)</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb1" data-code-line-numbers="1-2"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb1-1" class="hljs-ln-code"><a href=""></a>* main.<span class="kw">do</span></span>
+<span id="cb1-2" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb1-3" class="hljs-ln-code"><a href=""></a>* Run the <span class="kw">data</span> preparation file</span>
+<span id="cb1-4" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/01_data_prep.<span class="kw">do</span></span>
+<span id="cb1-5" class="hljs-ln-code"><a href=""></a>* Run the analysis file</span>
+<span id="cb1-6" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/02_analysis.<span class="kw">do</span></span>
+<span id="cb1-7" class="hljs-ln-code"><a href=""></a>* Run the <span class="kw">table</span> file</span>
+<span id="cb1-8" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/03_tables.<span class="kw">do</span></span>
+<span id="cb1-9" class="hljs-ln-code"><a href=""></a>* Run the figure file</span>
+<span id="cb1-10" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/04_figures.<span class="kw">do</span></span>
+<span id="cb1-11" class="hljs-ln-code"><a href=""></a>* Run the appendix file</span>
+<span id="cb1-12" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/05_appendix.<span class="kw">do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="stata-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stata</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Call the various files that consitute your complete analysis.</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb2" data-code-line-numbers="4,6,8,10,12"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a>* main.<span class="kw">do</span></span>
+<span id="cb2-2" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb2-3" class="hljs-ln-code"><a href=""></a>* Run the <span class="kw">data</span> preparation file</span>
+<span id="cb2-4" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/01_data_prep.<span class="kw">do</span></span>
+<span id="cb2-5" class="hljs-ln-code"><a href=""></a>* Run the analysis file</span>
+<span id="cb2-6" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/02_analysis.<span class="kw">do</span></span>
+<span id="cb2-7" class="hljs-ln-code"><a href=""></a>* Run the <span class="kw">table</span> file</span>
+<span id="cb2-8" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/03_tables.<span class="kw">do</span></span>
+<span id="cb2-9" class="hljs-ln-code"><a href=""></a>* Run the figure file</span>
+<span id="cb2-10" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/04_figures.<span class="kw">do</span></span>
+<span id="cb2-11" class="hljs-ln-code"><a href=""></a>* Run the appendix file</span>
+<span id="cb2-12" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/05_appendix.<span class="kw">do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="notes" class="slide level2 center">
+<h2>Notes</h2>
+<ul>
+<li>The use of <code>do</code> (instead of <code>run</code> or even <code>capture run</code>) is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.</li>
+</ul>
+</section>
+<section id="notes-1" class="slide level2 center">
+<h2>Notes</h2>
+<ul>
+<li>Run this using the <a href="https://labordynamicsinstitute.github.io/ldilab-manual/96-02-running-stata-code.html#step-6-run-the-code">right-click method</a> (Windows) or from the terminal (macOS, Linux):</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/execute-do-cropped.png"></p>
+</div><div class="column" style="width:40%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
+<span id="cb3-2"><a href=""></a><span class="ex">stata-mp</span> <span class="at">-b</span> do main.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where <code>stata-mp</code> should be replaced with <code>stata</code> or <code>stata-se</code> depending on your licensed version.</p>
 </div>
-<div id="tabset-1-2">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># main.R</span></span>
-<span id="cb3-2"><a href=""></a><span class="co"># This is a simple example of a main file in R</span></span>
-<span id="cb3-3"><a href=""></a><span class="co"># It runs all the other files in the correct order</span></span>
-<span id="cb3-4"><a href=""></a></span>
-<span id="cb3-5"><a href=""></a><span class="co"># Set the root directory</span></span>
-<span id="cb3-6"><a href=""></a><span class="co"># rootdir &lt;- getwd()</span></span>
-<span id="cb3-7"><a href=""></a><span class="co"># or if you are using Rproj files or git</span></span>
-<span id="cb3-8"><a href=""></a>rootdir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>()</span>
-<span id="cb3-9"><a href=""></a></span>
-<span id="cb3-10"><a href=""></a><span class="co"># Run the data preparation file</span></span>
-<span id="cb3-11"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"01_data_prep.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-12"><a href=""></a></span>
-<span id="cb3-13"><a href=""></a><span class="co"># Run the analysis file</span></span>
-<span id="cb3-14"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"02_analysis.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-15"><a href=""></a></span>
-<span id="cb3-16"><a href=""></a><span class="co"># Run the table file</span></span>
-<span id="cb3-17"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"03_tables.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-18"><a href=""></a></span>
-<span id="cb3-19"><a href=""></a><span class="co"># Run the figure file</span></span>
-<span id="cb3-20"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"04_figures.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-21"><a href=""></a></span>
-<span id="cb3-22"><a href=""></a><span class="co"># Run the appendix file</span></span>
-<span id="cb3-23"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"05_appendix.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">R</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Set the root directory (using <code>here()</code> or <code>rprojroot()</code>).</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb4" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a href=""></a><span class="co"># main.R</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a href=""></a><span class="do">## Set the root directory</span></span>
+<span id="cb4-3" class="hljs-ln-code"><a href=""></a><span class="co"># If you are using Rproj files or git</span></span>
+<span id="cb4-4" class="hljs-ln-code"><a href=""></a>rootdir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>()</span>
+<span id="cb4-5" class="hljs-ln-code"><a href=""></a><span class="co"># or if not</span></span>
+<span id="cb4-6" class="hljs-ln-code"><a href=""></a><span class="co"># rootdir &lt;- getwd()</span></span>
+<span id="cb4-7" class="hljs-ln-code"><a href=""></a><span class="do">## Run the data preparation file</span></span>
+<span id="cb4-8" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"01_data_prep.R"</span>), </span>
+<span id="cb4-9" class="hljs-ln-code"><a href=""></a>       <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-10" class="hljs-ln-code"><a href=""></a><span class="do">## Run the analysis file</span></span>
+<span id="cb4-11" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"02_analysis.R"</span>), </span>
+<span id="cb4-12" class="hljs-ln-code"><a href=""></a>       <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-13" class="hljs-ln-code"><a href=""></a><span class="do">## Run the table file</span></span>
+<span id="cb4-14" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"03_tables.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-15" class="hljs-ln-code"><a href=""></a><span class="do">## Run the figure file</span></span>
+<span id="cb4-16" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"04_figures.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-17" class="hljs-ln-code"><a href=""></a><span class="do">## Run the appendix file</span></span>
+<span id="cb4-18" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"05_appendix.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="r-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">R</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Call each of the component programs, using <code>source()</code>.</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb5" data-code-line-numbers="8-9|11-12|14|16|18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a href=""></a><span class="co"># main.R</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a href=""></a><span class="do">## Set the root directory</span></span>
+<span id="cb5-3" class="hljs-ln-code"><a href=""></a><span class="co"># If you are using Rproj files or git</span></span>
+<span id="cb5-4" class="hljs-ln-code"><a href=""></a>rootdir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>()</span>
+<span id="cb5-5" class="hljs-ln-code"><a href=""></a><span class="co"># or if not</span></span>
+<span id="cb5-6" class="hljs-ln-code"><a href=""></a><span class="co"># rootdir &lt;- getwd()</span></span>
+<span id="cb5-7" class="hljs-ln-code"><a href=""></a><span class="do">## Run the data preparation file</span></span>
+<span id="cb5-8" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"01_data_prep.R"</span>), </span>
+<span id="cb5-9" class="hljs-ln-code"><a href=""></a>       <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-10" class="hljs-ln-code"><a href=""></a><span class="do">## Run the analysis file</span></span>
+<span id="cb5-11" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"02_analysis.R"</span>), </span>
+<span id="cb5-12" class="hljs-ln-code"><a href=""></a>       <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-13" class="hljs-ln-code"><a href=""></a><span class="do">## Run the table file</span></span>
+<span id="cb5-14" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"03_tables.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-15" class="hljs-ln-code"><a href=""></a><span class="do">## Run the figure file</span></span>
+<span id="cb5-16" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"04_figures.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-17" class="hljs-ln-code"><a href=""></a><span class="do">## Run the appendix file</span></span>
+<span id="cb5-18" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"05_appendix.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="notes-for-r" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Notes for R</h2>
 <p>The use of <code>echo=TRUE</code> is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.</p>
-<p>Run this using the <a href="https://labordynamicsinstitute.github.io/ldilab-manual/96-12-running-r-code.html">terminal method</a> in Rstudio for any platform, or from the terminal (macOS, Linux):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
-<span id="cb4-2"><a href=""></a><span class="ex">R</span> CMD BATCH main.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do not use <code>Rscript</code>, as it will not generate enough output! On Windows, under <code>cmd.exe</code> or Powershell, you may need to adjust <code>R</code> to be <code>R.exe</code> if it is in your <code>%PATH%</code> or the full path to <code>R.exe</code> if it is not (this is automatically set for you in Rstudio).</p>
-</div>
-<div id="tabset-1-3">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># main.py</span></span>
-<span id="cb5-2"><a href=""></a><span class="co"># This is a simple example of a main file in Python</span></span>
-<span id="cb5-3"><a href=""></a><span class="co"># It runs all the other files in the correct order</span></span>
-<span id="cb5-4"><a href=""></a></span>
-<span id="cb5-5"><a href=""></a><span class="co"># Set the root directory</span></span>
-<span id="cb5-6"><a href=""></a><span class="co"># rootdir = os.getcwd()</span></span>
-<span id="cb5-7"><a href=""></a><span class="co"># or better</span></span>
-<span id="cb5-8"><a href=""></a>rootdir <span class="op">=</span> os.path.dirname(os.path.realpath(<span class="va">__file__</span>))</span>
-<span id="cb5-9"><a href=""></a></span>
-<span id="cb5-10"><a href=""></a><span class="co"># Run the data preparation file</span></span>
-<span id="cb5-11"><a href=""></a><span class="bu">exec</span>(<span class="bu">open</span>(os.path.join(rootdir, <span class="st">"01_data_prep.py"</span>)).read())</span>
-<span id="cb5-12"><a href=""></a></span>
-<span id="cb5-13"><a href=""></a><span class="co"># Run the analysis file</span></span>
-<span id="cb5-14"><a href=""></a><span class="bu">exec</span>(<span class="bu">open</span>(os.path.join(rootdir, <span class="st">"02_analysis.py"</span>)).read())</span>
-<span id="cb5-15"><a href=""></a></span>
-<span id="cb5-16"><a href=""></a><span class="co"># Run the table file</span></span>
-<span id="cb5-17"><a href=""></a><span class="bu">exec</span>(<span class="bu">open</span>(os.path.join(rootdir, <span class="st">"03_tables.py"</span>)).read())</span>
-<span id="cb5-18"><a href=""></a></span>
-<span id="cb5-19"><a href=""></a><span class="co"># Run the figure file</span></span>
-<span id="cb5-20"><a href=""></a><span class="bu">exec</span>(<span class="bu">open</span>(os.path.join(rootdir, <span class="st">"04_figures.py"</span>)).read())</span>
-<span id="cb5-21"><a href=""></a></span>
-<span id="cb5-22"><a href=""></a><span class="co"># Run the appendix file</span></span>
-<span id="cb5-23"><a href=""></a><span class="bu">exec</span>(<span class="bu">open</span>(os.path.join(rootdir, <span class="st">"05_appendix.py"</span>)).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run this from your favorite IDE or from a terminal:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
-<span id="cb6-2"><a href=""></a><span class="ex">python</span> main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-4">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href=""></a><span class="co">% main.m</span></span>
-<span id="cb7-2"><a href=""></a><span class="co">% This is a simple example of a main file in MATLAB</span></span>
-<span id="cb7-3"><a href=""></a><span class="co">% It runs all the other files in the correct order</span></span>
-<span id="cb7-4"><a href=""></a></span>
-<span id="cb7-5"><a href=""></a><span class="co">% Set the root directory</span></span>
-<span id="cb7-6"><a href=""></a><span class="va">rootdir</span> <span class="op">=</span> <span class="va">pwd</span><span class="op">;</span></span>
-<span id="cb7-7"><a href=""></a></span>
-<span id="cb7-8"><a href=""></a><span class="co">% Run the data preparation file</span></span>
-<span id="cb7-9"><a href=""></a><span class="va">run</span>(<span class="va">fullfile</span>(<span class="va">rootdir</span><span class="op">,</span> <span class="ss">'01_data_prep.m'</span>))</span>
-<span id="cb7-10"><a href=""></a></span>
-<span id="cb7-11"><a href=""></a><span class="co">% Run the analysis file</span></span>
-<span id="cb7-12"><a href=""></a><span class="va">run</span>(<span class="va">fullfile</span>(<span class="va">rootdir</span><span class="op">,</span> <span class="ss">'02_analysis.m'</span>))</span>
-<span id="cb7-13"><a href=""></a></span>
-<span id="cb7-14"><a href=""></a><span class="co">% Run the table file</span></span>
-<span id="cb7-15"><a href=""></a><span class="va">run</span>(<span class="va">fullfile</span>(<span class="va">rootdir</span><span class="op">,</span> <span class="ss">'03_tables.m'</span>))</span>
-<span id="cb7-16"><a href=""></a></span>
-<span id="cb7-17"><a href=""></a><span class="co">% Run the figure file</span></span>
-<span id="cb7-18"><a href=""></a><span class="va">run</span>(<span class="va">fullfile</span>(<span class="va">rootdir</span><span class="op">,</span> <span class="ss">'04_figures.m'</span>))</span>
-<span id="cb7-19"><a href=""></a></span>
-<span id="cb7-20"><a href=""></a><span class="co">% Run the appendix file</span></span>
-<span id="cb7-21"><a href=""></a><span class="va">run</span>(<span class="va">fullfile</span>(<span class="va">rootdir</span><span class="op">,</span> <span class="ss">'05_appendix.m'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run this script, and it should run all the other ones. Note that there are various other ways to achieve a similar goal, for instance, by treating each MATLAB file as a function.</p>
-</div>
-<div id="tabset-1-5">
-<p>In Julia, we can do something similar:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href=""></a><span class="co"># This is a simple example of a main file in Julia</span></span>
-<span id="cb8-2"><a href=""></a><span class="co"># It runs all the other files in the correct order</span></span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="co"># Set the root directory</span></span>
-<span id="cb8-5"><a href=""></a>rootdir <span class="op">=</span> <span class="fu">pwd</span>()</span>
-<span id="cb8-6"><a href=""></a></span>
-<span id="cb8-7"><a href=""></a><span class="co"># Run the data preparation file</span></span>
-<span id="cb8-8"><a href=""></a><span class="fu">include</span>(<span class="fu">joinpath</span>(rootdir, <span class="st">"01_data_prep.jl"</span>))</span>
-<span id="cb8-9"><a href=""></a></span>
-<span id="cb8-10"><a href=""></a><span class="co"># Run the analysis file</span></span>
-<span id="cb8-11"><a href=""></a><span class="fu">include</span>(<span class="fu">joinpath</span>(rootdir, <span class="st">"02_analysis.jl"</span>))</span>
-<span id="cb8-12"><a href=""></a></span>
-<span id="cb8-13"><a href=""></a><span class="co"># Run the table file</span></span>
-<span id="cb8-14"><a href=""></a><span class="fu">include</span>(<span class="fu">joinpath</span>(rootdir, <span class="st">"03_tables.jl"</span>))</span>
-<span id="cb8-15"><a href=""></a></span>
-<span id="cb8-16"><a href=""></a><span class="co"># Run the figure file</span></span>
-<span id="cb8-17"><a href=""></a><span class="fu">include</span>(<span class="fu">joinpath</span>(rootdir, <span class="st">"04_figures.jl"</span>))</span>
-<span id="cb8-18"><a href=""></a></span>
-<span id="cb8-19"><a href=""></a><span class="co"># Run the appendix file</span></span>
-<span id="cb8-20"><a href=""></a><span class="fu">include</span>(<span class="fu">joinpath</span>(rootdir, <span class="st">"05_appendix.jl"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run this from your favorite IDE or from a terminal:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
-<span id="cb9-2"><a href=""></a><span class="ex">julia</span> main.jl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-6">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="co"># main.bash</span></span>
-<span id="cb10-2"><a href=""></a><span class="co"># Run the data preparation file</span></span>
-<span id="cb10-3"><a href=""></a><span class="co"># Example for calling Stata</span></span>
-<span id="cb10-4"><a href=""></a><span class="ex">stata-mp</span> <span class="at">-b</span> do <span class="st">"01_data_prep.do"</span></span>
-<span id="cb10-5"><a href=""></a><span class="co"># Run the analysis file</span></span>
-<span id="cb10-6"><a href=""></a><span class="ex">python</span> 02_analysis.py</span>
-<span id="cb10-7"><a href=""></a><span class="co"># Run the table file</span></span>
-<span id="cb10-8"><a href=""></a><span class="ex">Rscript</span> 03_tables.R</span>
-<span id="cb10-9"><a href=""></a><span class="co"># Run the appendix file</span></span>
-<span id="cb10-10"><a href=""></a><span class="co"># Here, we use MATLAB. Running MATLAB is *never* platform-independent. </span></span>
-<span id="cb10-11"><a href=""></a><span class="co"># Linux:</span></span>
-<span id="cb10-12"><a href=""></a><span class="ex">matlab</span> <span class="at">-nodisplay</span> <span class="at">-r</span> <span class="st">"addpath(genpath('.')); 05_appendix"</span> </span>
-<span id="cb10-13"><a href=""></a><span class="co"># Windows:</span></span>
-<span id="cb10-14"><a href=""></a><span class="co">#start matlab -nosplash  -minimize -r  "addpath(genpath('.')); 05_appendix"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<aside></aside></section>
+</section>
+<section id="notes-for-r-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Notes for R</h2>
+<p>Even if you are using Rstudio, run this using the <a href="https://labordynamicsinstitute.github.io/ldilab-manual/96-12-running-r-code.html">terminal method</a> in Rstudio for any platform, or from the terminal (macOS, Linux):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb6-1" class="hljs-ln-code"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
+<span id="cb6-2" class="hljs-ln-code"><a href=""></a><span class="ex">R</span> CMD BATCH main.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do not use <code>Rscript</code>, as it will not generate enough output!</p>
+</section>
+<section id="other-examples" class="slide level2 center">
+<h2>Other examples</h2>
+<p>For examples for <strong>Julia, Python, MATLAB,</strong> and <strong>multi-software scripts</strong>, see the <a href="https://larsvilhuber.github.io/self-checking-reproducibility/02-hands_off_running.html">full text</a>.</p>
+</section>
 <section id="takeaways-1" class="slide level2 center">
 <h2>Takeaways</h2>
+<ul>
+<li>✅ your code runs without problem, after all the debugging.</li>
+<li>✅your code runs without manual intervention, and with low effort</li>
+<li><label><input type="checkbox">it actually produces all the outputs</label></li>
+<li><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
+<li><label><input type="checkbox">it will run on somebody else’s computer</label></li>
+</ul>
+</section></section>
+<section>
+<section id="are-your-figures-missing" class="title-slide slide level1 center">
+<h1>Are your figures missing?</h1>
+<p>Do you usually <strong>right-click and save</strong> the figures?</p>
+</section>
+<section class="slide level2 center">
+
+<p>Or <strong>copy-paste</strong> then into a Word document?</p>
+</section></section>
+<section>
+<section id="hands-off-running-automatically-saving-figures" class="title-slide slide level1 center">
+<h1>Hands-off running: Automatically saving figures</h1>
+<p>Say you have 53 figures and 23 tables, the latter created from 161 different specifications. That makes for a lot of work when re-running the code, if you haven’t automated the saving of said figures and tables.</p>
+<aside class="notes">
+<p>We have seen instructions that tell the replicator to right-click and save the figures. While there is no substitute for comparing all these figures, that’s too much work!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tldr-3" class="slide level2 center">
+<h2>TL;DR</h2>
+<ul>
+<li>Save all figures using commands, rather than manually.</li>
+<li>It’s easy.</li>
+</ul>
+</section>
+<section id="saving-figures-programmatically" class="slide level2 center">
+<h2>Saving figures programmatically</h2>
+<p>In order to be able to enable “hands-off running”, saving figures (and tables) automatically is important. I will show here a few simple examples for various statistical programming languages.</p>
+</section>
+<section id="stata-2" class="slide level2 center">
+<h2>Stata</h2>
+<p>After having created the graph (“<code>graph twoway</code>”, “<code>graph bar</code>”, etc.), simply add “<code>graph export "name_of_file.graph-extension", replace</code>”. Many formats are available, as required by journal requirements.</p>
+</section>
+<section class="slide level2 center">
+
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href=""></a><span class="kw">sysuse</span> auto</span>
+<span id="cb7-2"><a href=""></a><span class="kw">graph</span> <span class="kw">twoway</span> (lfitci mpg disp) (<span class="kw">scatter</span> mpg disp)</span>
+<span id="cb7-3"><a href=""></a><span class="kw">graph</span> <span class="kw">export</span> <span class="st">"path/to/figure1.png"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For more information, see <a href="https://www.stata.com/manuals/g-2graphexport.pdf">https://www.stata.com/manuals/g-2graphexport.pdf</a>.</p>
+</section>
+<section id="r-2" class="slide level2 center">
+<h2>R</h2>
+<p>Methods vary, but the two main ones are redefining the graphics device for the desired format, or using the <code>ggsave</code> wrapper.</p>
+</section>
+<section class="slide level2 center">
+
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a></span>
+<span id="cb8-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-3"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb8-4"><a href=""></a>figures <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"figures"</span>)</span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars,<span class="fu">aes</span>(mpg,disp)) <span class="sc">+</span> </span>
+<span id="cb8-7"><a href=""></a>       <span class="fu">geom_point</span>()<span class="sc">+</span> </span>
+<span id="cb8-8"><a href=""></a>       <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">geom=</span><span class="st">"smooth"</span> )</span>
+<span id="cb8-9"><a href=""></a><span class="fu">ggsave</span>(ggp,<span class="fu">file.path</span>(figures,<span class="st">"figure1.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(for more information, see <a href="https://ggplot2.tidyverse.org/reference/ggsave.html">https://ggplot2.tidyverse.org/reference/ggsave.html</a>)</p>
+</section>
+<section id="for-more-examples" class="slide level2 center">
+<h2>For more examples</h2>
+<p>Python, MATLAB, other R methods - see the <a href="https://larsvilhuber.github.io/self-checking-reproducibility/03-automatically_saving_figures.html">full text</a>.</p>
+<blockquote>
+<p>In every programming language, this is simple!</p>
+</blockquote>
+<aside class="notes">
+<p>If you want to create fancy figures with specific fonts and all sorts of widgets, you can do so, but you should not rely on that more complex code. Let the replicator create a figure that is close to, but not as fancy as yours. That’s enough!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="same-for-tables" class="slide level2 center">
+<h2>Same for tables</h2>
+<p>Learn how to save tables in robust, reproducible ways. Do not try to copy-paste from console!</p>
+<h3 id="stata-3">Stata</h3>
+<p><code>esttab</code> or <code>outreg2</code>, also <code>putexcel</code>. For fancier stuff, treat tables as data, use <code>regsave</code> or <code>export excel</code> to manipulate.</p>
+<h3 id="r-3">R</h3>
+<p><code>xtable</code>, <code>stargazer</code>, others.</p>
+</section>
+<section id="takeaways-2" class="slide level2 center">
+<h2>Takeaways</h2>
+<div>
+<ul>
+<li class="fragment">✅ your code runs without problem, after all the debugging.</li>
+<li class="fragment">✅your code runs without manual intervention, and with low effort</li>
+<li class="fragment">✅it actually produces all the outputs</li>
+<li class="fragment"><label><input type="checkbox">your code generates a log file that you can inspect, and that you could share with others.</label></li>
+<li class="fragment"><label><input type="checkbox">it will run on somebody else’s computer</label></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="next" class="title-slide slide level1 center">
+<h1>Next…</h1>
+
+</section>
+<section class="slide level2 center">
+
+<p><em>I want to get ahead of the game…</em></p>
+</section>
+<section class="slide level2 center">
+
+<p><em>Somebody will ask “but I have confidential data…”</em></p>
+</section></section>
+<section>
+<section id="so-what-happens-when" class="title-slide slide level1 center">
+<h1>So what happens when…</h1>
+
+</section>
+<section id="you-cannot-share-a-file" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">You cannot share a file</h2>
+</section>
+<section id="the-file-no-longer-exists-on-the-internet" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The file no longer exists on the internet</h2>
+</section>
+<section id="the-code-takes-ages-to-run" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The code takes ages to run</h2>
+</section>
+<section class="slide level2 center">
+
+<p>How can you show that you actually ran the code?</p>
+</section>
+<section class="slide level2 center">
+
+<p><em>The question of how to provide access confidential data is a separate issue, with no simple solution.</em></p>
+</section></section>
+<section>
+<section id="creating-log-files" class="title-slide slide level1 center">
+<h1>Creating log files</h1>
+<p>In order to document that you have actually run your code, a log file, a transcript, or some other evidence, may be useful. It may even be required by certain journals.</p>
+</section>
+<section id="tldr-4" class="slide level2 center">
+<h2>TL;DR</h2>
+<ul>
+<li>Log files are a way to document that you have run your code.</li>
+<li>In particular for code that runs for a very long time, or that uses data that cannot be shared, log files may be the only way to document basic reproducibility.</li>
+</ul>
+</section>
+<section id="overview" class="slide level2 center">
+<h2>Overview</h2>
+<div>
+<ul>
+<li class="fragment">Most statistical software has ways to keep a record that it has run, with the details of that run.</li>
+<li class="fragment">Some make it easier than others.</li>
+<li class="fragment">You may need to instruct your code to be “verbose”, or to “log” certain events.</li>
+<li class="fragment">You may need to use a command-line option to the software to create a log file.</li>
+</ul>
+</div>
+<aside class="notes">
+<p>I do note that we are typically only looking to document what the statistical code does, at a high level. We are not looking to document system calls, fine-grained data access, etc. Computer scientists and IT security mavens may be interested in such details, but economists are typically not.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 center">
+
+<p>In almost all cased, the generated log files are simple text files, without any formatting, and can be read by any text editor (e.g., Visual Studio Code, Notepad++, etc.).</p>
+<p>If not, ensure that they are (avoid <em>Stata SMCL</em> files, for example).</p>
+</section>
+<section id="creating-log-files-explicitly" class="slide level2 center">
+<h2>Creating log files explicitly</h2>
+<p>We start by describing how to explicitly generate log files as part of the statistical processing code.</p>
+</section>
+<section id="stata-4" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stata</h2>
 <div class="columns">
-<div class="column">
-<h3 id="what-this-does">What this does</h3>
-<p>This ensures</p>
+<div class="column" style="width:30%;">
+<p>Start by creating a directory for the log files.</p>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb9" data-code-line-numbers="1-2"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb9-1" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> logdir <span class="st">"${rootdir}/logs"</span></span>
+<span id="cb9-2" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$logdir"</span></span>
+<span id="cb9-3" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_date = c(current_date)</span>
+<span id="cb9-4" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> cdate = <span class="fu">subinstr</span>(<span class="st">"`c_date'"</span>, <span class="st">" "</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb9-5" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_time = c(current_time)</span>
+<span id="cb9-6" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> ctime = <span class="fu">subinstr</span>(<span class="st">"`c_time'"</span>, <span class="st">":"</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb9-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
+<span id="cb9-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
+<span id="cb9-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="stata-5" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stata</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Add code to capture date, time, and who ran the code.</p>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb10" data-code-line-numbers="3-7"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb10-1" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> logdir <span class="st">"${rootdir}/logs"</span></span>
+<span id="cb10-2" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$logdir"</span></span>
+<span id="cb10-3" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_date = c(current_date)</span>
+<span id="cb10-4" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> cdate = <span class="fu">subinstr</span>(<span class="st">"`c_date'"</span>, <span class="st">" "</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb10-5" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_time = c(current_time)</span>
+<span id="cb10-6" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> ctime = <span class="fu">subinstr</span>(<span class="st">"`c_time'"</span>, <span class="st">":"</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb10-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
+<span id="cb10-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
+<span id="cb10-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="stata-6" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stata</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Create a logfile, giving it a name so it does not get closed.</p>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb11" data-code-line-numbers="8-9"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb11-1" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> logdir <span class="st">"${rootdir}/logs"</span></span>
+<span id="cb11-2" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$logdir"</span></span>
+<span id="cb11-3" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_date = c(current_date)</span>
+<span id="cb11-4" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> cdate = <span class="fu">subinstr</span>(<span class="st">"`c_date'"</span>, <span class="st">" "</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb11-5" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> c_time = c(current_time)</span>
+<span id="cb11-6" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> ctime = <span class="fu">subinstr</span>(<span class="st">"`c_time'"</span>, <span class="st">":"</span>, <span class="st">"_"</span>, .)</span>
+<span id="cb11-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
+<span id="cb11-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
+<span id="cb11-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="notes-2" class="slide level2 center">
+<h2>Notes</h2>
 <ul>
-<li>that your code runs without problem, after all the debugging.</li>
-<li>that your code runs without manual intervention.</li>
+<li>More examples</li>
+<li>While some software (Stata, MATLAB) will create log files that contain <strong>commands and output</strong>, others (R, Python) will create log files that contain <strong>only output</strong>.</li>
 </ul>
-</div><div class="column smaller">
-<h3 id="what-this-does-not-do">What this does not do</h3>
+<h3 id="creating-log-files-automatically">Creating log files automatically</h3>
+<p>An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the command line to run the software, and thus may be considered an <strong>advanced topic.</strong> The examples below are for Linux/macOS, but similar functionality exists for Windows.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Stata</a></li><li><a href="#tabset-1-2">R</a></li><li><a href="#tabset-1-3">MATLAB</a></li><li><a href="#tabset-1-4">Julia, Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>To automatically create a log file, run Stata from the command line with the <code>-b</code> option:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">stata</span> <span class="at">-b</span> do main.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which will create a file <code>main.log</code> in the same directory as <code>main.do</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource notes number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>For this to work, the filename cannot include spaces.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>On Windows, follow instructions <a href="https://www.stata.com/manuals/gswb.pdf#gswB.5">here</a>.</p>
+</div>
+<div id="tabset-1-2">
+<p>To automatically create a log file, run R from the command line as follows:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">R</span> CMD BATCH main.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will create a file <code>main.Rout</code> in the same directory as <code>main.R</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource notes number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href=""></a>If there are other commands, such as `sink()`, active in the R code, the `main.Rout` file will not contain some output.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-3">
+<p>To automatically create a log file, run MATLAB from the command line as follows:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="ex">matlab</span> <span class="at">-nodisplay</span> <span class="at">-r</span> <span class="st">"addpath(genpath('.')); main"</span> <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A similar command on Windows would be:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">start</span> matlab <span class="at">-nosplash</span>  <span class="at">-minimize</span> <span class="at">-r</span>  <span class="st">"addpath(genpath('.'));main"</span>  <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-4">
+<p>In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="ex">julia</span> main.jl <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">python</span> main.py <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which will create a log file with everything that would normally appear on the console using the <code>tee</code> command.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="takeaways-3" class="slide level2 center">
+<h2>Takeaways</h2>
 <ul>
-<li>that your code generates a log file that you can inspect, and that you could share with others.</li>
-<li>that it will run on somebody else’s computer</li>
-<li>that it actually produces all the outputs</li>
+<li>✅ your code runs without problem, after all the debugging.</li>
+<li>✅your code runs without manual intervention, and with low effort</li>
+<li>✅it actually produces all the outputs</li>
+<li>✅your code generates a log file that you can inspect, and that you could share with others.</li>
+<li><label><input type="checkbox">it will run on somebody else’s computer</label></li>
 </ul>
+</section></section>
+<section>
+<section id="environments" class="title-slide slide level1 center">
+<h1>Environments</h1>
+
+</section>
+<section id="tldr-5" class="slide level2 center">
+<h2>TL;DR</h2>
+<ul>
+<li>Search paths and environments are key concepts to create <strong>portable</strong>, <strong>reproducible</strong> code, by <strong>isolating</strong> each project from others.</li>
+<li>Methods exist in all (statistical) programming languages</li>
+</ul>
+</section>
+<section id="what-is-an-environment" class="slide level2 center">
+<h2>What is an environment?</h2>
+<p>From the <a href="https://rstudio.github.io/renv/">renv</a> documentation:</p>
+<ul>
+<li><strong>Isolated</strong>: Installing a new or updated package for one project won’t break your other projects, and vice versa.</li>
+<li><strong>Portable</strong>: Easily transport your projects from one computer to another, <em>even across different platforms</em>.</li>
+<li><strong>Reproducible</strong>: Records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.</li>
+</ul>
+</section>
+<section id="what-software-supports-environments" class="slide level2 center">
+<h2>What software supports environments?</h2>
+<ul>
+<li>R: <code>renv</code> package</li>
+<li>Python: <code>venv</code> or <code>virtualenv</code> module</li>
+<li>Julia: <code>Pkg</code> module</li>
+</ul>
+</section>
+<section id="but-i-use-stata" class="slide level2 center">
+<h2>“But I use Stata!”</h2>
+</section>
+<section id="hold-on" class="slide level2 center">
+<h2>Hold on…</h2>
+</section>
+<section id="understanding-search-paths" class="slide level2 center">
+<h2>Understanding search paths</h2>
+<p>Generically, all “environments” simply modify where the specific <strong>software searches</strong> (the “search path”) for its components, and in particular any supplementary components (packages, libraries, etc.).<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a></p>
+<aside></aside></section>
+<section id="search-paths" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Search paths</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>R: <code>.libPaths()</code></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb20" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="sc">&gt;</span> <span class="fu">.libPaths</span>()</span>
+<span id="cb20-2" class="hljs-ln-code"><a href=""></a>[<span class="dv">1</span>] <span class="st">"C:/Users/lv39/AppData/Local/R/win-library/4.3"</span>         </span>
+<span id="cb20-3" class="hljs-ln-code"><a href=""></a>[<span class="dv">2</span>] <span class="st">"C:/Users/lv39/AppData/Local/Programs/R/R-4.3.2/library"</span></span>
+<span id="cb20-4" class="hljs-ln-code"><a href=""></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="search-paths-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Search paths</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>R: <code>.libPaths()</code></li>
+<li>Python: <code>sys.path</code></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb21" data-code-line-numbers="4-9"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sys</span>
+<span id="cb21-2" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb21-3" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> pprint(sys.path)</span>
+<span id="cb21-4" class="hljs-ln-code"><a href=""></a>[<span class="st">''</span>,</span>
+<span id="cb21-5" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">python312.zip'</span>,</span>
+<span id="cb21-6" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">DLLs'</span>,</span>
+<span id="cb21-7" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib'</span>,</span>
+<span id="cb21-8" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312'</span>,</span>
+<span id="cb21-9" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib</span><span class="ch">\\</span><span class="st">site-packages'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="search-paths-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Search paths</h2>
+<div class="columns">
+<div class="column smaller" style="width:30%;">
+<ul>
+<li>R: <code>.libPaths()</code></li>
+<li>Python: <code>sys.path</code></li>
+<li>Julia: <code>DEPOT_PATH</code> (<a href="https://docs.julialang.org/en/v1/manual/code-loading/">Julia docs</a>)</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="sourceCode" id="cb22" data-code-line-numbers="3-5"><pre class="sourceCode numberSource julia smaller number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode julia hljs"><span id="cb22-1" class="hljs-ln-code"><a href=""></a>julia<span class="op">&gt;</span> <span class="cn">DEPOT_PATH</span></span>
+<span id="cb22-2" class="hljs-ln-code"><a href=""></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">String</span>}<span class="op">:</span></span>
+<span id="cb22-3" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia"</span></span>
+<span id="cb22-4" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">local</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span>
+<span id="cb22-5" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="yes-but-what-about-stata" class="slide level2 center">
+<h2>“Yes, but what about Stata?”</h2>
+<blockquote>
+<p>We now have the <strong>ingredients</strong> to understand (project) environments in Stata.</p>
+</blockquote>
+</section></section>
+<section>
+<section id="environments-in-stata" class="title-slide slide level1 center">
+<h1>Environments in Stata</h1>
+
+</section>
+<section id="tldr-6" class="slide level2 center">
+<h2>TL;DR</h2>
+<ul>
+<li>Creating virtual environments in Stata is feasible</li>
+<li>Doing so stabilizes the code, and makes it more transportable</li>
+</ul>
+</section>
+<section id="search-paths-in-stata" class="slide level2 center">
+<h2>Search paths in Stata</h2>
+<p>In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the <code>ado</code> directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we’ve shown how environments work in Stata, this will become a lot simpler!</p>
+<h3 id="the-sysdir-directories">The <code>sysdir</code> directories</h3>
+<p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code>sysdir</code> command, and will look something like this:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href=""></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>   STATA:  C:\Program Files\Stata18\
+    BASE:  C:\Program Files\Stata18\ado\base\
+    SITE:  C:\Program Files\Stata18\ado\site\
+    PLUS:  C:\Users\lv39\ado\plus\
+PERSONAL:  C:\Users\lv39\ado\personal\
+OLDPLACE:  c:\ado\</code></pre>
+<h3 id="the-adopath-search-order">The <code>adopath</code> search order</h3>
+<p>The search paths where Stata looks for commands is queried by <code>adopath</code>, and looks similar, but now has an order assigned to each entry:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>  [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [3]              "."
+  [4]  (PERSONAL)  "C:\Users\lv39\ado\personal/"
+  [5]  (PLUS)      "C:\Users\lv39\ado\plus/"
+  [6]  (OLDPLACE)  "c:\ado/"</code></pre>
+<p>To look for a command, say <code>reghdfe</code>, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error. We can query the location of <code>reghdfe</code> explicitly with <code>which</code>:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>command reghdfe not found as either built-in or ado-file
+r(111);</code></pre>
+<h3 id="where-are-packages-installed">Where are packages installed?</h3>
+<p>When we install a package, using one of the various package installation commands (<code>net install</code>, <code>ssc install</code>)<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>, only one of the (<code>sysdir</code>) paths is relevant: <code>PLUS</code>. So if we install <code>reghdfe</code> with <code>ssc install reghdfe</code>, it will be installed in the <code>PLUS</code> directory, and we can see that with <code>which</code>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href=""></a><span class="kw">ssc</span> install reghdfe</span>
+<span id="cb29-2"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023</code></pre>
+<div class="important">
+<p>It is important here to recognize that it is the value of the special <code>sysdir</code> directory <code>PLUS</code> that determines where Stata installs commands, but the separate list of <code>adopath</code> locations where it looks for commands. It is possible to install a command in a location that Stata does not look for commands!</p>
+</div>
+<aside></aside></section>
+<section id="using-environments-in-stata" class="slide level2 center">
+<h2>Using environments in Stata</h2>
+<p>But the <code>(PLUS)</code> directory can be manipulated, and that creates the opportunity to create an “environment”.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href=""></a></span>
+<span id="cb31-2"><a href=""></a>* Set the root directory</span>
+<span id="cb31-3"><a href=""></a></span>
+<span id="cb31-4"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb31-5"><a href=""></a></span>
+<span id="cb31-6"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb31-7"><a href=""></a></span>
+<span id="cb31-8"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb31-9"><a href=""></a></span>
+<span id="cb31-10"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
+<span id="cb31-11"><a href=""></a></span>
+<span id="cb31-12"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb31-13"><a href=""></a></span>
+<span id="cb31-14"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
+<span id="cb31-15"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
+<span id="cb31-16"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+<span id="cb31-17"><a href=""></a></span>
+<span id="cb31-18"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb31-19"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb31-20"><a href=""></a></span>
+<span id="cb31-21"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
+<span id="cb31-22"><a href=""></a></span>
+<span id="cb31-23"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb31-24"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb31-25"><a href=""></a></span>
+<span id="cb31-26"><a href=""></a>* verify the path</span>
+<span id="cb31-27"><a href=""></a></span>
+<span id="cb31-28"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which should show something like this:</p>
+<pre><code>. adopath
+  [1]  (PLUS)      "C:\Users\lv39\Documents/PROJECT123/ado/"
+  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [4]              "."</code></pre>
+<p>Let’s verify again where the <code>reghdfe</code> package is:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>. which reghdfe
+command reghdfe not found as either built-in or ado-file
+r(111);</code></pre>
+<p>So it is no longer found. Why? Because we have removed the previous location (the old <code>PLUS</code> path) from the search sequence. It’s as if it didn’t exist.</p>
+</section>
+<section id="installing-packages-when-an-environment-is-active" class="slide level2 center">
+<h2>Installing packages when an environment is active</h2>
+<p>When we now install <code>reghdfe</code> again:</p>
+<pre><code>. ssc install reghdfe
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
+*! version 6.12.3 08aug2023</code></pre>
+<p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project (more on that <a href="reproducing-environments">later</a>).</p>
+</section>
+<section id="installing-precise-versions-of-packages" class="slide level2 center">
+<h2>Installing precise versions of packages</h2>
+<p>Let’s imagine we need an older version of <code>reghdfe</code>. In general, it is <strong>not</strong> possible in Stata to install an older version of a package in a straightforward fashion. You <em>may</em> have success with the <a href="https://web.archive.org/web/20141226200440/http://fmwww.bc.edu/RePEc/bocode/">Wayback Machine archive of SSC</a>, which in some cases goes back to 2000, by carefully reconstructing the necessary files.</p>
+<p>Here, we will leverage the <strong>SSC Snapshot</strong> maintained by Lars Vilhuber on Github (<a href="https://github.com/labordynamicsinstitute/ssc-mirror/">https://github.com/labordynamicsinstitute/ssc-mirror/</a>), which has been capturing snapshots of SSC since <a href="https://github.com/labordynamicsinstitute/ssc-mirror/releases/tag/2021-12-21">late 2021</a> (details are for a different tutorial):</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href=""></a>* <span class="kw">define</span> the <span class="fu">date</span></span>
+<span id="cb36-2"><a href=""></a><span class="kw">global</span> sscdate <span class="st">"2021-12-21"</span></span>
+<span id="cb36-3"><a href=""></a>net install reghdfe, from(https:<span class="co">//raw.githubusercontent.com/labordynamicsinstitute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which gives us</p>
+<pre><code>. net install reghdfe, from(https://raw.githubusercontent.com/labordynamicsinsti
+&gt; tute/ssc-mirror/${sscdate}/fmwww.bc.edu/repec/bocode/r)
+checking reghdfe consistency and verifying not already installed...
+installing into C:\Users\lv39\Documents/ado\...
+installation complete.
+
+. which reghdfe
+C:\Users\lv39\Documents/ado\r\reghdfe.ado
+*! version 5.7.3 13nov2019</code></pre>
+<p>So we now have TWO different version of <code>reghdfe</code> installed:</p>
+<ul>
+<li>Version 5.7.3 from Nov 2019 is installed at <code>C:\Users\lv39\Documents/ado\r\reghdfe.ado</code></li>
+<li>Version 6.12.3 from Aug 2023 is installed at <code>C:\Users\lv39\ado\plus\r\reghdfe.ado</code></li>
+</ul>
+<p>:::{admonition} Stata can get confused about how to write paths… :class: dropdown</p>
+<p>Stata on Windows can understand two types of path syntax: the “Windows” syntax, with backslashes <code>\</code>, and the “Unix” syntax, with forward slashes ‘/’. It will usually report paths in the “Windows” syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the “weird” mixed notation:</p>
+<pre><code>C:\Users\lv39\Documents/ado\r\reghdfe.ado</code></pre>
+<p>Other software (e.g, R), will consistently use the forward slash, even on Windows, when paths are coded internally.</p>
+<p>Only the former is used by the “environment” we just configured! Which is a good thing, since there are a few functional differences between these two packages. But for the life of <em>this</em> project, that functionality can now be relied upon - as long as we take care to use the same “environment” for all code run within this project. This can be achieved by using the <code>main.do</code> defined in <a href="hands-off-running">one of the previous sections</a>:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href=""></a>* main.<span class="kw">do</span></span>
+<span id="cb39-2"><a href=""></a>* This is a simple example <span class="kw">of</span> a main file <span class="kw">in</span> Stata</span>
+<span id="cb39-3"><a href=""></a>* It runs <span class="ot">all</span> the other files <span class="kw">in</span> the correct <span class="kw">order</span></span>
+<span id="cb39-4"><a href=""></a></span>
+<span id="cb39-5"><a href=""></a>* Set the root directory</span>
+<span id="cb39-6"><a href=""></a></span>
+<span id="cb39-7"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb39-8"><a href=""></a></span>
+<span id="cb39-9"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb39-10"><a href=""></a></span>
+<span id="cb39-11"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb39-12"><a href=""></a></span>
+<span id="cb39-13"><a href=""></a>* Enable project <span class="ot">environment</span></span>
+<span id="cb39-14"><a href=""></a></span>
+<span id="cb39-15"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb39-16"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb39-17"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb39-18"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb39-19"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb39-20"><a href=""></a><span class="kw">adopath</span></span>
+<span id="cb39-21"><a href=""></a></span>
+<span id="cb39-22"><a href=""></a>* Run the <span class="kw">data</span> preparation file</span>
+<span id="cb39-23"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/01_data_prep.<span class="kw">do</span></span>
+<span id="cb39-24"><a href=""></a></span>
+<span id="cb39-25"><a href=""></a><span class="co">// etc. etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::{.notes}</p>
+<p>While we used interactive commands to install the various packages here, that was only for illustrative purposes. <strong>Always</strong> script the installation of packages in a <code>setup.do</code> file. We will address how and when to run that file in the <a href="reproducing-environments">next section</a>.</p>
+</section>
+<section id="takeaways-4" class="slide level2 center">
+<h2>Takeaways</h2>
+<p>From the earlier desiderata of <em>environments</em>:</p>
+<ul>
+<li>✅ <strong>Isolated</strong>: Installing a new or updated package for one project won’t break your other projects, and vice versa.</li>
+<li>✅ <strong>Portable</strong>: Easily transport your projects from one computer to another, <em>even across different platforms</em>.</li>
+<li>❌ <strong>Reproducible</strong>: Records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.</li>
+</ul>
+</section></section>
+<section>
+<section id="last-but-not-least" class="title-slide slide level1 center">
+<h1>Last but not least</h1>
+
+</section>
+<section id="confidential-data" class="slide level2 center">
+<h2>Confidential data</h2>
+<p>Do you know your rights?</p>
+</section>
+<section id="permissions" class="slide level2 center">
+<h2>Permissions</h2>
+<p>These will be noted in the <strong>data use agreement (DUA), license, or non-disclosure agreement (NDA)</strong> that you <strong>signed or clicked through</strong> to obtain access to the data from the data provider.</p>
+<ul>
+<li>Careful: scraped or downloaded data that did not have an explicit license!</li>
+</ul>
+</section>
+<section id="keep-in-mind" class="slide level2 center">
+<h2>Keep in mind</h2>
+<p>Just because</p>
+<ul>
+<li>you (and the entire world) can <strong>download the data</strong></li>
+<li>does <strong>NOT</strong> give you the (automatic) right to <strong>re-publish</strong> the data.</li>
+</ul>
+</section>
+<section id="permissions-1" class="slide level2 center">
+<h2>Permissions</h2>
+<ul>
+<li>Do NOT <strong>transfer or publish</strong> data that you have no rights to transfer. Always carefully read your data use agreement (DUA), license, or non-disclosure agreement (NDA) that you signed.</li>
+<li>Do NOT upload restricted-access data to the journal’s platform.</li>
+<li>DO structure the repository to take into the account the data that cannot be published.</li>
+</ul>
+</section>
+<section id="communicating-restrictions" class="slide level2 center">
+<h2>Communicating restrictions</h2>
+<p>Whatever <strong>restrictions</strong> are imposed on the data typically convey to other replicators as well.</p>
+<ul>
+<li>Document them in the <strong>public</strong> README, in the section about “<a href="https://social-science-data-editors.github.io/template_README/template-README.html#data-availability-and-provenance-statements">Data Availability and Provenance Statements</a>.”</li>
+</ul>
+</section>
+<section id="consider" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Consider</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>A project with confidential and public-use data.</p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb40-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb40-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb40-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb40-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb40-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb40-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb40-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb40-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb40-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb40-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb40-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb40-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb40-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb40-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="organize-your-project-so-you-can-exclude-confidential-data" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Organize your project so you can exclude confidential data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Clearly separate the restricted from the open-access data, both in terms of the raw data as well as the processed data:</p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb41" data-code-line-numbers="11,13"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb41-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb41-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb41-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb41-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb41-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb41-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb41-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb41-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb41-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb41-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb41-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb41-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb41-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb41-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="strategy" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<p>When the replication package relies on confidential data that cannot be shared, or is shared under different conditions, you should</p>
+<ul>
+<li>preserve (archive) the confidential replication package
+<ul>
+<li>If the data cannot be removed from a secure enclave, they should nevertheless be archived wherever the confidential data are kept<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a></li>
+<li>If the data can be shared, but are subject to access restrictions, follow <a href="creating-separate-data-deposit">this guide on creating a separate data deposit</a> and, when creating the restricted deposit at ICPSR, follow <a href="creating-restricted-data-deposit-icpsr">these instructions on how to do so</a>.</li>
+</ul></li>
+</ul>
+<aside></aside></section>
+<section id="strategy-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Prepare a <strong>confidential (partial) replication package</strong> <code>project-confidential.zip</code>, contains the contents of <code>data/confidential</code> and possibly <code>data/conf_analysis</code>.</p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb42" data-code-line-numbers="11-14"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb42-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb42-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb42-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb42-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb42-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb42-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb42-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb42-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb42-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb42-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb42-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb42-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb42-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb42-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="strategy-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Prepare a <strong>non-confidential replication package</strong> that contains all code, and any data that is not subject to publication controls</p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb43" data-code-line-numbers="1-10"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb43-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb43-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb43-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb43-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb43-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb43-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb43-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb43-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb43-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb43-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb43-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb43-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb43-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb43-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="strategy-3" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Important: the package contains <strong>all code</strong>, including the code that is used to process the <strong>confidential data!</strong></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb44" data-code-line-numbers="5"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb44-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb44-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb44-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb44-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb44-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb44-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb44-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb44-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb44-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb44-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb44-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb44-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb44-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb44-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="strategy-4" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Ensure that replicators have detailed instructions (<strong>README</strong>) on how to combine the two packages</li>
+<li>Specify which (if any) of the results in their paper can be reproduced without the confidential data.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb45" data-code-line-numbers="1-1"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb45-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb45-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb45-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb45-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb45-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb45-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb45-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb45-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb45-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb45-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb45-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb45-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb45-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb45-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section></section>
-<section id="this-presentation" class="title-slide slide level1 center">
-<h1>This presentation</h1>
+<section id="questions" class="title-slide slide level1 center">
+<h1>Questions</h1>
+
+</section>
+
+<section>
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
+
+</section>
+<section id="this-presentation" class="slide level2 center">
+<h2>This presentation</h2>
 <ul>
 <li><a href="https://github.com/larsvilhuber/self-checking-reproducibility">Github</a></li>
 <li><a href="https://larsvilhuber.github.io/self-checking-reproducibility/presentation/">Presentation</a></li>
 </ul>
+<p>Content is <a href="https://creativecommons.org/licenses/by-nc/4.0/"><img data-src="https://licensebuttons.net/l/by-nc/4.0/80x15.png" alt="License: CC BY-NC 4.0"></a>.</p>
 </section>
-
-<section id="references" class="title-slide slide level1 center">
-<h1>References</h1>
+<section id="references" class="slide level2 center">
+<h2>References</h2>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
-
+</section></section>
 <section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows (“Git Bash”). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the <code>%PATH%</code> by default, and thus may need to be called with the full path to the executable.</p></li>
+<li id="fn1"><p>Source: <a href="https://www.pngall.com/warning-sign-png/download/69408">Red Warning PNG Clipart</a>, CC-BY.</p></li>
+<li id="fn2"><p>Formally, this is true for operating systems as well, and in some cases, the operating system and the programming language interact (for instance, in Python).</p></li>
+<li id="fn3"><p><a href="https://www.stata.com/manuals/rnet.pdf"><code>net install</code> refererence</a>. Strictly speaking, the location where ado packages are installed can be changed via the <code>net set ado</code> command, but this is rarely done in practice, and we won’t do it here.</p></li>
+<li id="fn4"><p><a href="https://social-science-data-editors.github.io/guidance/FAQ.html#how-can-i-ensure-that-the-confidential-data-is-preserved">see this FAQ</a>)</p></li>
 </ol>
 </section>
     </div>
@@ -933,7 +1678,7 @@ Lars Vilhuber
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

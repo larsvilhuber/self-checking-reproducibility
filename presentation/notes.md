@@ -8,11 +8,12 @@
 
 arg=filename
 cat $arg |\
+grep -vE "=$" |\
 sed 's/:::{tab-set}/::: {.panel-tabset}/' |\
 sed 's/:::{tab-item}/###/' |\
 sed 's/^:::$//' |\
 sed 's/warning/.notes/' |\
-sed 's/\{note\}/{.notes}/ > presentation/$arg
+sed 's/{note}/{.notes}/' > presentation/$arg
 
 # Running from the command line
 
@@ -27,3 +28,6 @@ sed 's/\{note\}/{.notes}/ > presentation/$arg
 ```
 /c/Program\ Files/RStudio/resources/app/bin/quarto/bin/quarto.exe render index.Rmd 
 ```
+
+
+🎲✅❌

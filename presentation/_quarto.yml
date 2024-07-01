@@ -1,11 +1,13 @@
 format: 
   revealjs:
     scrollable: true
+    margin: 0
+    code-overflow: wrap
     reference-location: document
     widescreen: true
     center: true
     transition: slide
-    theme: night
+    theme: [night, style.css]
     self_contained: false
     reveal_options:
         slideNumber: true

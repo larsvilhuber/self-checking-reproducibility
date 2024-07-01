@@ -2,29 +2,79 @@
 title: "Checking reproducibility on Day T-1"
 author: 
   - "Lars Vilhuber"
-date: June 2024
+date: June 30 2024
 bibliography: "paper.bib"
 
 ---
 
-```{r, child=c(here::here('index.md'))}
+```{r, child=c('00-index-mod.md')}
 ```
 
 ```{r, child=c(here::here('00-targets.md'))}	
 ```
 
+
+# Why
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Unpredictable things happening to your computing environment:
+
+- Software updates
+- Change of employer
+- Sudden need for a new computer
+
+:::
+
+::: {.column width="50%"}
+
+![](https://media1.tenor.com/m/1L7rJphSMxQAAAAC/fail-fall.gif)
+
+:::
+
+::::
+
 ```{r, child=c('01-run_it_again.md')}
 ```
 
 ```{r, child=c('02-00-intermezzo.md')}
-
+```
 
 ```{r, child=c('02-hands_off_running.md')}
 ``` 
 
-# This presentation
+```{r, child=c('03-00-intermezzo.md')}
+```
+
+```{r, child=c('03-automatically_saving_figures.md')}	
+```
+
+```{r, child=c('04-00-intermezzo.md')}
+```
+
+```{r, child=c('04-creating_log_files.md')}	
+```
+
+```{r, child=c('05-00-intermezzo.md')}
+```
+
+```{r, child=c('12-environments-in-stata.md')}
+```
+
+```{r, child=c('99-confidential_data.md')}	
+```
+
+# Questions
+
+#
+
+## This presentation
 
 - [Github](https://github.com/larsvilhuber/self-checking-reproducibility)
 - [Presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/)
 
-# References
+Content is [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+## References

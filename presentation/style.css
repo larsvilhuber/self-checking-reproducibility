@@ -1,0 +1,43 @@
+/*-- scss:rules --*/
+.goodcite {
+  background-color: #c7f3e47d;
+}
+
+.mediumcite {
+  background-color: #f8ebc07d;
+}
+
+.badcite {
+  background-color: #c284887d;
+}
+
+
+    .class_author {
+      color: #eb7826
+    }
+    .class_title {
+      color: #71ae45
+    }
+    .class_distributor {
+      color: #5a9dd6
+    }
+    .class_version {
+      color: #be8d00
+    }
+    .class_doi {
+      color: #bd0000
+    }
+    .class_date {
+      color: #febc00
+    }
+
+    .warning {
+      background-color: #f5b3b8;
+    }
+/* end of customizations */
+
+.reveal strong {
+  color: black;
+  background-color: lemonchiffon;
+  font-weight: bolder;
+}
