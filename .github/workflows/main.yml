@@ -35,25 +35,25 @@ jobs:
       run: |
         jupyter-book build .
     # Let's do the Quarto
-    # - name: Set up Quarto
-    #   uses: quarto-dev/quarto-actions/setup@v2
-    # - name: Install R
-    #   uses: r-lib/actions/setup-r@v2
-    #   with:
-    #     r-version: '4.3.2'
+    - name: Set up Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+    - name: Install R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: '4.4.0'
 
-    # - name: Install R Dependencies
-    #   uses: r-lib/actions/setup-renv@v2
-    #   with:
-    #     cache-version: 1
+    - name: Install R Dependencies
+      uses: r-lib/actions/setup-renv@v2
+      with:
+        cache-version: 1
 
-    # - name: Render Quarto Project
-    # #   uses: quarto-dev/quarto-actions/render@v2
-    # #   with:
-    # #     path: ./presentation
-    #   run: |
-    #     cd presentation
-    #     quarto render index.Rmd
+    - name: Render Quarto Project
+    #   uses: quarto-dev/quarto-actions/render@v2
+    #   with:
+    #     path: ./presentation
+      run: |
+        cd presentation
+        quarto render index.Rmd
     - name: Move outputs around
       run: |
         mkdir _build/html/presentation
