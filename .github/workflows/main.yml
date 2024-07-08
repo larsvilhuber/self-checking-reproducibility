@@ -100,11 +100,15 @@ jobs:
       with:
             path: presentation
             pattern: artifact-presentation
+    - name: Check stuff
+      run: |
+        ls -l
+        ls -l presentation
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
       with:
-        path: .
+        path: ./
   # publish:
   #   needs: deploy-book
   #   runs-on: ubuntu-latest
