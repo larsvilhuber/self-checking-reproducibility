@@ -98,17 +98,17 @@ jobs:
     - name: Download Pres Artifacts
       uses: actions/download-artifact@v4
       with:
-            path: presentation
+            path: .
             pattern: artifact-presentation
-    - name: Check stuff
+    - name: Move stuff
       run: |
-        ls -l
-        ls -l presentation
+        mv artifact-book website
+        mv artifact-presentation website/presentation
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
       with:
-        path: ./
+        path: ./website
   # publish:
   #   needs: deploy-book
   #   runs-on: ubuntu-latest
