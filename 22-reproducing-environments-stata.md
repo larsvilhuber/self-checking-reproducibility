@@ -106,7 +106,7 @@ For SSC packages, a mirror of the SSC archive has been maintained by *Lars Vilhu
 local github "https://raw.githubusercontent.com"
 local sscurl "fmwww.bc.edu/repec/bocode"
 local sscdate "2022-01-01"
-net install a2reg, from(`github'/labordynamicsinstitute/ssc-mirror/`sscdate`/`sscurl'/a)
+net install a2reg, from(`github'/labordynamicsinstitute/ssc-mirror/`sscdate'/`sscurl'/a)
 ```
 
 **Downside**
