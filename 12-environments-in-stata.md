@@ -158,6 +158,14 @@ C:\Users\lv39\Documents\PROJECT123\ado\plus\r\reghdfe.ado
 
 We now see it in the **project-specific** directory, which we can distribute with the whole project (more on that [later](reproducing-environments)). 
 
+## Other implementation of this approach
+
+The above approach is not novel. [Julian Reif]() has suggested something similar for several years in his [Stata Coding Guide](https://julianreif.com/guide/#libraries), though I do not agree with his suggestion to delete the `_install_stata_packages.do`, because doing so destroys provenance information (where did the Stata packages come from).
+
+More recently, the folks at the [World Bank DIME]() have created a Stata command called [`repado`](https://worldbank.github.io/repkit/reference/repado.html) to manage Stata package environments, which fundamentally is a two-line way to implement the various adjustments outlined earlier. 
+
+Personally, I prefer the few lines of code explicitly written out above, for their transparency, but all of these approaches ultimately achieve the goal of isolating the project-specific package environment from uncontrolled changes to the rest of your software platform, and when included in the replication package, make replication more robust and easier.
+
 
 ## Installing precise versions of packages
 
