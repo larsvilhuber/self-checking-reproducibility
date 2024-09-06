@@ -78,7 +78,7 @@ This can then be used, for instance, to call `R` and `python` from a Stata progr
 
 :::::{tab-set}
 
-:::: Stata 16+
+::::{tab-item} Stata 16+
 
 ```stata
 global Rterm_path "C:/Program Files/R/R-4.3.1/bin/x64"
@@ -97,7 +97,7 @@ rsource using "code/figure1.R"
 
 ::::
 
-:::: Stata before Stata 16
+::::{tab-item} Stata before Stata 16
 
 ```stata
 global Rterm_path "C:/Program Files/R/R-4.3.1/bin/x64"
