@@ -119,6 +119,7 @@ where the Stata package [`rsource`](https://ideas.repec.org/c/boc/bocode/s456847
 [^pythonstata]: Note that Stata has [integrated Python functionality](https://www.stata.com/manuals/ppystataintegration.pdf) since version 16. The example referenced uses an older Stata package that works for Stata since 2013.
 
 ::::
+
 :::::
 
 ### Calling other software from Python
