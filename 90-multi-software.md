@@ -1,15 +1,17 @@
 # Multi-software projects
 
-Many projects will use multiple softwares, along the lines of "use what is appropriate for specific tasks." This may pose particular challenges. I showed that a generic `bash` script can handle running multiple softwares in the right sequence, but some researchers may be more comfortable in a main software package, or may not want to incur the additional complication of relying on `bash`, or worse, restricting reproducibility to a particular platform, for instance by choosing `cmd.exe` (`.bat` files) or Powershell scripts.
+Many projects will use multiple softwares, along the lines of "use what is appropriate for specific tasks." This may pose particular challenges. [I showed](hands-off-running) that a generic `bash` script can handle running multiple softwares in the right sequence, but some researchers may be more comfortable in a main software package, or may not want to incur the additional complication of relying on `bash`, or worse, restricting reproducibility to a particular platform, for instance by choosing `cmd.exe` (`.bat` files) or Powershell scripts.
 
 ## System Paths
 
 In order to call external software from within a statistical programming language, it is necessary to know where, on a system, the software can be found. In "Environments", we discussed *search paths*, but in many computing environments, not each piece of software is on that search path.
 
-However, it is possible to explicitly address this. Each software does know where it is installed. 
+However, it is possible to explicitly address this. Some software is aware of its own installation path.
 
 
-### R
+:::::{tab-set}
+
+::::{tab-item}  R
 
 ```R
 R.home("bin")
@@ -18,7 +20,9 @@ R.home("bin")
 will yield the location of the `R` executable, for instance
 `C:/Program Files/R/R-4.4.0/bin/x64/R`. Note that it will vary by version!
 
-### Stata
+::::
+
+::::{tab-item}   Stata
 
 ```stata
 display c(sysdir_stata)
@@ -31,9 +35,12 @@ might display
 /usr/local/stata/
 ```
 
-### Python
+::::
 
-Typing 
+
+Others may require querying the operating system itself:
+
+For instance, to find **Python**, typing 
 
 :::::{tab-set}
 
@@ -74,7 +81,7 @@ into a (Windows) Command window  might yield `C:\Program Files\Python312\python.
 
 ### Calling other software from Stata
 
-This can then be used, for instance, to call `R` and `python` from a Stata program:
+The path information can then be used, for instance, to call `R` and `python` from a Stata program:
 
 :::::{tab-set}
 
