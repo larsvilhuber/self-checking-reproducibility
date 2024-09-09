@@ -18,7 +18,7 @@ bibliography: "paper.bib"
 ```{r, child=c('00-index-mod.md')}
 ```
 
-```{r, child=c(here::here('00-targets.md'))}	
+```{r, child=c('00-targets.md')}	
 ```
 
 
