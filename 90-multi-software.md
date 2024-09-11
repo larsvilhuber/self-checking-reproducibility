@@ -94,8 +94,6 @@ global Rterm_path "C:/Program Files/R/R-4.3.1/bin/x64"
 global python_ex "C:\Program Files\Python312\python.exe"
 
 ssc install rsource
-ssc install python
-
 
 python set exec "$python_ex"
 python script "code/run_geo_clean.py"
