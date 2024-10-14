@@ -107,7 +107,7 @@ jobs:
           node /decktape/decktape.js --chrome-path /usr/bin/chromium-browser --chrome-arg=--no-sandbox --chrome-arg=--disable-gpu index.html index.pdf
 
     - name: Upload Artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: artifact-presentation-pdf
         path: _html/index.pdf
