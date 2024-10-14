@@ -1,0 +1,26 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Self-checking Reproducibility
+message: >-
+  Presented at ROCKwool Institute/ Humboldt Universität Berlin. The opinions 
+  expressed in this talk are solely the author's, and do not 
+  represent the views of the U.S. Census Bureau, the American 
+  Economic Association, or any of the funding agencies.
+type: presentation
+authors:
+  - given-names: Lars
+    family-names: Vilhuber
+    email: lars.vilhuber@cornell.edu
+    affiliation: Cornell University
+    orcid: 'https://orcid.org/0000-0001-5733-8932'
+repository-code: >-
+  https://github.com/larsvilhuber/self-checking-reproducibility/
+url: >-
+  https://larsvilhuber.github.io/self-checking-reproducibility/
+abstract: >-
+  Verifying yourself whether your replication package is reproducible is an important task. In this presentation and draft manual, I explore various methods, from very simple to very technical, how to improve the reproducibility of your packages. While focused on how you can check after the fact, many of these techniques can be incorporated into your workflow to ensure reproducibility from the start.
+license: CC-BY-NC-4.0
+date-released: '2024-10-14'
