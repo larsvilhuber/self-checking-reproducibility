@@ -83,7 +83,7 @@ jobs:
             presentation/index.html
           retention-days: 1
 
-          create-pdf:
+  create-pdf:
     needs: compile-presentation
     runs-on: ubuntu-latest
     steps:
@@ -111,7 +111,8 @@ jobs:
       with:
         name: artifact-presentation-pdf
         path: _html/index.pdf
-  deploy-book:
+   
+  deploy-all:
     runs-on: ubuntu-22.04
     needs: 
       - compile-jupyterbook
@@ -157,7 +158,7 @@ jobs:
 
 
   publish:
-    needs: deploy-book
+    needs: deploy-all
     
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
