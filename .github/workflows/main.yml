@@ -83,11 +83,40 @@ jobs:
             presentation/index.html
           retention-days: 1
 
+          create-pdf:
+    needs: compile-presentation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download pages artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: artifact-presentation
+        path: _html
+    - name: Check permissions
+      run: |
+        ls -la _html
+        chmod -R a+rwX _html
+        ls -la _html
+        
+    - name: Create PDF
+      uses: addnab/docker-run-action@v3
+      with:
+        image: astefanutti/decktape
+        options: -v ${{ github.workspace }}/_html:/slides 
+        run: |
+          node /decktape/decktape.js --chrome-path /usr/bin/chromium-browser --chrome-arg=--no-sandbox --chrome-arg=--disable-gpu index.html index.pdf
+
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        name: artifact-presentation-pdf
+        path: _html/index.pdf
   deploy-book:
     runs-on: ubuntu-22.04
     needs: 
       - compile-jupyterbook
       - compile-presentation
+      - create-pdf
     steps:
     # Pull down both artifacts
     - name: Download Book Artifacts
@@ -100,10 +129,16 @@ jobs:
       with:
             path: .
             pattern: artifact-presentation
+    - name: Download Pres PDF
+      uses: actions/download-artifact@v4
+      with:
+            path: .
+            pattern: artifact-pdf
     - name: Move stuff
       run: |
-        mv artifact-book website
-        mv artifact-presentation website/presentation
+          mv artifact-book website
+          mv artifact-presentation website/presentation
+          mv artifact-pdf/index.pdf website/presentation/presentation.pdf
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
