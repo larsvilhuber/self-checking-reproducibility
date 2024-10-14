@@ -137,6 +137,7 @@ jobs:
             pattern: artifact-pdf
     - name: Move stuff
       run: |
+          ls -lR
           mv artifact-book website
           mv artifact-presentation website/presentation
           mv artifact-pdf/index.pdf website/presentation/presentation.pdf
