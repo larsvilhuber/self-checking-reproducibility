@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Lars Vilhuber">
   <meta name="dcterms.date" content="2024-06-30">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -418,7 +418,7 @@ Lars Vilhuber
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
-<p>This document describes a few <strong>possible</strong> steps to self-check replication packages before submitting them to a journal. It is not meant to be exhaustive, and it is not meant to be prescriptive. There are <strong>many ways to construc</strong>t a replication package, and many more to check that it works.</p>
+<p>This document describes a few <strong>possible</strong> steps to self-check replication packages before submitting them to a journal. It is not meant to be exhaustive, and it is not meant to be prescriptive. There are <strong>many ways to construct</strong> a replication package, and many more to check that it works.</p>
 </section>
 <section id="computational-empathy" class="slide level2 center">
 <h2>Computational Empathy</h2>
@@ -466,8 +466,7 @@ Lars Vilhuber
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="https://media1.tenor.com/m/1L7rJphSMxQAAAAC/fail-fall.gif"></p>
-</div>
-</div>
+</div></div>
 </section>
 
 <section>
@@ -603,8 +602,7 @@ Lars Vilhuber
 <span id="cb1-10" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/04_figures.<span class="kw">do</span></span>
 <span id="cb1-11" class="hljs-ln-code"><a href=""></a>* Run the appendix file</span>
 <span id="cb1-12" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/05_appendix.<span class="kw">do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="stata-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Stata</h2>
@@ -624,8 +622,7 @@ Lars Vilhuber
 <span id="cb2-10" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/04_figures.<span class="kw">do</span></span>
 <span id="cb2-11" class="hljs-ln-code"><a href=""></a>* Run the appendix file</span>
 <span id="cb2-12" class="hljs-ln-code"><a href=""></a><span class="kw">do</span> <span class="ot">$rootdir</span>/05_appendix.<span class="kw">do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="notes" class="slide level2 center">
 <h2>Notes</h2>
@@ -645,8 +642,7 @@ Lars Vilhuber
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> /where/my/code/is</span>
 <span id="cb3-2"><a href=""></a><span class="ex">stata-mp</span> <span class="at">-b</span> do main.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where <code>stata-mp</code> should be replaced with <code>stata</code> or <code>stata-se</code> depending on your licensed version.</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="r" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">R</h2>
@@ -672,8 +668,7 @@ Lars Vilhuber
 <span id="cb4-16" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"04_figures.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb4-17" class="hljs-ln-code"><a href=""></a><span class="do">## Run the appendix file</span></span>
 <span id="cb4-18" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"05_appendix.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="r-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">R</h2>
@@ -699,8 +694,7 @@ Lars Vilhuber
 <span id="cb5-16" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"04_figures.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-17" class="hljs-ln-code"><a href=""></a><span class="do">## Run the appendix file</span></span>
 <span id="cb5-18" class="hljs-ln-code"><a href=""></a><span class="fu">source</span>(<span class="fu">file.path</span>(rootdir, <span class="st">"05_appendix.R"</span>), <span class="at">echo =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="notes-for-r" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Notes for R</h2>
@@ -926,8 +920,7 @@ Lars Vilhuber
 <span id="cb9-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
 <span id="cb9-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
 <span id="cb9-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="stata-5" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Stata</h2>
@@ -944,8 +937,7 @@ Lars Vilhuber
 <span id="cb10-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
 <span id="cb10-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
 <span id="cb10-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="stata-6" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Stata</h2>
@@ -962,8 +954,7 @@ Lars Vilhuber
 <span id="cb11-7" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> logname = <span class="st">"`cdate'-`ctime'-`c(username)'"</span></span>
 <span id="cb11-8" class="hljs-ln-code"><a href=""></a><span class="kw">local</span> globallog = <span class="st">"$logdir/logfile_`logname'.log"</span></span>
 <span id="cb11-9" class="hljs-ln-code"><a href=""></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"`globallog'"</span>, <span class="bn">name</span>(<span class="kw">global</span>) <span class="kw">replace</span> <span class="bn">text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="notes-2" class="slide level2 center">
 <h2>Notes</h2>
@@ -971,39 +962,81 @@ Lars Vilhuber
 <li>More examples</li>
 <li>While some software (Stata, MATLAB) will create log files that contain <strong>commands and output</strong>, others (R, Python) will create log files that contain <strong>only output</strong>.</li>
 </ul>
-<h3 id="creating-log-files-automatically">Creating log files automatically</h3>
+</section></section>
+<section>
+<section id="creating-log-files-automatically" class="title-slide slide level1 center">
+<h1>Creating log files automatically</h1>
 <p>An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the command line to run the software, and thus may be considered an <strong>advanced topic.</strong> The examples below are for Linux/macOS, but similar functionality exists for Windows.</p>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Stata</a></li><li><a href="#tabset-1-2">R</a></li><li><a href="#tabset-1-3">MATLAB</a></li><li><a href="#tabset-1-4">Julia, Python</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
+</section>
+<section id="stata-7" class="slide level2 center">
+<h2>Stata</h2>
 <p>To automatically create a log file, run Stata from the command line with the <code>-b</code> option:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">stata</span> <span class="at">-b</span> do main.do</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which will create a file <code>main.log</code> in the same directory as <code>main.do</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource notes number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>For this to work, the filename cannot include spaces.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>On Windows, follow instructions <a href="https://www.stata.com/manuals/gswb.pdf#gswB.5">here</a>.</p>
+<ul>
+<li class="fragment">For this to work, the filename cannot include spaces.</li>
+<li class="fragment">On Windows, follow instructions <a href="https://www.stata.com/manuals/gswb.pdf#gswB.5">here</a>.</li>
+</ul>
+</section>
+<section id="r-4" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">R</h2>
+<p>To automatically create a log file, run R from the command line using the <code>BATCH</code> functionality, as follows:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb13-1" class="hljs-ln-code"><a href=""></a><span class="ex">R</span> CMD BATCH options infile outfile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote>
+<p>On Windows, you may need to include the full path of R:</p>
+</blockquote>
+<pre><code>C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH main.R</code></pre>
+</section>
+<section id="r-5" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">R</h2>
+<p>To automatically create a log file, run R from the command line using the <code>BATCH</code> functionality, as follows:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a><span class="ex">R</span> CMD BATCH options infile outfile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create a file <code>main.Rout</code> in the same directory as <code>main.R</code>.</p>
+</section>
+<section id="r-6" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">R</h2>
+<p>If you prefer a different name for the output file, you can specify it.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb16-1" class="hljs-ln-code"><a href=""></a><span class="ex">R</span> CMD BATCH main.R main.<span class="va">$(</span><span class="fu">date</span> +%F-%H:%M:%S<span class="va">)</span>.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which will create a second-precise date-time stamped log file.</p>
+</section>
+<section id="r-7" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">R</h2>
+<p>If you want to prevent R from saving or restoring its environment (by default, <code>R CMD BATCH</code> does both), you can specify the <code>--no-save</code> and <code>--no-restore</code> options.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> <span class="at">--no-restore</span> main.R main.<span class="va">$(</span><span class="fu">date</span> +%F-%H:%M:%S<span class="va">)</span>.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-8" class="slide level2 smaller center">
+<h2>R</h2>
+<div class="{warning}">
+<p>If there are other commands, such as <code>sink()</code>, active in the R code, the <code>main.Rout</code> file will not contain some output.</p>
 </div>
-<div id="tabset-1-2">
-<p>To automatically create a log file, run R from the command line as follows:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">R</span> CMD BATCH main.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>will create a file <code>main.Rout</code> in the same directory as <code>main.R</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource notes number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href=""></a>If there are other commands, such as `sink()`, active in the R code, the `main.Rout` file will not contain some output.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-3">
+</section>
+<section id="r-9" class="slide level2 smaller center">
+<h2>R</h2>
+<blockquote>
+<p>To see more information, check the manual documentation by typing <code>?BATCH</code> (or <code>help(BATCH)</code>) from within an R interactive session. Or by typing <code>R CMD BATCH --help</code> from the command line.</p>
+</blockquote>
+</section>
+<section id="matlab" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">MATLAB</h2>
 <p>To automatically create a log file, run MATLAB from the command line as follows:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="ex">matlab</span> <span class="at">-nodisplay</span> <span class="at">-r</span> <span class="st">"addpath(genpath('.')); main"</span> <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb18-1" class="hljs-ln-code"><a href=""></a><span class="ex">matlab</span> <span class="at">-nodisplay</span> <span class="at">-r</span> <span class="st">"addpath(genpath('.')); main"</span> <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="matlab-1" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">MATLAB</h2>
 <p>A similar command on Windows would be:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">start</span> matlab <span class="at">-nosplash</span>  <span class="at">-minimize</span> <span class="at">-r</span>  <span class="st">"addpath(genpath('.'));main"</span>  <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-4">
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a><span class="ex">start</span> matlab <span class="at">-nosplash</span>  <span class="at">-minimize</span> <span class="at">-r</span>  <span class="st">"addpath(genpath('.'));main"</span>  <span class="at">-logfile</span> matlab.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="julia-python" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">Julia, Python</h2>
 <p>In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="ex">julia</span> main.jl <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">python</span> main.py <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="ex">julia</span> main.jl <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which will create a log file with everything that would normally appear on the console using the <code>tee</code> command.</p>
-</div>
-</div>
-</div>
+</section>
+<section id="julia-python-1" class="slide level2 center" data-auto-animate="true" data-transition="fade">
+<h2 data-id="quarto-animate-title">Julia, Python</h2>
+<p>In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="ex">python</span> main.py <span class="kw">|</span> <span class="fu">tee</span> main.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which will create a log file with everything that would normally appear on the console using the <code>tee</code> command.</p>
 </section>
 <section id="takeaways-3" class="slide level2 smaller center">
 <h2>Takeaways</h2>
@@ -1062,12 +1095,11 @@ Lars Vilhuber
 <li>R: <code>.libPaths()</code></li>
 </ul>
 </div><div class="column" style="width:70%;">
-<div class="sourceCode" id="cb20" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="sc">&gt;</span> <span class="fu">.libPaths</span>()</span>
-<span id="cb20-2" class="hljs-ln-code"><a href=""></a>[<span class="dv">1</span>] <span class="st">"C:/Users/lv39/AppData/Local/R/win-library/4.3"</span>         </span>
-<span id="cb20-3" class="hljs-ln-code"><a href=""></a>[<span class="dv">2</span>] <span class="st">"C:/Users/lv39/AppData/Local/Programs/R/R-4.3.2/library"</span></span>
-<span id="cb20-4" class="hljs-ln-code"><a href=""></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a href=""></a><span class="sc">&gt;</span> <span class="fu">.libPaths</span>()</span>
+<span id="cb22-2" class="hljs-ln-code"><a href=""></a>[<span class="dv">1</span>] <span class="st">"C:/Users/lv39/AppData/Local/R/win-library/4.3"</span>         </span>
+<span id="cb22-3" class="hljs-ln-code"><a href=""></a>[<span class="dv">2</span>] <span class="st">"C:/Users/lv39/AppData/Local/Programs/R/R-4.3.2/library"</span></span>
+<span id="cb22-4" class="hljs-ln-code"><a href=""></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="search-paths-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Search paths</h2>
@@ -1078,17 +1110,16 @@ Lars Vilhuber
 <li>Python: <code>sys.path</code></li>
 </ul>
 </div><div class="column" style="width:70%;">
-<div class="sourceCode" id="cb21" data-code-line-numbers="4-9"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sys</span>
-<span id="cb21-2" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb21-3" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> pprint(sys.path)</span>
-<span id="cb21-4" class="hljs-ln-code"><a href=""></a>[<span class="st">''</span>,</span>
-<span id="cb21-5" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">python312.zip'</span>,</span>
-<span id="cb21-6" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">DLLs'</span>,</span>
-<span id="cb21-7" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib'</span>,</span>
-<span id="cb21-8" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312'</span>,</span>
-<span id="cb21-9" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib</span><span class="ch">\\</span><span class="st">site-packages'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb23" data-code-line-numbers="4-9"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb23-1" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sys</span>
+<span id="cb23-2" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb23-3" class="hljs-ln-code"><a href=""></a><span class="op">&gt;&gt;&gt;</span> pprint(sys.path)</span>
+<span id="cb23-4" class="hljs-ln-code"><a href=""></a>[<span class="st">''</span>,</span>
+<span id="cb23-5" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">python312.zip'</span>,</span>
+<span id="cb23-6" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">DLLs'</span>,</span>
+<span id="cb23-7" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib'</span>,</span>
+<span id="cb23-8" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312'</span>,</span>
+<span id="cb23-9" class="hljs-ln-code"><a href=""></a> <span class="st">'C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lv39</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">Programs</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python312</span><span class="ch">\\</span><span class="st">Lib</span><span class="ch">\\</span><span class="st">site-packages'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="search-paths-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Search paths</h2>
@@ -1100,13 +1131,12 @@ Lars Vilhuber
 <li>Julia: <code>DEPOT_PATH</code> (<a href="https://docs.julialang.org/en/v1/manual/code-loading/">Julia docs</a>)</li>
 </ul>
 </div><div class="column" style="width:70%;">
-<div class="sourceCode" id="cb22" data-code-line-numbers="3-5"><pre class="sourceCode numberSource julia smaller number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode julia hljs"><span id="cb22-1" class="hljs-ln-code"><a href=""></a>julia<span class="op">&gt;</span> <span class="cn">DEPOT_PATH</span></span>
-<span id="cb22-2" class="hljs-ln-code"><a href=""></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">String</span>}<span class="op">:</span></span>
-<span id="cb22-3" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia"</span></span>
-<span id="cb22-4" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">local</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span>
-<span id="cb22-5" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="3-5"><pre class="sourceCode numberSource julia smaller number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode julia hljs"><span id="cb24-1" class="hljs-ln-code"><a href=""></a>julia<span class="op">&gt;</span> <span class="cn">DEPOT_PATH</span></span>
+<span id="cb24-2" class="hljs-ln-code"><a href=""></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">String</span>}<span class="op">:</span></span>
+<span id="cb24-3" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia"</span></span>
+<span id="cb24-4" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">local</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span>
+<span id="cb24-5" class="hljs-ln-code"><a href=""></a> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lv39</span><span class="sc">\\</span><span class="st">.julia</span><span class="sc">\\</span><span class="st">juliaup</span><span class="sc">\\</span><span class="st">julia-1.10.0+0.x64.w64.mingw32</span><span class="sc">\\</span><span class="st">share</span><span class="sc">\\</span><span class="st">julia"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="yes-but-what-about-stata" class="slide level2 center">
 <h2>“Yes, but what about Stata?”</h2>
@@ -1139,44 +1169,41 @@ Lars Vilhuber
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>The default set of directories which can be searched, from a freshly installed Stata, can be queried with the <code>sysdir</code> command, and will look something like this:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href=""></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href=""></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href=""></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata18\</span>
-<span id="cb24-2"><a href=""></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata18\ado\base\</span>
-<span id="cb24-3"><a href=""></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata18\ado\site\</span>
-<span id="cb24-4"><a href=""></a>    <span class="ot">PLUS</span>:  C:\Users\lv39\ado\plus\</span>
-<span id="cb24-5"><a href=""></a><span class="ot">PERSONAL</span>:  C:\Users\lv39\ado\<span class="kw">personal</span>\</span>
-<span id="cb24-6"><a href=""></a>OLDPLACE:  c:\ado\</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href=""></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata18\</span>
+<span id="cb26-2"><a href=""></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata18\ado\base\</span>
+<span id="cb26-3"><a href=""></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata18\ado\site\</span>
+<span id="cb26-4"><a href=""></a>    <span class="ot">PLUS</span>:  C:\Users\lv39\ado\plus\</span>
+<span id="cb26-5"><a href=""></a><span class="ot">PERSONAL</span>:  C:\Users\lv39\ado\<span class="kw">personal</span>\</span>
+<span id="cb26-6"><a href=""></a>OLDPLACE:  c:\ado\</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="the-adopath-search-order" class="slide level2 smaller center">
 <h2>The <code>adopath</code> search order</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>The search paths where Stata looks for commands is queried by <code>adopath</code>, and looks similar, but now has an order assigned to each entry:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
-<span id="cb26-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
-<span id="cb26-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
-<span id="cb26-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
-<span id="cb26-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
-<span id="cb26-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb28-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb28-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
+<span id="cb28-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
+<span id="cb28-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
+<span id="cb28-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="the-path-at-work" class="slide level2 smaller center">
 <h2>The path at work</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>To look for a command, Stata will look in the first directory, then the second, and so on, until it finds it. If it does not find it, it will return an error.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
 <pre><code>command reghdfe not found as either built-in or ado-file
 r(111);</code></pre>
-</div>
-</div>
+</div></div>
 </section>
 <section id="where-are-packages-installed" class="slide level2 center">
 <h2>Where are packages installed?</h2>
@@ -1184,32 +1211,30 @@ r(111);</code></pre>
 <div class="column" style="width:40%;">
 <p>When we install a package (<code>net install</code>, <code>ssc install</code>)<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a>, only one of the (<code>sysdir</code>) paths is relevant: <code>PLUS</code>.</p>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb29" data-code-line-numbers="5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
-<span id="cb29-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
-<span id="cb29-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
-<span id="cb29-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
-<span id="cb29-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
-<span id="cb29-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb31" data-code-line-numbers="5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href=""></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb31-2"><a href=""></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb31-3"><a href=""></a>  [3]              <span class="st">"."</span></span>
+<span id="cb31-4"><a href=""></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
+<span id="cb31-5"><a href=""></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
+<span id="cb31-6"><a href=""></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <aside></aside></section>
 <section id="installing-packages" class="slide level2 smaller center">
 <h2>Installing packages</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href=""></a><span class="kw">ssc</span> install reghdfe</span>
-<span id="cb30-2"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href=""></a><span class="kw">ssc</span> install reghdfe</span>
+<span id="cb32-2"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb31" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
-<span id="cb31-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
-<span id="cb31-3"><a href=""></a>installing into C:\Users\lv39\ado\plus\...</span>
-<span id="cb31-4"><a href=""></a>installation complete.</span>
-<span id="cb31-5"><a href=""></a></span>
-<span id="cb31-6"><a href=""></a>. which reghdfe</span>
-<span id="cb31-7"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
-<span id="cb31-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb33" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
+<span id="cb33-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
+<span id="cb33-3"><a href=""></a>installing into C:\Users\lv39\ado\plus\...</span>
+<span id="cb33-4"><a href=""></a>installation complete.</span>
+<span id="cb33-5"><a href=""></a></span>
+<span id="cb33-6"><a href=""></a>. which reghdfe</span>
+<span id="cb33-7"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb33-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="using-environments-in-stata" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Using environments in Stata</h2>
@@ -1217,66 +1242,63 @@ r(111);</code></pre>
 <div class="column" style="width:40%;">
 <p>But the <code>(PLUS)</code> directory can be manipulated</p>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb32" data-code-line-numbers="4|13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb32-1" class="hljs-ln-code"><a href=""></a>* Set the root directory</span>
-<span id="cb32-2" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
-<span id="cb32-3" class="hljs-ln-code"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
-<span id="cb32-4" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
-<span id="cb32-5" class="hljs-ln-code"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
-<span id="cb32-6" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
-<span id="cb32-7" class="hljs-ln-code"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
-<span id="cb32-8" class="hljs-ln-code"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
-<span id="cb32-9" class="hljs-ln-code"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
-<span id="cb32-10" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
-<span id="cb32-11" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
-<span id="cb32-12" class="hljs-ln-code"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
-<span id="cb32-13" class="hljs-ln-code"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
-<span id="cb32-14" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
-<span id="cb32-15" class="hljs-ln-code"><a href=""></a>* verify the path</span>
-<span id="cb32-16" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb34" data-code-line-numbers="4|13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode stata hljs"><span id="cb34-1" class="hljs-ln-code"><a href=""></a>* Set the root directory</span>
+<span id="cb34-2" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb34-3" class="hljs-ln-code"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb34-4" class="hljs-ln-code"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb34-5" class="hljs-ln-code"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
+<span id="cb34-6" class="hljs-ln-code"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb34-7" class="hljs-ln-code"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
+<span id="cb34-8" class="hljs-ln-code"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
+<span id="cb34-9" class="hljs-ln-code"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+<span id="cb34-10" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb34-11" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb34-12" class="hljs-ln-code"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
+<span id="cb34-13" class="hljs-ln-code"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb34-14" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb34-15" class="hljs-ln-code"><a href=""></a>* verify the path</span>
+<span id="cb34-16" class="hljs-ln-code"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="using-environments-in-stata-1" class="slide level2 smaller center" data-auto-animate="true" data-transition="none">
 <h2 data-id="quarto-animate-title">Using environments in Stata</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="sourceCode" id="cb33" data-code-line-numbers="13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href=""></a>* Set the root directory</span>
-<span id="cb33-2"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
-<span id="cb33-3"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
-<span id="cb33-4"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
-<span id="cb33-5"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
-<span id="cb33-6"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
-<span id="cb33-7"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
-<span id="cb33-8"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
-<span id="cb33-9"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
-<span id="cb33-10"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
-<span id="cb33-11"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
-<span id="cb33-12"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
-<span id="cb33-13"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
-<span id="cb33-14"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
-<span id="cb33-15"><a href=""></a>* verify the path</span>
-<span id="cb33-16"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-code-line-numbers="13-14"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb35-1"><a href=""></a>* Set the root directory</span>
+<span id="cb35-2"><a href=""></a><span class="kw">global</span> rootdir : pwd</span>
+<span id="cb35-3"><a href=""></a>* Define a location where we will <span class="kw">hold</span> <span class="ot">all</span> packages <span class="kw">in</span> THIS project (the <span class="st">"environment"</span>)</span>
+<span id="cb35-4"><a href=""></a><span class="kw">global</span> adodir <span class="st">"$rootdir/ado"</span></span>
+<span id="cb35-5"><a href=""></a>* make sure it exists, <span class="kw">if</span> <span class="kw">not</span> create it.</span>
+<span id="cb35-6"><a href=""></a>cap <span class="kw">mkdir</span> <span class="st">"$adodir"</span></span>
+<span id="cb35-7"><a href=""></a>* Now let's simplify the <span class="kw">adopath</span></span>
+<span id="cb35-8"><a href=""></a>* - remove the OLDPLACE and <span class="ot">PERSONAL</span> paths</span>
+<span id="cb35-9"><a href=""></a>* - NEVER REMOVE THE SYSTEM-WIDE PATHS - bad things will happen!</span>
+<span id="cb35-10"><a href=""></a><span class="kw">adopath</span> - OLDPLACE</span>
+<span id="cb35-11"><a href=""></a><span class="kw">adopath</span> - <span class="ot">PERSONAL</span></span>
+<span id="cb35-12"><a href=""></a>* modify the <span class="ot">PLUS</span> path to point to our <span class="kw">new</span> location, and move it up <span class="kw">in</span> the <span class="kw">order</span></span>
+<span id="cb35-13"><a href=""></a><span class="ot">sysdir</span> <span class="kw">set</span> <span class="ot">PLUS</span> <span class="st">"$adodir"</span></span>
+<span id="cb35-14"><a href=""></a><span class="kw">adopath</span> ++ <span class="ot">PLUS</span></span>
+<span id="cb35-15"><a href=""></a>* verify the path</span>
+<span id="cb35-16"><a href=""></a><span class="kw">adopath</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb34" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href=""></a>. <span class="kw">adopath</span></span>
-<span id="cb34-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
-<span id="cb34-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
-<span id="cb34-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
-<span id="cb34-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb36" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href=""></a>. <span class="kw">adopath</span></span>
+<span id="cb36-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
+<span id="cb36-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb36-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb36-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="using-environments-in-stata-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Using environments in Stata</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Let’s verify again where the <code>reghdfe</code> package is:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb35-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb37-1"><a href=""></a>which reghdfe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb36" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href=""></a>. which reghdfe</span>
-<span id="cb36-2"><a href=""></a>command reghdfe <span class="kw">not</span> found <span class="kw">as</span> either built-<span class="kw">in</span> <span class="kw">or</span> ado-file</span>
-<span id="cb36-3"><a href=""></a><span class="fu">r</span>(111);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb38" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href=""></a>. which reghdfe</span>
+<span id="cb38-2"><a href=""></a>command reghdfe <span class="kw">not</span> found <span class="kw">as</span> either built-<span class="kw">in</span> <span class="kw">or</span> ado-file</span>
+<span id="cb38-3"><a href=""></a><span class="fu">r</span>(111);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="using-environments-in-stata-3" class="slide level2 smaller center" data-auto-animate="true" data-transition="none">
 <h2 data-id="quarto-animate-title">Using environments in Stata</h2>
@@ -1284,29 +1306,28 @@ r(111);</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Previously:</p>
-<div class="sourceCode" id="cb37" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb37-1"><a href=""></a>. which reghdfe</span>
-<span id="cb37-2"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
-<span id="cb37-3"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39" data-code-line-numbers="2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href=""></a>. which reghdfe</span>
+<span id="cb39-2"><a href=""></a>C:\Users\lv39\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb39-3"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb38" data-code-line-numbers="2|3|4|5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href=""></a>. <span class="kw">adopath</span></span>
-<span id="cb38-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
-<span id="cb38-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
-<span id="cb38-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
-<span id="cb38-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb40" data-code-line-numbers="2|3|4|5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb40-1"><a href=""></a>. <span class="kw">adopath</span></span>
+<span id="cb40-2"><a href=""></a>  [1]  (<span class="ot">PLUS</span>)      <span class="st">"C:\Users\lv39\Documents/PROJECT123/ado/"</span></span>
+<span id="cb40-3"><a href=""></a>  [2]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb40-4"><a href=""></a>  [3]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata18</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb40-5"><a href=""></a>  [4]              <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="installing-packages-when-an-environment-is-active" class="slide level2 smaller center">
 <h2>Installing packages when an environment is active</h2>
 <p>When we now install <code>reghdfe</code> again:</p>
-<div class="sourceCode" id="cb39" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
-<span id="cb39-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
-<span id="cb39-3"><a href=""></a>installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...</span>
-<span id="cb39-4"><a href=""></a>installation complete.</span>
-<span id="cb39-5"><a href=""></a></span>
-<span id="cb39-6"><a href=""></a>. which reghdfe</span>
-<span id="cb39-7"><a href=""></a>C:\Users\lv39\Documents\PROJECT123\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
-<span id="cb39-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41" data-code-line-numbers="3|7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb41-1"><a href=""></a>. <span class="kw">ssc</span> install reghdfe</span>
+<span id="cb41-2"><a href=""></a>checking reghdfe consistency and verifying <span class="kw">not</span> already installed...</span>
+<span id="cb41-3"><a href=""></a>installing into C:\Users\lv39\Documents\PROJECT123\ado\plus\...</span>
+<span id="cb41-4"><a href=""></a>installation complete.</span>
+<span id="cb41-5"><a href=""></a></span>
+<span id="cb41-6"><a href=""></a>. which reghdfe</span>
+<span id="cb41-7"><a href=""></a>C:\Users\lv39\Documents\PROJECT123\ado\plus\<span class="fu">r</span>\reghdfe.ado</span>
+<span id="cb41-8"><a href=""></a>*! <span class="kw">version</span> 6.12.3 08aug2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We now see it in the <strong>project-specific</strong> directory, which we can distribute with the whole project.</p>
 </section>
 <section id="installing-precise-versions-of-stata-packages" class="slide level2 smaller center">
@@ -1434,22 +1455,21 @@ r(111);</code></pre>
 <div class="column" style="width:50%;">
 <p>A project with confidential and public-use data.</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb40-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
-<span id="cb40-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
-<span id="cb40-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
-<span id="cb40-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
-<span id="cb40-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
-<span id="cb40-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
-<span id="cb40-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
-<span id="cb40-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
-<span id="cb40-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
-<span id="cb40-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
-<span id="cb40-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
-<span id="cb40-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
-<span id="cb40-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
-<span id="cb40-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb42-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb42-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb42-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb42-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb42-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb42-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb42-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb42-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb42-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb42-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb42-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb42-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb42-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb42-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="organize-your-project-so-you-can-exclude-confidential-data" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Organize your project so you can exclude confidential data</h2>
@@ -1457,22 +1477,21 @@ r(111);</code></pre>
 <div class="column" style="width:50%;">
 <p>Clearly separate the restricted from the open-access data, both in terms of the raw data as well as the processed data:</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb41" data-code-line-numbers="11,13"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb41-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
-<span id="cb41-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
-<span id="cb41-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
-<span id="cb41-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
-<span id="cb41-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
-<span id="cb41-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
-<span id="cb41-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
-<span id="cb41-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
-<span id="cb41-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
-<span id="cb41-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
-<span id="cb41-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
-<span id="cb41-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
-<span id="cb41-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
-<span id="cb41-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb43" data-code-line-numbers="11,13"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb43-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb43-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb43-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb43-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb43-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb43-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb43-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb43-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb43-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb43-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb43-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb43-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb43-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb43-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
 <section id="strategy" class="slide level2 smaller center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Strategy</h2>
@@ -1491,53 +1510,7 @@ r(111);</code></pre>
 <div class="column" style="width:50%;">
 <p>Prepare a <strong>confidential (partial) replication package</strong> <code>project-confidential.zip</code>, contains the contents of <code>data/confidential</code> and possibly <code>data/conf_analysis</code>.</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb42" data-code-line-numbers="11-14"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb42-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
-<span id="cb42-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
-<span id="cb42-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
-<span id="cb42-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
-<span id="cb42-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
-<span id="cb42-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
-<span id="cb42-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
-<span id="cb42-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
-<span id="cb42-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
-<span id="cb42-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
-<span id="cb42-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
-<span id="cb42-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
-<span id="cb42-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
-<span id="cb42-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="strategy-2" class="slide level2 center" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Strategy</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Prepare a <strong>non-confidential replication package</strong> that contains <strong>all code</strong>, and <strong>any data</strong> that is not subject to publication controls</p>
-</div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb43" data-code-line-numbers="1-10"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb43-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
-<span id="cb43-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
-<span id="cb43-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
-<span id="cb43-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
-<span id="cb43-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
-<span id="cb43-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
-<span id="cb43-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
-<span id="cb43-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
-<span id="cb43-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
-<span id="cb43-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
-<span id="cb43-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
-<span id="cb43-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
-<span id="cb43-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
-<span id="cb43-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="strategy-3" class="slide level2 center" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Strategy</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Important: the package contains <strong>all code</strong>, including the code that is used to process the <strong>confidential data!</strong></p>
-</div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb44" data-code-line-numbers="5"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb44-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<div class="sourceCode" id="cb44" data-code-line-numbers="11-14"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb44-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
 <span id="cb44-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
 <span id="cb44-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
 <span id="cb44-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
@@ -1551,19 +1524,15 @@ r(111);</code></pre>
 <span id="cb44-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
 <span id="cb44-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
 <span id="cb44-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 </section>
-<section id="strategy-4" class="slide level2 center" data-auto-animate="true">
+<section id="strategy-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Strategy</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<ul>
-<li>Ensure that replicators have detailed instructions (<strong>README</strong>) on how to combine the two packages</li>
-<li>Specify which (if any) of the results in their paper can be reproduced without the confidential data.</li>
-</ul>
+<p>Prepare a <strong>non-confidential replication package</strong> that contains <strong>all code</strong>, and <strong>any data</strong> that is not subject to publication controls</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb45" data-code-line-numbers="1-1"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb45-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<div class="sourceCode" id="cb45" data-code-line-numbers="1-10"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb45-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
 <span id="cb45-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
 <span id="cb45-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
 <span id="cb45-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
@@ -1577,8 +1546,54 @@ r(111);</code></pre>
 <span id="cb45-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
 <span id="cb45-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
 <span id="cb45-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
+</section>
+<section id="strategy-3" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Important: the package contains <strong>all code</strong>, including the code that is used to process the <strong>confidential data!</strong></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb46" data-code-line-numbers="5"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb46-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb46-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb46-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb46-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb46-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb46-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb46-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb46-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb46-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb46-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb46-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb46-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb46-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb46-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="strategy-4" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Strategy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Ensure that replicators have detailed instructions (<strong>README</strong>) on how to combine the two packages</li>
+<li>Specify which (if any) of the results in their paper can be reproduced without the confidential data.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb47" data-code-line-numbers="1-1"><pre class="sourceCode numberSource bash number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode bash hljs"><span id="cb47-1" class="hljs-ln-code"><a href=""></a><span class="ex">README.pdf</span></span>
+<span id="cb47-2" class="hljs-ln-code"><a href=""></a><span class="ex">code/</span></span>
+<span id="cb47-3" class="hljs-ln-code"><a href=""></a>    <span class="ex">main.do</span></span>
+<span id="cb47-4" class="hljs-ln-code"><a href=""></a>    <span class="ex">01_data_prep.do</span></span>
+<span id="cb47-5" class="hljs-ln-code"><a href=""></a>    <span class="ex">02_confidential_prep.do</span></span>
+<span id="cb47-6" class="hljs-ln-code"><a href=""></a>    <span class="ex">03_analysis.do</span></span>
+<span id="cb47-7" class="hljs-ln-code"><a href=""></a>    <span class="ex">04_figures.do</span></span>
+<span id="cb47-8" class="hljs-ln-code"><a href=""></a><span class="ex">data/</span></span>
+<span id="cb47-9" class="hljs-ln-code"><a href=""></a>   <span class="ex">raw/</span></span>
+<span id="cb47-10" class="hljs-ln-code"><a href=""></a>      <span class="ex">cps0001.dat</span></span>
+<span id="cb47-11" class="hljs-ln-code"><a href=""></a>   <span class="ex">confidential/</span></span>
+<span id="cb47-12" class="hljs-ln-code"><a href=""></a>      <span class="ex">ssa.csv</span></span>
+<span id="cb47-13" class="hljs-ln-code"><a href=""></a>   <span class="ex">conf_analysis/</span></span>
+<span id="cb47-14" class="hljs-ln-code"><a href=""></a>      <span class="ex">confidential_combined.dta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section></section>
 <section id="questions" class="title-slide slide level1 center">
 <h1>Questions</h1>
@@ -1827,80 +1842,42 @@ r(111);</code></pre>
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1934,18 +1911,7 @@ r(111);</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1977,7 +1943,29 @@ r(111);</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1985,7 +1973,7 @@ r(111);</code></pre>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

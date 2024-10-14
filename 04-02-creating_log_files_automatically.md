@@ -27,17 +27,51 @@ On Windows, follow instructions [here](https://www.stata.com/manuals/gswb.pdf#gs
 
 ::::{tab-item} R
 
-To automatically create a log file, run R from the command line as follows:
+To automatically create a log file, run R from the command line using the `BATCH` functionality, as follows:
 
 ```bash
-R CMD BATCH main.R
+R CMD BATCH options infile outfile
 ```
 
-will create a file `main.Rout` in the same directory as `main.R`. 
+where
+
+- `options` are optional _options_ from the command R
+
+- `infile` is the required input file with the code to be executed
+
+- `outfile` is the name of an optional output file. If no output file
+is provided, the name of `infile` is taken as default, appending
+the extension `.Rout` to it.
+
+
+:::{warning}
+On Windows, you may need to include the full path of R: `C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH main.R`
+:::
+
+
+This will create a file `main.Rout` in the same directory as `main.R`. If you prefer a different name for the output file, you can specify it.
+
+```bash
+R CMD BATCH main.R main.$(date +%F-%H:%M:%S).Rout
+```
+
+which will create a second-precise date-time stamped log file. Finally, if you want to prevent R from saving or restoring its environment (by default, `R CMD BATCH` does both), you can specify the `--no-save` and `--no-restore` options.
+
+```bash
+R CMD BATCH --no-save --no-restore main.R main.$(date +%F-%H:%M:%S).Rout
+```
+
 
 :::{warning}
 If there are other commands, such as `sink()`, active in the R code, the `main.Rout` file will not contain some output.
 :::
+
+
+> To see more information, check the manual documentation by typing
+`?BATCH` (or `help(BATCH)`) from within an R interactive session. Or by 
+typing `R CMD BATCH --help` from the command line.
+
+
 
 ::::
 

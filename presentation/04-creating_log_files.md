@@ -120,15 +120,14 @@ log using "`globallog'", name(global) replace text
 - While some software (Stata, MATLAB) will create log files that contain **commands and output**, others (R, Python) will create log files that contain **only output**. 
 
 
-### Creating log files automatically
+# Creating log files automatically
 
 An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the command line to run the software, and thus may be considered an **advanced topic.** The examples below are for Linux/macOS, but similar functionality exists for Windows.
 
 
-:::: {.panel-tabset}
 
 
-### Stata
+## Stata
 
 To automatically create a log file, run Stata from the command line with the `-b` option:
 
@@ -138,36 +137,120 @@ stata -b do main.do
 
 which will create a file `main.log` in the same directory as `main.do`. 
 
-```{.notes}
-For this to work, the filename cannot include spaces.
-```
-On Windows, follow instructions [here](https://www.stata.com/manuals/gswb.pdf#gswB.5).
+> - For this to work, the filename cannot include spaces.
+> - On Windows, follow instructions [here](https://www.stata.com/manuals/gswb.pdf#gswB.5).
 
 
 
-### R
 
-To automatically create a log file, run R from the command line as follows:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## R {auto-animate=true transition="fade"}
+
+To automatically create a log file, run R from the command line using the `BATCH` functionality, as follows:
 
 ```bash
-R CMD BATCH main.R
+R CMD BATCH options infile outfile
 ```
 
-will create a file `main.Rout` in the same directory as `main.R`. 
+> On Windows, you may need to include the full path of R: 
 
-```{.notes}
+```
+C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH main.R
+```
+
+
+## R {auto-animate=true transition="fade"}
+
+To automatically create a log file, run R from the command line using the `BATCH` functionality, as follows:
+
+```bash
+R CMD BATCH options infile outfile
+```
+
+This will create a file `main.Rout` in the same directory as `main.R`. 
+
+## R {auto-animate=true transition="fade"}
+
+If you prefer a different name for the output file, you can specify it.
+
+```bash
+R CMD BATCH main.R main.$(date +%F-%H:%M:%S).Rout
+```
+
+which will create a second-precise date-time stamped log file. 
+
+## R {auto-animate=true transition="fade"}
+
+If you want to prevent R from saving or restoring its environment (by default, `R CMD BATCH` does both), you can specify the `--no-save` and `--no-restore` options.
+
+```bash
+R CMD BATCH --no-save --no-restore main.R main.$(date +%F-%H:%M:%S).Rout
+```
+
+
+## R {.smaller}
+
+:::{warning}
 If there are other commands, such as `sink()`, active in the R code, the `main.Rout` file will not contain some output.
-```
+:::
+
+## R {.smaller}
+
+> To see more information, check the manual documentation by typing
+`?BATCH` (or `help(BATCH)`) from within an R interactive session. Or by 
+typing `R CMD BATCH --help` from the command line.
 
 
 
-### MATLAB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## MATLAB {auto-animate=true}
 
 To automatically create a log file, run MATLAB from the command line as follows:
 
 ```bash
 matlab -nodisplay -r "addpath(genpath('.')); main" -logfile matlab.log
 ```
+
+## MATLAB {auto-animate=true transition="fade"}
 
 A similar command on Windows would be:
 
@@ -177,7 +260,7 @@ start matlab -nosplash  -minimize -r  "addpath(genpath('.'));main"  -logfile mat
 
 
 
-### Julia, Python
+## Julia, Python {auto-animate=true transition="fade"}
 
 In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:
 
@@ -185,7 +268,11 @@ In order to capture screen output in Julia and Python, on Unix-like system (Linu
 julia main.jl | tee main.log
 ```
 
-or 
+which will create a log file with everything that would normally appear on the console using the `tee` command. 
+
+## Julia, Python {auto-animate=true transition="fade"}
+
+In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:
 
 ```bash
 python main.py | tee main.log
@@ -193,7 +280,6 @@ python main.py | tee main.log
 
 which will create a log file with everything that would normally appear on the console using the `tee` command. 
 
-::::
 
 
 
