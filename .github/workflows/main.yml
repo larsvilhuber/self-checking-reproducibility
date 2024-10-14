@@ -19,7 +19,7 @@ jobs:
     outputs:
       bookurl: ${{ steps.artifact-upload-step1.outputs.artifact-url }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     # Install dependencies
     - name: Set up Python 3.10
@@ -49,7 +49,7 @@ jobs:
     outputs:
       presentationurl: ${{ steps.artifact-upload-step2.outputs.artifact-url }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     # Let's do the Quarto
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
@@ -134,13 +134,13 @@ jobs:
       uses: actions/download-artifact@v4
       with:
             path: .
-            pattern: artifact-pdf
+            pattern: artifact-presentation-pdf
     - name: Move stuff
       run: |
           ls -lR
           mv artifact-book website
           mv artifact-presentation website/presentation
-          mv artifact-pdf/index.pdf website/presentation/presentation.pdf
+          mv artifact-presentation-pdf/index.pdf website/presentation/presentation.pdf
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
