@@ -1,7 +1,28 @@
 (environments-other)=
 # Using environments in other languages
 
-R (via the `renv`) functionality, and Julia (natively, using the `Project` functionality) have similar functionality. MATLAB programs can also manipulate the [search path](https://www.mathworks.com/help/matlab/ref/path.html), which is done for plugins and other functionality, for instance when adding [Dynare](https://www.dynare.org/) as a plugin. They all work the same way. 
+Search paths, and the ability to manipulate the search path and thus create environments, exist in most other languages that have some notion of modularity and user-contributions. While not always as easy to manipulate, the basic functionality is the same.
+
+## R
+
+R has one or more `library paths`, which can be viewed and manipulated via the `.libPaths()` function. For instance, one might create a project-specific library path, into which all packages are installed, and from which all functions are read, as follows:
+
+```{.R}
+rootdir <- here::here()
+.libPaths(file.path(rootdir,"libraries"))
+```
+
+A more refined management of project-specific environments and specific software packages can be achieved via the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library.
+
+## Julia 
+
+Natively, using the `Project`/[`Pkg.jl`](https://pkgdocs.julialang.org/v1/) functionality. 
+
+## MATLAB
+
+MATLAB programs can manipulate the [search path](https://www.mathworks.com/help/matlab/ref/path.html), which is done for plugins and other functionality, for instance when adding [Dynare](https://www.dynare.org/) as a plugin. 
+
+More generally, MATLAB's Search Path collects the various native MATLAB features, official and user-provided toolboxes (packages), and defines the order in which they are found. See <https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html> for more details. 
 
 ## Takeaways
 
