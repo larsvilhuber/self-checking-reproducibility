@@ -96,13 +96,13 @@ start matlab -nosplash  -minimize -r  "addpath(genpath('.'));main"  -logfile mat
 In order to capture screen output in Julia and Python, on Unix-like system (Linux, macOS), the following can be run:
 
 ```bash
-julia main.jl | tee main.log
+julia main.jl | tee main-$(date +%F-%H_%M)-${USER}.log
 ```
 
 or 
 
 ```bash
-python main.py | tee main.log
+python main.py | tee main-$(date +%F-%H_%M)-${USER}.log
 ```
 
 which will create a log file with everything that would normally appear on the console using the `tee` command. 
