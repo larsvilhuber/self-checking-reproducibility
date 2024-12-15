@@ -7,6 +7,9 @@ bibliography: "paper.bib"
 
 ---
 
+*A PDF of this presentation is available [here](presentation.pdf).*
+--- 
+
 ![](https://teleseries.com.br/wp-content/uploads/2013/11/tumblr_lr9o5nVNb41qknbv6.gif)
 
 ---

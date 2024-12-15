@@ -23,7 +23,7 @@ Content is [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x1
 
 The table of contents goes initially from easy to more complex. Each section should be seen as one  method of running, with varying levels of "trust" in how robust it is to replicators' environments. Some can be combined, others may not work well together.
 
-> A presentation that may be more up-to-date is available at [presentation/](presentation/).
+> A presentation that may be more up-to-date is available [here](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/).
 
 ## TL;DR
 
