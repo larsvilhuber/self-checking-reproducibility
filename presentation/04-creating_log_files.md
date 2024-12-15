@@ -114,10 +114,109 @@ log using "`globallog'", name(global) replace text
 :::
 ::::
 
+## Python {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width=30%}
+
+Create a wrapper that will capture the calls for any function
+
+:::
+
+::: {.column width=70%}
+
+
+```{.python code-line-numbers="2-9"}
+from datetime import datetime
+def track_calls(func):
+    def wrapper(*args, **kwargs):
+        with open('function_log.txt', 'a') as f:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"[{timestamp}] Calling {func.__name__} with args: {args}, kwargs: {kwargs}\n")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+# Usage
+@track_calls
+def my_function(x, y,default="TRUE"):
+    return x + y
+
+my_function(1, 2,default="false")
+```
+
+:::
+::::
+
+
+## Python {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width=30%}
+
+Activate the wrapper
+
+:::
+
+::: {.column width=70%}
+
+```{.python code-line-numbers="12"}
+from datetime import datetime
+def track_calls(func):
+    def wrapper(*args, **kwargs):
+        with open('function_log.txt', 'a') as f:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"[{timestamp}] Calling {func.__name__} with args: {args}, kwargs: {kwargs}\n")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+# Usage
+@track_calls
+def my_function(x, y,default="TRUE"):
+    return x + y
+
+my_function(1, 2,default="false")
+```
+
+:::
+::::
+
+## Python {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width=30%}
+
+Ideally, capture the output
+
+:::
+
+::: {.column width=70%}
+
+
+```{.python code-line-numbers="8"}
+# Usage
+@track_calls
+def my_function(x, y,default="TRUE"):
+    return x + y
+
+my_function(1, 2,default="false")
+# Output
+# [2024-12-15 12:05:37] Calling my_function with args: (1, 2), kwargs: {'default': 'false'}
+
+```
+
+:::
+::::
+
+
 ## Notes
 
 - More examples 
-- While some software (Stata, MATLAB) will create log files that contain **commands and output**, others (R, Python) will create log files that contain **only output**. 
+- While some software (Stata, MATLAB) will create log files that contain **commands and output**, others (R, Python) by default will create log files that contain **only output**. 
 
 
 # Creating log files automatically
@@ -166,13 +265,13 @@ which will create a file `main.log` in the same directory as `main.do`.
 To automatically create a log file, run R from the command line using the `BATCH` functionality, as follows:
 
 ```bash
-R CMD BATCH options infile outfile
+R CMD BATCH infile [outfile]
 ```
 
 > On Windows, you may need to include the full path of R: 
 
 ```
-C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH main.R
+C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH infile [outfile]
 ```
 
 
@@ -181,10 +280,10 @@ C:\Program Files\R\R-4.1.0\bin\R.exe CMD BATCH main.R
 To automatically create a log file, run R from the command line using the `BATCH` functionality, as follows:
 
 ```bash
-R CMD BATCH options infile outfile
+R CMD BATCH main.R
 ```
 
-This will create a file `main.Rout` in the same directory as `main.R`. 
+`outfile` is omitted. This will create a file `main.Rout` in the same directory as `main.R`. 
 
 ## R {auto-animate=true transition="fade"}
 
@@ -204,6 +303,13 @@ If you want to prevent R from saving or restoring its environment (by default, `
 R CMD BATCH --no-save --no-restore main.R main.$(date +%F-%H:%M:%S).Rout
 ```
 
+## R {auto-animate=true transition="fade"}
+
+The most output, and the least "acquired" information, is obtained by running the following command:
+
+```bash
+R CMD BATCH --debugger --verbose --vanilla main.R main.$(date +%F-%H:%M:%S).Rout
+```
 
 ## R {.smaller}
 

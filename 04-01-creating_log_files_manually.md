@@ -52,18 +52,33 @@ close(globallog)
 :::{tab-item} Python
     
 ```python
-% The logging module should achieve this.
-import logging
-logging.warning('Watch out!')
+from datetime import datetime
+def track_calls(func):
+    def wrapper(*args, **kwargs):
+        with open('function_log.txt', 'a') as f:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"[{timestamp}] Calling {func.__name__} with args: {args}, kwargs: {kwargs}\n")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+# Usage
+@track_calls
+def my_function(x, y,default="TRUE"):
+    return x + y
+
+my_function(1, 2,default="false")
 ```
+
 will output
 
 ```
-WARNING:root:Watch out!
+[2024-12-15 12:05:37] Calling my_function with args: (1, 2), kwargs: {'default': 'false'}
 ```
 
+See also the [Python logging documentation](https://docs.python.org/3/library/logging.html) for controlled output.
 :::
 
 ::::
 
-While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will  create log files that contain only output. 
+While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will (by default) create log files that contain only output.

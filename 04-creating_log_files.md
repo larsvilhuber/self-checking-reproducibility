@@ -20,3 +20,9 @@ In almost all cased, the generated log files are simple text files, without any 
 
 
 If not, ensure that they are (avoid *Stata SMCL* files, for example).
+
+## Some auxiliary info
+
+> It may be useful at this time to understand how to run code non-interactively. 
+>
+> - [Useful resource for R](https://github.com/gastonstat/tutorial-R-noninteractive/)
