@@ -40,6 +40,30 @@ sink()
 close(globallog)
 ```
 
+### Using `tidylog` for logging data manipulations in R
+
+To install `tidylog`, you can add it to your `requirements.txt` file or install it directly in your R script:
+
+```R
+install.packages("tidylog")
+```
+
+Here is an example of using `tidylog` to log data manipulations:
+
+```R
+library(tidylog)
+library(dplyr)
+
+# Example data manipulation
+data <- data %>%
+  filter(!is.na(variable)) %>%
+  mutate(new_variable = variable * 2) %>%
+  group_by(group_variable) %>%
+  summarize(mean_value = mean(new_variable, na.rm = TRUE))
+```
+
+In this example, `tidylog` will automatically log the data manipulations performed by the `dplyr` functions, making it easier to track and understand the changes made to your data.
+
 :::
 
 :::{tab-item} MATLAB
@@ -82,37 +106,3 @@ See also the [Python logging documentation](https://docs.python.org/3/library/lo
 ::::
 
 While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will (by default) create log files that contain only output.
-
-## Using `tidylog` for logging data manipulations in R
-
-### Installing `tidylog`
-
-To install the `tidylog` package, you can add it to your `requirements.txt` file in the root directory of your project. Alternatively, you can install it directly in your R script using the following command:
-
-```R
-install.packages("tidylog")
-```
-
-### Example usage of `tidylog`
-
-Here is an example of how to use `tidylog` in the context of AEJPol-2023-0640:
-
-```R
-library(tidylog)
-library(dplyr)
-
-# Example data manipulation
-data <- data %>%
-  filter(!is.na(variable)) %>%
-  mutate(new_variable = variable * 2) %>%
-  group_by(group_variable) %>%
-  summarize(mean_value = mean(new_variable, na.rm = TRUE))
-```
-
-### How `tidylog` logs data manipulations
-
-`tidylog` automatically logs data manipulations performed using `dplyr` functions. When you use `tidylog` functions, it provides informative messages about the changes made to your data. For example, it will log the number of rows removed by a `filter` operation, the number of new columns created by a `mutate` operation, and so on. This makes it easier to track and understand the changes made to your data.
-
-### Reference to example paper AEJPol-2023-0640
-
-The example paper AEJPol-2023-0640 illustrates the use of `tidylog` for logging data manipulations in R. By incorporating `tidylog` into your R scripts, you can explicitly log data manipulations, making it easier to track and understand the changes made to your data.
