@@ -61,6 +61,11 @@ which will create a second-precise date-time stamped log file. Finally, if you w
 R CMD BATCH --no-save --no-restore main.R main.$(date +%F-%H:%M:%S).Rout
 ```
 
+The most output, and the least "inherited" information, is obtained by running the following command:
+
+```bash
+R CMD BATCH --debugger --verbose --vanilla main.R main.$(date +%F-%H:%M:%S).Rout
+```
 
 :::{warning}
 If there are other commands, such as `sink()`, active in the R code, the `main.Rout` file will not contain some output.
