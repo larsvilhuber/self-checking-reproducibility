@@ -40,6 +40,30 @@ sink()
 close(globallog)
 ```
 
+### Using `tidylog` for logging data manipulations in R
+
+To install `tidylog`, you can add it to your `requirements.txt` file or install it directly in your R script:
+
+```R
+install.packages("tidylog")
+```
+
+Here is an example of using `tidylog` to log data manipulations:
+
+```R
+library(tidylog)
+library(dplyr)
+
+# Example data manipulation
+data <- data %>%
+  filter(!is.na(variable)) %>%
+  mutate(new_variable = variable * 2) %>%
+  group_by(group_variable) %>%
+  summarize(mean_value = mean(new_variable, na.rm = TRUE))
+```
+
+In this example, `tidylog` will automatically log the data manipulations performed by the `dplyr` functions, making it easier to track and understand the changes made to your data.
+
 :::
 
 :::{tab-item} MATLAB
