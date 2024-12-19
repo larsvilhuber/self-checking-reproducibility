@@ -40,19 +40,17 @@ sink()
 close(globallog)
 ```
 
-### Using `tidylog` for logging data manipulations in R
+**Using `tidylog` for logging data manipulations in R**
 
-To install `tidylog`, you can add it to your `requirements.txt` file or install it directly in your R script:
+You can use [`tidylog`](https://cran.r-project.org/web/packages/tidylog/readme/README.html) to monitor `tidy` and `dplyr` data manipulations. It needs to be loaded after the relevant packages, as it redefines some of their commands.
 
-```R
-install.packages("tidylog")
-```
-
-Here is an example of using `tidylog` to log data manipulations:
+Sample code:
 
 ```R
-library(tidylog)
+#install.packages("tidylog")
 library(dplyr)
+library(tidylog)
+
 
 # Example data manipulation
 data <- data %>%
@@ -62,7 +60,6 @@ data <- data %>%
   summarize(mean_value = mean(new_variable, na.rm = TRUE))
 ```
 
-In this example, `tidylog` will automatically log the data manipulations performed by the `dplyr` functions, making it easier to track and understand the changes made to your data.
 
 :::
 
