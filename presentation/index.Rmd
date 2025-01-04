@@ -2,12 +2,20 @@
 title: "Checking reproducibility on Day T"
 author: 
   - "Lars Vilhuber"
-date: Oct 14 2024
+date: 4 January 2025
 bibliography: "paper.bib"
 
 ---
 
 *A PDF of this presentation is available [here](presentation.pdf).*
+
+## You followed all the best practices for reproducibility
+
+... and then.... 
+
+
+
+
 --- 
 
 ![](https://teleseries.com.br/wp-content/uploads/2013/11/tumblr_lr9o5nVNb41qknbv6.gif)
