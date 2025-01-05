@@ -63,7 +63,7 @@ jobs:
       with:
         cache-version: 1
         working-directory: presentation
-        
+
     - name: Render Quarto Project
       env:
         QUARTO_PRINT_STACK: true
@@ -142,7 +142,6 @@ jobs:
           mv artifact-book website
           mv artifact-presentation website/presentation
           mv artifact-presentation-pdf/index.pdf website/presentation/presentation.pdf
-          mv artifact-presentation/images website/presentation/images
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
       uses: actions/upload-pages-artifact@v3.0.1    
