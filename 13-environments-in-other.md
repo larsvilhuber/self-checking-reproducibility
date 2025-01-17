@@ -16,7 +16,33 @@ A more refined management of project-specific environments and specific software
 
 ## Julia 
 
-Natively, using the `Project`/[`Pkg.jl`](https://pkgdocs.julialang.org/v1/) functionality. 
+Natively, using the `Project`/[`Pkg.jl`](https://pkgdocs.julialang.org/v1/environments/) functionality. Note that the usual guidance at <https://julialang.org> is for interactive creation and use of environments. While we suggest to continue installing packages initially interactively, the re-use of environments is greatly facilitated by scripting. (Corrections welcome!)
+
+### Step 0
+
+The replication package should contain a `Project.toml` and a `Manifest.toml` file. 
+
+### Step 1
+
+As the first part of the code, `activate` and `instantiate` the environment.  
+
+```julia
+import Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+```
+
+This will re-install the packages listed in the `Project.toml` file.
+
+### Step 2
+
+Insert the following code fragment in any subsequent Julia scripts, before any `Using` lines,  to ensure that the correct environment is used.
+
+```julia
+import Pkg
+Pkg.activate(".")
+```
+
 
 ## MATLAB
 
