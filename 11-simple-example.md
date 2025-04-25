@@ -127,3 +127,23 @@ This is deferred to [later](reproducing-environments).
 While we used interactive commands to install the various packages here, that was only for illustrative purposes. **Always** using a `requirements.txt` file to specify the packages to be installed. We will address how and when to use that file in the [next section](reproducing-environments).
 
 :::
+
+## Specifying only the intended packages
+
+When constructing an environment, `python` and its various package managers will install many dependencies, including some that are platform-specific. Thus, a complete listing of packages may not be portable. To the extent possible, authors should both document what was installed in their environment (for completeness), and provide documentation that allows others to re-instantiate an environment (i.e., the `environment.yml` or `requirements.txt` file mentioned earlier).
+
+::::{tab-set}
+
+:::{tab-item} Pip
+
+:::
+
+:::{tab-item} Conda
+
+In a Conda environment, you can use the [`--from-history`](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#exporting-an-environment-file-across-platforms) flag 
+to export only those packages explicitly installed.
+
+```
+conda env export --from-history > environment.yml
+```
+ 
