@@ -30,7 +30,7 @@ This verifies
 
 ### What this does not do
 
-Well, it's not perfect, because sometimes undergraduates get things wrong. But that's fine. It's a teaching moment!
+Well, it's not perfect, because sometimes undergraduates get things wrong. But that's fine. It's a teaching moment! An alternative solution is that you ask your office neighbor to run it.
 
 ### What to do next
 

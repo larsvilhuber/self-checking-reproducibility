@@ -1,6 +1,11 @@
 (stata-environments)=
 # Environments in Stata
 
+## TL;DR
+
+- Creating virtual environments in Stata is feasible
+- Doing so stabilizes the code, and makes it more transportable
+
 ## Search paths in Stata
 
 In Stata, we typically do not talk about environments, but the same basic structure applies: Stata searches along a set order for its commands. Some commands are built into the executable (the software that is opened when you click on the Stata icon), but most other internal, and all external commands, are found in a search path. This is typically the `ado` directory in the Stata installation directory, and one will find replication packages that contain instructions to copy files into that directory. Once we've shown how environments work in Stata, this will become a lot simpler!

@@ -50,8 +50,6 @@ dev.off()
 
 ```
 
-(for more information, see help pages for "?png", "?eps", or "?pdf") 
-
 ```r
 
 library(ggplot2)
@@ -97,32 +95,24 @@ saveas(gcf,fullfile('path','to','figure1.png'))
 
 :::
 
+# Same for tables 
+
+Learn how to save tables in robust, reproducible ways. Do not try to copy-paste from console!
+
+## Stata
+
+`esttab` or `outreg2`, also `putexcel`. For fancier stuff, treat tables as data, use `regsave` or `export excel` to manipulate.
+
+## R
+
+`xtable`, `stargazer`, others.
 
 ::::
 
 ## Takeaways
 
-### What this does
-
-This ensures
-
-- that your code runs without problem, after all the debugging.
-- that your code runs without manual intervention.
-- that you do not impose fallible and onerous work on replicators
-
-### What this does not do
-
-This does not ensure
-
-- that your code generates a log file that you can inspect, and that you could share with others.
-- that it will run on somebody else's computer
-  - because it does not guarantee that all the software is there
-  - because it does not guarantee that all the directories for input or output are there
-  - because many intermediate files might be present that are not in the replication package
-  - because it does not guarantee that all the directory names are correctly adjusted everywhere in your code
-- that it actually produces all the outputs
-  - because some outputs might be present from test runs
-
-### What to do next
-
-To solve some of these problems, let's go to the next step.
+- [x] your code runs without problem, after all the debugging.
+- [x] your code runs without manual intervention, and with low effort
+- [x] it actually produces all the outputs
+- [ ] your code generates a log file that you can inspect, and that you could share with others.
+- [ ] it will run on somebody else’s computer

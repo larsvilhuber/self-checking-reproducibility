@@ -50,30 +50,10 @@ MATLAB programs can manipulate the [search path](https://www.mathworks.com/help/
 
 More generally, MATLAB's Search Path collects the various native MATLAB features, official and user-provided toolboxes (packages), and defines the order in which they are found. See <https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html> for more details. 
 
-## Takeaways
+# Takeaways
 
-### What this does
+From the earlier desiderata of *environments*:
 
-This ensures
-
-- that your code runs without problem, after all the debugging.
-- that your code runs without manual intervention.
-- that your code generates a log file that you can inspect, and that you could share with others.
-- that it will run on somebody else's computer
-  - because it guarantees that all the software is there (but with a caveat we will discuss next)
-
-### What this does not do
-
-This does not ensure
-
-- that it will run on somebody else's computer
-  - because it does not guarantee that the next person can install the environment!
-  - because it does not guarantee that all the directories for input or output are there
-  - because many intermediate files might be present that are not in the replication package
-  - because it does not guarantee that all the directory names are correctly adjusted everywhere in your code
-- that it actually produces all the outputs
-  - because some outputs might be present from test runs
-
-### What to do next
-
-To solve some of these problems, let's go to the next step.
+- [x] Isolated: Installing a new or updated package for one project won’t break your other projects, and vice versa.
+- [x] Portable: Easily transport your projects from one computer to another, even across different platforms.
+- [ ] Reproducible: Records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.

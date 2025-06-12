@@ -9,12 +9,17 @@ We start by describing how to explicitly generate log files as part of the stati
 :::{tab-item} Stata
 
 ```stata
+* Start by creating a directory for the log files.
 global logdir "${rootdir}/logs"
 cap mkdir "$logdir"
+
+* Add code to capture date, time, and who ran the code.
 local c_date = c(current_date)
 local cdate = subinstr("`c_date'", " ", "_", .)
 local c_time = c(current_time)
 local ctime = subinstr("`c_time'", ":", "_", .)
+
+* Create a logfile, giving it a name so it does not get closed.
 local globallog = "$logdir/logfile_`cdate'-`ctime'-`c(username)'.log"
 log using "`globallog'", name(global) replace text
 ```
@@ -74,6 +79,7 @@ data <- data %>%
     
 ```python
 from datetime import datetime
+# Create a wrapper that will capture the calls for any function
 def track_calls(func):
     def wrapper(*args, **kwargs):
         with open('function_log.txt', 'a') as f:
@@ -83,12 +89,16 @@ def track_calls(func):
         return result
     return wrapper
 
+# Activate the wrapper
 # Usage
 @track_calls
 def my_function(x, y,default="TRUE"):
     return x + y
 
 my_function(1, 2,default="false")
+# Ideally, capture the output
+# Output
+# [2024-12-15 12:05:37] Calling my_function with args: (1, 2), kwargs: {'default': 'false'}
 ```
 
 will output

@@ -3,6 +3,8 @@
 
 Let's ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
 
+Seem trivial? Out of 8280 replication packages in ~20 top econ journals, only 2594 (31.33%) had a main/controller script [^1] [^1]: Results computed on Nov 26, 2023 based on a scan of replication packages conducted by Sebastian Kranz. 2023. “Economic Articles with Data”. https://ejd.econ.mathematik.uni-ulm.de/, searching for the words main, master, makefile, dockerfile, apptainer, singularity in any of the program files in those replication packages. Code not yet integrated into this presentation.
+
 
 ```{warning}
 We have seen users who appear to highlight code and to run it interactively, in pieces, using the program file as a kind of notepad. This is not reproducible, and should be avoided. It is fine for debugging.
@@ -33,6 +35,7 @@ In order to be able to enable "hands-off running", the main script is key. I wil
 
 global rootdir : pwd
 
+* Call the various files that consitute your complete analysis.
 * Run the data preparation file
 do $rootdir/01_data_prep.do
 
@@ -50,7 +53,6 @@ do $rootdir/05_appendix.do
 ```
 The use of `do` (instead of `run` or even `capture run`) is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.
 
-
 Run this using the [right-click method](https://labordynamicsinstitute.github.io/ldilab-manual/96-02-running-stata-code.html#step-6-run-the-code) (Windows) or from the terminal (macOS, Linux): 
 
 ```bash
@@ -58,6 +60,8 @@ cd /where/my/code/is
 stata-mp -b do main.do
 ```
 where `stata-mp` should be replaced with `stata` or `stata-se` depending on your licensed version.
+
+![Execute (do)](execute-do-cropped.png)
 
 :::
 
@@ -68,11 +72,12 @@ where `stata-mp` should be replaced with `stata` or `stata-se` depending on your
 # This is a simple example of a main file in R
 # It runs all the other files in the correct order
 
-# Set the root directory
+# Set the root directory (using here() or rprojroot()).
 # rootdir <- getwd()
 # or if you are using Rproj files or git
 rootdir <- here::here()
 
+# Call each of the component programs, using source().
 # Run the data preparation file
 source(file.path(rootdir, "01_data_prep.R"), echo = TRUE)
 
@@ -91,7 +96,7 @@ source(file.path(rootdir, "05_appendix.R"), echo = TRUE)
 The use of `echo=TRUE` is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.
 
 
-Run this using the [terminal method](https://labordynamicsinstitute.github.io/ldilab-manual/96-12-running-r-code.html) in Rstudio for any platform, or from the terminal (macOS, Linux): 
+Even if you are using Rstudio, run this using the [terminal method](https://labordynamicsinstitute.github.io/ldilab-manual/96-12-running-r-code.html) in Rstudio for any platform, or from the terminal (macOS, Linux): 
 
 ```bash
 cd /where/my/code/is
@@ -252,26 +257,8 @@ matlab -nodisplay -r "addpath(genpath('.')); 05_appendix"
 
 ## Takeaways
 
-### What this does
-
-This ensures
-
-- that your code runs without problem, after all the debugging.
-- that your code runs without manual intervention.
-
-### What this does not do
-
-This does not ensure
-
-- that your code generates a log file that you can inspect, and that you could share with others.
-- that it will run on somebody else's computer
-  - because it does not guarantee that all the software is there
-  - because it does not guarantee that all the directories for input or output are there
-  - because many intermediate files might be present that are not in the replication package
-  - because it does not guarantee that all the directory names are correctly adjusted everywhere in your code
-- that it actually produces all the outputs
-  - because some outputs might be present from test runs
-
-### What to do next
-
-To solve some of these problems, let's go to the next step.
+- [x] your code runs without problem, after all the debugging.
+- [x] your code runs without manual intervention, and with low effort
+- [ ] it actually produces all the outputs
+- [ ] your code generates a log file that you can inspect, and that you could share with others.
+- [ ] it will run on somebody else’s computer
