@@ -6,33 +6,36 @@ root: index
 parts:
   - caption: Simple ways to test replication packages
     chapters: 
-    - file: 00-targets
-    - file: 00-preliminaries
-    - file: 01-run_it_again
-    - file: 02-hands_off_running
-    - file: 03-automatically_saving_figures
-    - file: 04-creating_log_files
-      sections:
-        - file: 04-01-creating_log_files_manually
-        - file: 04-02-creating_log_files_automatically
-    - file: 10-creating-environments
-      sections:
-      - file: 11-simple-example
-      - file: 12-environments-in-stata
-      - file: 13-environments-in-other
-      - file: 19-environments-takeaway
-    - file: 20-reproducing-environments
-      sections:
-      - file: 21-reproducing-environments-python
-      - file: 22-reproducing-environments-stata
+      - file: 00-targets
+      - file: 00-preliminaries
+      - file: 01-run_it_again
+      - file: 02-hands_off_running
+      - file: 03-automatically_saving_figures
+      - file: 04-creating_log_files
+        sections:
+          - file: 04-01-creating_log_files_manually
+          - file: 04-02-creating_log_files_automatically
+      - file: 10-creating-environments
+        sections:
+          - file: 11-simple-example
+          - file: 12-environments-in-stata
+          - file: 13-environments-in-other
+          - file: 19-environments-takeaway
+      - file: 20-reproducing-environments
+        sections:
+          - file: 21-reproducing-environments-python
+          - file: 22-reproducing-environments-stata
   - caption: More complex ways to test replication packages
     chapters:
-    - file: 70-new-computer
-    - file: 71-have-an-undergrad-run-it
-    - file: 72-virtual_machines
-    - file: 80-docker
+      - file: 70-new-computer
+      - file: 71-have-an-undergrad-run-it
+      - file: 72-virtual_machines
+      - file: 80-docker
   - caption: More complex setups
     chapters:
-    - file: 90-multi-software
-    - file: 91-big-data
-    - file: 92-long-computation
+      - file: 90-multi-software
+      - file: 91-big-data
+      - file: 92-long-computation
+  - caption: Confidential data
+    chapters:
+      - file: 100-confidential-data
