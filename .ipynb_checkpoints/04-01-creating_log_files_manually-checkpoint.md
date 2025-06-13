@@ -1,0 +1,115 @@
+(creating-log-files-explicitly)=
+# Creating log files explicitly
+
+We start by describing how to explicitly generate log files as part of the statistical processing code.
+
+::::{tab-set}
+
+
+:::{tab-item} Stata
+
+```stata
+* Start by creating a directory for the log files.
+global logdir "${rootdir}/logs"
+cap mkdir "$logdir"
+
+* Add code to capture date, time, and who ran the code.
+local c_date = c(current_date)
+local cdate = subinstr("`c_date'", " ", "_", .)
+local c_time = c(current_time)
+local ctime = subinstr("`c_time'", ":", "_", .)
+
+* Create a logfile, giving it a name so it does not get closed.
+local globallog = "$logdir/logfile_`cdate'-`ctime'-`c(username)'.log"
+log using "`globallog'", name(global) replace text
+```
+
+How to potentially do this automatically at each start, see [Stata manual](https://www.stata.com/manuals/gswb.pdf#gswB.3).
+
+:::
+
+:::{tab-item} R
+
+```R
+# This will only log output ("stdout") and warnings/messages ("stderr"), but not the commands themselves!
+
+logfile.name <- paste0("logfile_", Sys.Date(),"-",format(as.POSIXct(Sys.time()), format = "%H_%M"),"-",Sys.info()["user"], ".log")
+globallog    <- file(file.path(rootdir,logfile.name), open = "wt")
+# Send output to logfile
+sink(globallog, split=TRUE)
+sink(globallog, type = "message")
+
+## revert output back to the console 
+sink(type = "message")
+sink()
+close(globallog)
+```
+
+**Using `tidylog` for logging data manipulations in R**
+
+You can use [`tidylog`](https://cran.r-project.org/web/packages/tidylog/readme/README.html) to monitor `tidy` and `dplyr` data manipulations. It needs to be loaded after the relevant packages, as it redefines some of their commands.
+
+Sample code:
+
+```R
+#install.packages("tidylog")
+library(dplyr)
+library(tidylog)
+
+
+# Example data manipulation
+data <- data %>%
+  filter(!is.na(variable)) %>%
+  mutate(new_variable = variable * 2) %>%
+  group_by(group_variable) %>%
+  summarize(mean_value = mean(new_variable, na.rm = TRUE))
+```
+
+
+:::
+
+:::{tab-item} MATLAB
+    
+```matlab
+% The "diary" function should achieve this. Not a MATLAB expert!
+```
+:::
+
+:::{tab-item} Python
+    
+```python
+from datetime import datetime
+# Create a wrapper that will capture the calls for any function
+def track_calls(func):
+    def wrapper(*args, **kwargs):
+        with open('function_log.txt', 'a') as f:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"[{timestamp}] Calling {func.__name__} with args: {args}, kwargs: {kwargs}\n")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+# Activate the wrapper
+# Usage
+@track_calls
+def my_function(x, y,default="TRUE"):
+    return x + y
+
+my_function(1, 2,default="false")
+# Ideally, capture the output
+# Output
+# [2024-12-15 12:05:37] Calling my_function with args: (1, 2), kwargs: {'default': 'false'}
+```
+
+will output
+
+```
+[2024-12-15 12:05:37] Calling my_function with args: (1, 2), kwargs: {'default': 'false'}
+```
+
+See also the [Python logging documentation](https://docs.python.org/3/library/logging.html) for controlled output.
+:::
+
+::::
+
+While some software (Stata, MATLAB) will create log files that contain commands and output, others (R, Python) will (by default) create log files that contain only output.
