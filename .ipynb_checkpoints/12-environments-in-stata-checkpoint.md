@@ -209,9 +209,8 @@ So we now have TWO different version of `reghdfe` installed:
 - Version 5.7.3 from Nov 2019 is installed at `C:\Users\lv39\Documents/ado\r\reghdfe.ado` 
 - Version 6.12.3 from Aug 2023 is installed at `C:\Users\lv39\ado\plus\r\reghdfe.ado`
 
-::: {.column-margin}
-
-**Stata can get confused about how to write paths...**
+:::{admonition} Stata can get confused about how to write paths...
+:class: dropdown
 
 Stata on Windows can understand two types of path syntax: the "Windows" syntax, with backslashes `\`, and the "Unix" syntax, with forward slashes '/'. It will usually report paths in the "Windows" syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the "weird"  mixed notation:
 
