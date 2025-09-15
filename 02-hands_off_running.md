@@ -280,7 +280,7 @@ matlabbin="/opt/local/matlab" # or full path to MATLAB executable
 
 :::{tab-item} PowerShell
 
-PowerShell is a Windows-native terminal interpreter that can also be installed on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have PowerShell installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
+PowerShell is a Windows-native terminal interpreter that can also be installed on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. On most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
 
 ````powershell
 # main.ps1
