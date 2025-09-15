@@ -18,6 +18,7 @@ We have seen users who appear to highlight code and to run it interactively, in 
 
 In order to be able to enable "hands-off running", the main script is key. I will show here a few simple examples for single-software replication packages. We will discuss more complex examples in one of the next chapters.
 
+### Single-software main scripts
 
 ::::{tab-set}
 
@@ -205,6 +206,12 @@ julia main.jl
 
 :::
 
+::::
+
+### Multi-software main scripts
+
+:::: {tab-set}
+
 :::{tab-item} Bash
 
 Bash is a cross-platform terminal interpreter that many users may have encountered if using Git on Windows ("Git Bash"). It is also installed by default on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have Bash installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
@@ -221,32 +228,121 @@ We will discuss software search paths more fully in the [section on environments
 rootdir=$(pwd)
 # equivalent:
 # rootdir=$PWD 
+cd "$rootdir"
+
+# Define binary locations
+statabin="stata-mp"        # or full path to Stata executable
+pythonbin="python3.12"     # or full path to Python executable
+Rbin="R"                   # or full path to R executable
+matlabbin="/opt/local/matlab" # or full path to MATLAB executable
+
+# For macOS, you might use:
+# statabin="stata-mp"        # or "stata" or "stata-se" depending on your license
+# pythonbin="python3"        # or "python3.x" if you have multiple versions
+# Rbin="R"                   # R is usually in the PATH on macOS
+# matlabbin="/Applications/MATLAB_R2023a.app/bin/matlab" # adjust version as needed
+
+# For Windows, you might need to specify full paths, e.g.:
+# statabin="/c/Program Files/Stata17/StataMP-64.exe"
+# pythonbin="/c/Users/YourUser/anaconda3/python.exe"
+# Rbin="/c/Program Files/R/R-4.3.0/bin/R.exe
+# matlabbin="/c/Program Files/MATLAB/R2023a/bin/matlab.exe"
 
 # Run the data preparation file
-# Example for calling Stata
-# "stata-mp" must be in your path!
-stata-mp -b do "01_data_prep.do"
+"$statabin" -b do "01_data_prep.do"
 
 # Run the analysis file
-# "python" must be in your path, and it must be the desired Python version!
-python 02_analysis.py
+"$pythonbin" "02_analysis.py"
 
 # Run the table file
-# "Rscript" must be in your path. 
-Rscript 03_tables.R
+"$Rbin" CMD BATCH "03_tables.R"
 
 # Run the figure file
-Rscript "04_figures.R"
+"$Rbin" CMD BATCH "04_figures.R"
 
 # Run the appendix file
-# Here, we use MATLAB. Running MATLAB is *never* platform-independent. 
-# Linux:
-matlab -nodisplay -r "addpath(genpath('.')); 05_appendix" 
+# Linux/macOS
+"$matlabbin" -nodisplay -r "addpath(genpath('.')); 05_appendix"
 # Windows:
+# "$matlabbin" -nosplash -minimize -r "addpath(genpath('.')); 05_appendix"
 #start matlab -nosplash  -minimize -r  "addpath(genpath('.')); 05_appendix"
 ```
 
 :::
+
+:::{tab-item} PowerShell
+
+PowerShell is a Windows-native terminal interpreter that can also be installed on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. Note that it does introduce an additional dependency - the replicator now needs to have PowerShell installed, and it is not entirely platform agnostic when calling other software, as those calls may be different on different platforms, though that is a problem afflicting any multi-software main script. In particular, on most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
+
+````powershell
+# main.ps1
+# This is a simple example of a main file in PowerShell
+# It runs all the other files in the correct order
+# Set the root directory
+$rootdir = Get-Location
+# Change to that directory
+Set-Location $rootdir
+
+# Example for calling Stata
+# Specify the full path to your Stata executable below
+$stataPath = "C:\Program Files\Stata17\StataMP-64.exe"
+# Specify the full path to your Python executable if needed
+$pythonPath = "C:\Users\YourUser\anaconda3\python.exe"
+# Specify the full path to your R executable if needed
+$RPath = "C:\Program Files\R\R-4.3.0\bin\R.exe"
+# Specify the full path to your MATLAB executable below
+$matlabPath = "C:\Program Files\MATLAB\R2023a\bin\matlab.exe"
+
+# Run the data preparation file
+& $stataPath -b do "$rootdir\01_data_prep.do"
+
+# Run the analysis file
+& $pythonPath "$rootdir\02_analysis.py"
+
+# Run the table file
+& $RPath CMD BATCH "$rootdir\03_tables.R"
+
+# Run the figure file
+& $RPath CMD BATCH "$rootdir\04_figures.R"
+
+# Run the appendix file
+Start-Process -NoNewWindow -FilePath $matlabPath -ArgumentList "-nosplash", "-minimize", "-r", "addpath(genpath('$rootdir')); 05_appendix"
+```
+
+:::
+
+:::{tab-item} Makefile
+
+Makefiles are a more complex way of achieving the same goal. They have the advantage that they will only rerun code that needs to be rerun, based on file modification times. This is particularly useful if some parts of your code take a long time to run, and you want to avoid rerunning them if not necessary. However, they are more complex to set up, and require some familiarity with the Makefile syntax. 
+
+```makefile
+# Makefile
+# This is a simple example of a Makefile
+# It runs all the other files in the correct order
+# Set the root directory
+ROOTDIR := $(shell pwd)
+# Run the data preparation file
+data_prep:
+  stata-mp -b do $(ROOTDIR)/01_data_prep.do
+# Run the analysis file. Depends on data prep being done first
+analysis: data_prep
+  python $(ROOTDIR)/02_analysis.py
+# Run the table file. Depends on analysis being done first
+tables: analysis
+  R CMD BATCH $(ROOTDIR)/03_tables.R
+# Run the figure file. Also depends on analysis being done first
+figures: analysis
+  R CMD BATCH $(ROOTDIR)/04_figures.R
+# Run the appendix file. If it doesn't depend on anything else, it can be run independently
+appendix: 
+  matlab -nodisplay -r "addpath(genpath('$(ROOTDIR)')); 05_appendix"
+# Default target: run them all
+all: data_prep analysis tables figures appendix
+```
+
+:::
+
+
 
 ::::
 
