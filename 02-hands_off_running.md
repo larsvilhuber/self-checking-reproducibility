@@ -218,6 +218,8 @@ julia main.jl
 
 ### Multi-software main scripts
 
+When your project uses multiple software packages, in order to have a main controller script, you need to choose one language "to rule them all". Often, this takes the form of a shell script, or sometimes a Python script, useful for its cross-platform nature. That being said, in calling out to other software, a necessary level of OS-dependency is introduced, and this should be generalized by defining the OS-specific paths early in the script, so others can adapt accordingly. From there, it usually isn't much more complicated than running single-software main scripts.
+
 :::: {tab-set}
 
 :::{tab-item} Bash
@@ -278,9 +280,53 @@ matlabbin="/opt/local/matlab" # or full path to MATLAB executable
 
 :::
 
+:::{tab-item} Python
+
+Python is often used as a general purpose coordinator. This can range from simple listings to complex workflow management systems ([Scons](https://scons.org/), [Snakemake](https://snakemake.github.io/), and others. Here, we show a simple example using the `subprocess` module to call command line versions of other software. 
+
+```python
+# main.py
+# This is a simple example of a main file in Python
+```python
+# It runs all the other files in the correct order
+import os
+import subprocess
+
+# Set the root directory
+rootdir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(rootdir)
+
+# Define binary locations
+statabin = r"C:\Program Files\Stata17\StataMP-64.exe"
+# Specify the full path to your Python executable if needed
+pythonbin = r"C:\Users\YourUser\anaconda3\python.exe"
+# Specify the full path to your R executable if needed
+Rbin = r"C:\Program Files\R\R-4.3.0\bin\R.exe"
+# Specify the full path to your MATLAB executable below
+matlabbin = r"C:\Program Files\MATLAB\R2023a\bin\matlab.exe"
+
+# Run the data preparation file
+subprocess.run([statabin, "-b", "do", os.path.join(rootdir, "01_data_prep.do")])
+# Run the analysis file
+subprocess.run([pythonbin, os.path.join(rootdir, "02_analysis.py")])
+# Run the table file
+subprocess.run([Rbin, "CMD", "BATCH", os.path.join(rootdir, "03_tables.R")])
+# Run the figure file
+subprocess.run([Rbin, "CMD", "BATCH", os.path.join(rootdir, "04_figures.R")])
+# Run the appendix file
+subprocess.run([
+  matlabbin,
+  "-nodisplay",
+  "-r",
+  f"addpath(genpath('{rootdir}')); 05_appendix"
+])
+```
+:::
+
+
 :::{tab-item} PowerShell
 
-PowerShell is a Windows-native terminal interpreter that can also be installed on macOS and Linux. It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. On most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
+PowerShell is a Windows-native terminal interpreter that can also be installed on macOS and Linux (though that is rarely done). It can be used to run command line versions of most statistical software, and is thus a good candidate for a main script. On most Windows machines, the statistical software is not in the `%PATH%` by default, and thus may need to be called with the full path to the executable.
 
 ````powershell
 # main.ps1
@@ -318,6 +364,7 @@ Start-Process -NoNewWindow -FilePath $matlabPath -ArgumentList "-nosplash", "-mi
 ```
 
 :::
+
 
 :::{tab-item} Makefile
 
