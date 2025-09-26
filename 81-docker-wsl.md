@@ -5,7 +5,7 @@
 
 ## Note
 
-This section how to run Docker on Windows Subsystem for Linux (WSL). This is different but similar to installing the official [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/). Docker Desktop may be easier to install, but may also require a license. WSL is free to use, but requires more steps to set up. The examples given in the [Testing Setup](#testing-setup) section below work in either setup, since they rely on the command line access.
+This section explains how to run Docker on Windows Subsystem for Linux (WSL). This is different but similar to installing the official [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/). Docker Desktop may be easier to install, but may also require a license. WSL is free to use, but requires more steps to set up. The examples given in the [Testing Setup](#testing-setup) section below work in either setup, since they rely on the command line access.
 
 ## Install WSL  
 
@@ -166,3 +166,4 @@ Docker Inc. r-base: Official R base image. Docker Hub, n.d., https://hub.docker.
 Microsoft. “How to Install Linux on Windows with WSL.” Microsoft Learn, 6 Aug. 2025, https://learn.microsoft.com/en-us/windows/wsl/install Accessed 12 Sept. 2025.
 
 Walker, James. “Installing Docker on Ubuntu (4 Easy Ways).” Kinsta, 17 Oct. 2023, https://kinsta.com/blog/install-docker-ubuntu/, Accessed 11 Sept. 2025.
+
