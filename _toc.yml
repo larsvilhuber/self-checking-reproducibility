@@ -33,7 +33,8 @@ parts:
       - file: 80-docker
         sections:
           - file: 81-docker-wsl
-        
+          - file: 82-docker-mac
+          - file: 83-docker-linux
   - caption: More complex setups
     chapters:
       - file: 90-multi-software

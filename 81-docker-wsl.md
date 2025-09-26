@@ -1,6 +1,11 @@
+(docker-wsl)=
 # Installing Docker on WSL  
 
 > Section contributed by David J. Graham (undergraduate student in economics, University of Colorado Boulder).
+
+## Note
+
+This section how to run Docker on Windows Subsystem for Linux (WSL). This is different but similar to installing the official [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/). Docker Desktop may be easier to install, but may also require a license. WSL is free to use, but requires more steps to set up. The examples given in the [Testing Setup](#testing-setup) section below work in either setup, since they rely on the command line access.
 
 ## Install WSL  
 
