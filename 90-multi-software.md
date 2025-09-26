@@ -1,3 +1,4 @@
+(multi-software-projects)=
 # Multi-software projects
 
 Many projects will use multiple softwares, along the lines of "use what is appropriate for specific tasks." This may pose particular challenges. [I showed](hands-off-running) that a generic `bash` script can handle running multiple softwares in the right sequence, but some researchers may be more comfortable in a main software package, or may not want to incur the additional complication of relying on `bash`, or worse, restricting reproducibility to a particular platform, for instance by choosing `cmd.exe` (`.bat` files) or Powershell scripts.

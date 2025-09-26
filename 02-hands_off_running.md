@@ -218,7 +218,7 @@ julia main.jl
 
 ### Multi-software main scripts
 
-When your project uses multiple software packages, in order to have a main controller script, you need to choose one language "to rule them all". Often, this takes the form of a shell script, or sometimes a Python script, useful for its cross-platform nature. That being said, in calling out to other software, a necessary level of OS-dependency is introduced, and this should be generalized by defining the OS-specific paths early in the script, so others can adapt accordingly. From there, it usually isn't much more complicated than running single-software main scripts.
+When your project uses multiple software packages, in order to have a main controller script, you need to choose one language "to rule them all". Often, this takes the form of a shell script, or sometimes a Python script, useful for its cross-platform nature. That being said, in calling out to other software, a necessary level of OS-dependency is introduced, and this should be generalized by defining the OS-specific paths early in the script, so others can adapt accordingly. From there, it usually isn't much more complicated than running single-software main scripts. The sections here provide some examples for OS-level scripting languages; see [a later section](multi-software-projects) for how to call software A (say, Stata) from within software B (say, R).
 
 :::: {tab-set}
 

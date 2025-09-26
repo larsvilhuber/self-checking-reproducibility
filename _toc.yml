@@ -31,6 +31,9 @@ parts:
       - file: 71-have-an-undergrad-run-it
       - file: 72-virtual_machines
       - file: 80-docker
+        sections:
+          - file: 81-docker-wsl
+        
   - caption: More complex setups
     chapters:
       - file: 90-multi-software
