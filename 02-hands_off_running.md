@@ -41,19 +41,19 @@ global rootdir : pwd
 
 * Call the various files that consitute your complete analysis.
 * Run the data preparation file
-do $rootdir/01_data_prep.do
+do "$rootdir/01_data_prep.do"
 
 * Run the analysis file
-do $rootdir/02_analysis.do
+do "$rootdir/02_analysis.do"
 
 * Run the table file
-do $rootdir/03_tables.do
+do "$rootdir/03_tables.do"
 
 * Run the figure file
-do $rootdir/04_figures.do
+do "$rootdir/04_figures.do"
 
 * Run the appendix file
-do $rootdir/05_appendix.do
+do "$rootdir/05_appendix.do"
 ```
 The use of `do` (instead of `run` or even `capture run`) is best, as it will show the code that is being run, and is thus more transparent to you and the future replicator.
 
