@@ -23,14 +23,8 @@ Commercial container sharing services regularly purge containers from their serv
 
 While Docker is usually mentioned in the context of free open-source software such as Python or R, it can be used with commercial software. For example, the AEA Data Editor provides a [Docker image](https://hub.docker.com/r/dataeditors/stata17) for Stata 17, together with instructions on how to run it. You do need a license file, but if you are going to run a Stata replication package, you probably already have that.
 
-```bash
-docker run -it --rm \
-   -v "/path/to/stata.lic":/usr/local/stata/stata.lic \
-   -v "$(pwd)":/project \
-    -w /project \
-    dataeditors/stata17:2023-08-29 \
-    -b do main.do
-```
+See the [Testing Docker](testing-docker) page.
+
 
 
 ## Additional resources

@@ -35,6 +35,7 @@ parts:
           - file: 81-docker-wsl
           - file: 82-docker-mac
           - file: 83-docker-linux
+          - file: 84-testing-docker
   - caption: More complex setups
     chapters:
       - file: 90-multi-software
