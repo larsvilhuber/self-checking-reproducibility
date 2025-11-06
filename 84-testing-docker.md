@@ -79,7 +79,14 @@ which should generate something like this:
 
 ::: {tab-item} MacOS
 
-coming.
+			                  sysname                               release 
+                              "Linux"                    "6.11.11-linuxkit" 
+                              version                              nodename 
+"#1 SMP Wed Oct 22 09:37:46 UTC 2025"                        "4c32b0d648a9" 
+                              machine                                 login 
+                            "aarch64"                             "unknown" 
+                                 user                        effective_user 
+                               "root"                                "root” 
 
 :::
 ::::
