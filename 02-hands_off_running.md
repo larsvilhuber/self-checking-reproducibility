@@ -287,7 +287,6 @@ Python is often used as a general purpose coordinator. This can range from simpl
 ```python
 # main.py
 # This is a simple example of a main file in Python
-```python
 # It runs all the other files in the correct order
 import os
 import subprocess

@@ -30,7 +30,7 @@ Whatever **restrictions** are imposed on the data typically convey to other repl
 ## Organize your project so you can exclude confidential data
 Consider a project with confidential and public-use data. Clearly separate the restricted from the open-access data, both in terms of the raw data as well as the processed data:
 
-```plaintext
+```text
 README.pdf
 code/
 ├── main.do

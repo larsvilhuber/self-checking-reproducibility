@@ -101,7 +101,7 @@ You may need to leverage certain operating-system specific commands. For instanc
 
 Avoid
 
-```{.stata eval=FALSE}
+```stata
 shell unzip "C:\data\myfile.zip"
 ```
 
