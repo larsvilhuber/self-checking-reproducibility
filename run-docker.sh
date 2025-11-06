@@ -1,4 +1,6 @@
 #!/bin/bash
 set -ev
 
-docker run -it  -v $(pwd):/project -w /project python:3.10 ./_test.sh
+[ -z $1 ] && script="./_test.sh" || script=$1
+
+docker run -it  -v $(pwd):/project -w /project python:3.10 $script
