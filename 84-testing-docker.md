@@ -159,6 +159,34 @@ Notes:
 >
 ```
 
+### Troubleshooting
+
+When using Docker Desktop on Mac, if the above steps for Stata aren't working, you may need to move your Stata license file to Documents and allow access to the file from there. Before running anything, run the following line in terminal to copy your Stata license file from Applications to Documents.
+
+ ```bash
+cp /Applications/Stata/Stata.lic $HOME/Documents
+```
+
+Then you will use the following file path in your set up:
+
+```bash
+`$HOME/Documents/Stata/stata.lic`
+```
+
+From there the rest of your code should work fine. 
+
+Here is an example of the output you might have seen if you were running into these problems: 
+
+```bash
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+docker: Error response from daemon: mounts denied: 
+The path /Applications/Stata/Stata.lic is not shared from the host and is not known to Docker.
+You can configure shared paths from Docker -> Preferences... -> Resources -> File Sharing.
+See https://docs.docker.com/go/mac-file-sharing/ for more info.
+
+Run 'docker run --help' for more information
+```
+
 ### Caution: Stata docker images and licenses
 
 The AEA Data Editor has maintained the Stata images at <https://github.com/AEADataEditor/docker-stata>. In order to use a version that is equivalent to yours (or lower), you need to 
