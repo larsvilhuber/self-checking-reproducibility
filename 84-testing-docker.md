@@ -78,6 +78,7 @@ which should generate something like this:
 :::
 
 ::: {tab-item} MacOS
+```
 
 			                  sysname                               release 
                               "Linux"                    "6.11.11-linuxkit" 
@@ -87,6 +88,8 @@ which should generate something like this:
                             "aarch64"                             "unknown" 
                                  user                        effective_user 
                                "root"                                "root” 
+                               
+```
 
 :::
 ::::
