@@ -173,12 +173,12 @@ cp /Applications/Stata/Stata.lic $HOME/Documents
 Then you will use the following file path in your set up:
 
 ```bash
-`$HOME/Documents/Stata/stata.lic`
+$HOME/Documents/Stata/stata.lic
 ```
 
 From there the rest of your code should work fine. 
 
-Here is an example of the output you might have seen if you were running into these problems: 
+Here is an example of the output you might have seen if you were running into these problems before: 
 
 ```bash
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
