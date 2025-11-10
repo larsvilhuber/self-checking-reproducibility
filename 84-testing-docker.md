@@ -164,21 +164,20 @@ Notes:
 
 ### Troubleshooting
 
-When using Docker Desktop on Mac, if the above steps for Stata aren't working, you may need to move your Stata license file to Documents and allow access to the file from there. Before running anything, run the following line in terminal to copy your Stata license file from Applications to Documents.
+:::: {tab-set}
 
- ```bash
-cp /Applications/Stata/Stata.lic $HOME/Documents
-```
+::: {tab-item} MacOS
 
-Then you will use the following file path in your set up:
+**File sharing**
 
-```bash
-$HOME/Documents/Stata/stata.lic
-```
+On MacOS, Docker Desktop requires you to explicitly share file paths with the Docker engine if the desired path is outside of `/Users`. This may include cloud filesystems like Dropbox.  
 
-From there the rest of your code should work fine. 
+To do this, open Docker Desktop, go to Preferences -> Resources -> File Sharing, and add the path where your files are located (see the [Docker manual](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/#using-mounted-volumes-and-getting-runtime-errors-indicating-an-application-file-is-not-found-access-to-a-volume-mount-is-denied-or-a-service-cannot-start) for more information).
 
-Here is an example of the output you might have seen if you were running into these problems before: 
+**Workaround for License issues**
+
+
+If you run into file sharing issues with the license file, you see an error message like this:
 
 ```bash
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
@@ -189,6 +188,32 @@ See https://docs.docker.com/go/mac-file-sharing/ for more info.
 
 Run 'docker run --help' for more information
 ```
+
+When using Docker Desktop on Mac, if the above steps for Stata aren't working, you may need to move your Stata license file to `Documents` and allow access to the file from there. Before running anything, run the following line in terminal to copy your Stata license file from `Applications` to `Documents`.
+
+```bash
+cp /Applications/Stata/Stata.lic $HOME/Documents
+```
+
+Then you will use the following file path in your set up:
+
+```bash
+export STATALIC="$HOME/Documents/Stata/stata.lic"
+```
+
+From there the rest of your code should work fine. 
+
+
+:::
+::: {tab-item} Windows
+
+**File sharing**
+
+In principle, on Windows, filesharing should either "just work", or ask for permissions. See <https://docs.docker.com/desktop/settings-and-maintenance/settings/#shared-folders-on-demand> for more information.
+
+:::
+
+::::
 
 ### Caution: Stata docker images and licenses
 
