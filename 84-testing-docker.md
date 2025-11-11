@@ -1,3 +1,4 @@
+(testing-docker)=
 # Testing Docker
 
 Once you have Docker installed, you should test it with the software you plan to use. 
@@ -179,9 +180,9 @@ To do this, open Docker Desktop, go to Preferences -> Resources -> File Sharing,
 
 If you run into file sharing issues with the license file, you see an error message like this:
 
-```bash
+```
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
-docker: Error response from daemon: mounts denied: 
+docker: Error response from daemon: mounts denied:
 The path /Applications/Stata/Stata.lic is not shared from the host and is not known to Docker.
 You can configure shared paths from Docker -> Preferences... -> Resources -> File Sharing.
 See https://docs.docker.com/go/mac-file-sharing/ for more info.

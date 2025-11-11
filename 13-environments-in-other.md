@@ -7,7 +7,7 @@ Search paths, and the ability to manipulate the search path and thus create envi
 
 R has one or more `library paths`, which can be viewed and manipulated via the `.libPaths()` function. For instance, one might create a project-specific library path, into which all packages are installed, and from which all functions are read, as follows:
 
-```{r}
+```r
 rootdir <- here::here()
 .libPaths(file.path(rootdir,"libraries"))
 ```

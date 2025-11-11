@@ -57,10 +57,13 @@ r(111);
 
 ### Where are packages installed?
 
-[^4]: [`net install` refererence](https://www.stata.com/manuals/rnet.pdf). Strictly speaking, the location where ado packages are installed can be changed via the `net set ado` command, but this is rarely done in practice, and we won't do it here. 
 
+:::{margin}
 
-When we install a package, using one of the various package installation commands (`net install`, `ssc install`)[^4], only one of the (`sysdir`) paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
+[`net install` refererence](https://www.stata.com/manuals/rnet.pdf). Strictly speaking, the location where ado packages are installed can be changed via the `net set ado` command, but this is rarely done in practice, and we won't do it here. 
+:::
+
+When we install a package, using one of the various package installation commands (`net install`, `ssc install`), only one of the (`sysdir`) paths is relevant: `PLUS`. So if we install `reghdfe` with `ssc install reghdfe`, it will be installed in the `PLUS` directory, and we can see that with `which`:
 
 ```stata
 ssc install reghdfe
@@ -209,11 +212,10 @@ So we now have TWO different version of `reghdfe` installed:
 - Version 5.7.3 from Nov 2019 is installed at `C:\Users\lv39\Documents/ado\r\reghdfe.ado` 
 - Version 6.12.3 from Aug 2023 is installed at `C:\Users\lv39\ado\plus\r\reghdfe.ado`
 
-::: {.column-margin}
+:::{admonition} Stata can get confused about how to write paths...
+:class: note dropdown
 
-**Stata can get confused about how to write paths...**
-
-Stata on Windows can understand two types of path syntax: the "Windows" syntax, with backslashes `\`, and the "Unix" syntax, with forward slashes '/'. It will usually report paths in the "Windows" syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the "weird"  mixed notation:
+Stata on Windows can understand two types of path syntax: the "Windows" syntax, with backslashes `\`, and the "Unix" syntax, with forward slashes `/`. It will usually report paths in the "Windows" syntax, but these will not work, if coded as such, on non-Windows platforms, which do not understand the backslash as a path separator. We have used platform-agnostic paths above, using forward slashes. This then generates the "weird"  mixed notation:
 
 ```
 C:\Users\lv39\Documents/ado\r\reghdfe.ado
@@ -259,10 +261,7 @@ While we used interactive commands to install the various packages here, that wa
 
 :::
 
-::::{admonition}
-:class: tip
-
-What if the package you need is not on SSC, or cannot be `net install`ed? 
+## Installing packages that are not on SSC, or cannot be `net install`ed 
 
 Some authors provide websites where they host custom Stata packages that are not posted on SSC, and are not set up to be `net install`ed. So how can you install such packages via scripts?
 
@@ -303,11 +302,4 @@ You should get output like this:
 *! Version 3.0.9 beta Ian Watson 17apr2019
 *! Stata 14.2 (or later) version
 ```
-
-::::
-
-
-
-
-
 
