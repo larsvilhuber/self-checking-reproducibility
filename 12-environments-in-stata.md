@@ -259,6 +259,52 @@ While we used interactive commands to install the various packages here, that wa
 
 :::
 
+::::{admonition}
+:class: tip
+
+What if the package you need is not on SSC, or cannot be `net install`ed? 
+
+Some authors provide websites where they host custom Stata packages that are not posted on SSC, and are not set up to be `net install`ed. So how can you install such packages via scripts?
+
+:::{margin}
+:class: note
+
+Any `ssc install` command runs a special version of `net install` under the hood. In order for a `net install` to work, a special file `stata.toc` needs to be present. Without it, the installation will fail.
+:::
+
+Easy enough: the `copy` command helps. For instance, assume you want to install the awesome `tabout` package from the author's website at <https://tabout.net.au/>. Here's how you proceed:
+
+- Hover in your browser over the link to download the "For Stata 14.2 or later" version of the package, and copy the link address (in Chrome, right-click the link and select "Copy link address").
+- This should give you the link address <https://tabout.net.au/downloads/main_version/tabout.txt>
+- Your installation code should look like this:
+
+```stata
+* Define the source location
+local TABOUT "https://tabout.net.au/downloads/main_version/tabout.txt"
+* Define the target location
+local PLUSDIR: sysdir PLUS
+* Create the target directory if it does not exist
+cap noi mkdir "`PLUSDIR'"
+cap noi mkdir "`PLUSDIR'/t"
+* Download (copy) the package to its location
+copy "`TABOUT'" "`PLUSDIR'/t/tabout.ado", replace
+* Check that it's there
+which tabout
+```
+
+You should get output like this:
+
+```
+. copy "`TABOUT'" "`PLUSDIR'/t/tabout.ado", replace
+(file /home/statauser/ado/plus//t/tabout.ado not found)
+
+. which tabout
+/home/statauser/ado/plus/t/tabout.ado
+*! Version 3.0.9 beta Ian Watson 17apr2019
+*! Stata 14.2 (or later) version
+```
+
+::::
 
 
 
