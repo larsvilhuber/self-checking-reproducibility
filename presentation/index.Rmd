@@ -2,7 +2,7 @@
 title: "Checking reproducibility on Day T"
 author: 
   - "Lars Vilhuber"
-date: 4 January 2025
+date: 4 January 2026
 bibliography: "paper.bib"
 
 ---
