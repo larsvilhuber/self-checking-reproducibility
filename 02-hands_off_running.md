@@ -364,6 +364,32 @@ Start-Process -NoNewWindow -FilePath $matlabPath -ArgumentList "-nosplash", "-mi
 
 :::
 
+:::{tab-item} cmd.exe (`.bat`)
+
+Back before Windows, DOS was the dominant operating system, and `.bat` files were the way to run scripts. They are still supported in Windows, and can be used as a main script. You run them from within the `cmd.exe` terminal. It is listed here primarily for completeness, and to show that this methodology has been around for a very long time.
+
+```
+set stata="C:\Program Files\Stata18\StataMP-64" /e do
+
+set folder=D:\Workdata\Replication
+set build=%folder%\build\code
+set analysis=%folder%\analysis\code
+
+::************************
+::      BUILD
+::************************
+
+:: RAW DATA 
+
+%stata% %build%\1_raw_data\1_step1.do 
+
+:: Worker controls/covariates
+%stata% %build%\1_raw_data\2_worker_ctrls\1_workerctrls.do
+%stata% %build%\1_raw_data\2_worker_ctrls\2_dream.do
+%stata% %build%\1_raw_data\2_worker_ctrls\3_educ.do
+```
+
+:::
 
 :::{tab-item} Makefile
 
