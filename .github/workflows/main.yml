@@ -19,11 +19,11 @@ jobs:
     outputs:
       bookurl: ${{ steps.artifact-upload-step1.outputs.artifact-url }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     # Install dependencies
     - name: Set up Python 3.10
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
         python-version: '3.10'
         cache: 'pip' # caching pip dependencies
@@ -38,7 +38,7 @@ jobs:
         jupyter-book build .
     - name: Upload Artifact
       id: artifact-upload-step1
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
           name: artifact-book
           path: _build/html
@@ -49,8 +49,7 @@ jobs:
     outputs:
       presentationurl: ${{ steps.artifact-upload-step2.outputs.artifact-url }}
     steps:
-    - uses: actions/checkout@v4
-    # Let's do the Quarto
+    - uses: actions/checkout@v6
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
     - name: Install R
@@ -75,7 +74,7 @@ jobs:
         quarto render index.Rmd
     - name: Upload Artifact
       id: artifact-upload-step2
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
           name: artifact-presentation
           path: |
@@ -89,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download pages artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: artifact-presentation
         path: _html
@@ -108,7 +107,7 @@ jobs:
           node /decktape/decktape.js --chrome-path /usr/bin/chromium-browser --chrome-arg=--no-sandbox --chrome-arg=--disable-gpu index.html index.pdf
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: artifact-presentation-pdf
         path: _html/index.pdf
@@ -122,17 +121,17 @@ jobs:
     steps:
     # Pull down both artifacts
     - name: Download Book Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
             path: .
             pattern: artifact-book
     - name: Download Pres Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
             path: .
             pattern: artifact-presentation
     - name: Download Pres PDF
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
             path: .
             pattern: artifact-presentation-pdf
@@ -145,7 +144,7 @@ jobs:
           mv artifact-presentation-pdf/index.pdf website/presentation/presentation.pdf
     # Prepare the GitHub Pages action
     - name: prepare GitHub Pages action
-      uses: actions/upload-pages-artifact@v3.0.1    
+      uses: actions/upload-pages-artifact@v5
       with:
         path: ./website
   # publish:
@@ -178,4 +177,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        uses: actions/deploy-pages@v5
