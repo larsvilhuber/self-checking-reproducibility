@@ -1,6 +1,11 @@
 (stata-environments)=
 # Environments in Stata
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/environments-in-stata).
+:::
+
 ## TL;DR
 
 - Creating virtual environments in Stata is feasible

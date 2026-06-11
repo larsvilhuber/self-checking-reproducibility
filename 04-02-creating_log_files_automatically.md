@@ -1,6 +1,11 @@
 (creating-log-files-automatically)=
 # Creating log files automatically
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See the parent topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/creating-log-files).
+:::
+
 An alternative (or complement) to creating log files explicitly is to use native functionality of the software to create them. This usually is triggered when using the **command line** to run the software, and thus may be considered an **advanced topic.** The examples below are for Linux/macOS, but similar functionality exists for Windows.
 
 

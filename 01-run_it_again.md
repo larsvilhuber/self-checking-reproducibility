@@ -1,5 +1,10 @@
 # Run it all again
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/run-it-all-again).
+:::
+
 The very first test is that your code must run, beginning to end, top to bottom, without error, and ideally without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
 
 ## TL;DR

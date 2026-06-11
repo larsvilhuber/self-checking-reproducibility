@@ -1,6 +1,11 @@
 (hands-off-running)=
 # Hands-off running: Creating a controller script
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/hands-off-running-creating-a-controller-script).
+:::
+
 Let's ramp it up a bit. Your code must run, beginning to end, top to bottom, without error, and without any user intervention. This should in principle (re)create all figures, tables, and numbers you include in your paper. 
 
 Seem trivial? Out of 8280 replication packages in ~20 top econ journals, only 2594 (31.33%) had a main/controller script [^2]. 

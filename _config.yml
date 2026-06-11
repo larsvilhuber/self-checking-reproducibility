@@ -68,7 +68,9 @@ html:
 
 # Advanced and power-user settings
 sphinx:
-  extra_extensions          :   # A list of extra extensions to load by Sphinx.
+  local_extensions          :
+    rawhtml_ext: .
+  extra_extensions          :
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
     bibtex_reference_style: author_year
 

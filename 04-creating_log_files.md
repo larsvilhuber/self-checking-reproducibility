@@ -1,6 +1,11 @@
 (creating-log-files)=
 # Creating log files
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/creating-log-files).
+:::
+
 What happens when you cannot share a file, the file no longer exists on the internet, or the code takes ages to run? How can you show that you actually ran the code?
 
 In order to document that you have actually run your code, a log file, a transcript, or some other evidence, may be useful. It may even be required by certain journals.

@@ -1,5 +1,10 @@
 # Use a new computer
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/other-methods).
+:::
+
 The ultimate isolated environment is an otherwise untouched computer. Some authors, or the IT departments in the institution that authors are affiliated with, may have a fresh, new, recently imaged computer lying around, with the relevant software (say, Stata or Python) already installed. 
 
 ```{tip}

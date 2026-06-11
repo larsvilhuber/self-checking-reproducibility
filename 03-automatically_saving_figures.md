@@ -1,6 +1,11 @@
 (auto-saving-figures)=
 # Hands-off running: Automatically saving figures
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/hands-off-running-automatically-saving-figures).
+:::
+
 Say you have 53 figures and 23 tables, the latter created from 161 different specifications. That makes for a lot of work when re-running the code, if you haven't automated the saving of said figures and tables. 
 
 

@@ -1,6 +1,11 @@
 (creating-log-files-explicitly)=
 # Creating log files explicitly
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See the parent topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/creating-log-files).
+:::
+
 We start by describing how to explicitly generate log files as part of the statistical processing code.
 
 ::::{tab-set}
