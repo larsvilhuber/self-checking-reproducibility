@@ -1,6 +1,11 @@
 (testing-docker)=
 # Testing Docker
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See the parent topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/use-of-containers).
+:::
+
 Once you have Docker installed, you should test it with the software you plan to use. 
 
 > These instructions are provided as command-line examples, as this abstracts away from any differences in graphical user interfaces. You may be able to figure out as well how to do this with a GUI, we have not tested that.

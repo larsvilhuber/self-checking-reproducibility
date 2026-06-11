@@ -1,5 +1,10 @@
 # Installing Docker on Linux
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See the parent topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/use-of-containers).
+:::
+
 Most of the commands here are the same as for running from within [WSL](docker-wsl), because of course, WSL is Linux.
 
 ## Pre-requisites

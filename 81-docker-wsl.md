@@ -1,6 +1,11 @@
 (docker-wsl)=
 # Installing Docker on WSL  
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See the parent topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/use-of-containers).
+:::
+
 > Section contributed by David J. Graham (undergraduate student in economics, University of Colorado Boulder).
 
 ## Note

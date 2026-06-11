@@ -1,6 +1,10 @@
 (virtual-machines)=
 # Virtual Machines
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/other-methods).
+:::
 
 ## TL;DR
 

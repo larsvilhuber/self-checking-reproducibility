@@ -1,6 +1,11 @@
 (confidential-data)=
 # Confidential data
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/last-but-not-least).
+:::
+
 ## TL;DR
 
 - be able to separate the confidential data from other (to be made public) components

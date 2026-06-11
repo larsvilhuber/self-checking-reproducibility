@@ -1,6 +1,11 @@
 (environments)=
 # Environments
 
+:::{admonition} {raw-html}`<i class="fas fa-chalkboard"></i>` Presentation slides
+:class: seealso dropdown
+See this topic in the [presentation](https://larsvilhuber.github.io/self-checking-reproducibility/presentation/#/environments).
+:::
+
 ## TL;DR
 
 - Search paths and environments are key concepts to create **portable**, **reproducible** code, by **isolating** each project from others.
