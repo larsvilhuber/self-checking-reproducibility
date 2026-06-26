@@ -123,18 +123,18 @@ jobs:
     - name: Download Book Artifacts
       uses: actions/download-artifact@v8
       with:
-            path: .
-            pattern: artifact-book
+            name: artifact-book
+            path: artifact-book
     - name: Download Pres Artifacts
       uses: actions/download-artifact@v8
       with:
-            path: .
-            pattern: artifact-presentation
+            name: artifact-presentation
+            path: artifact-presentation
     - name: Download Pres PDF
       uses: actions/download-artifact@v8
       with:
-            path: .
-            pattern: artifact-presentation-pdf
+            name: artifact-presentation-pdf
+            path: artifact-presentation-pdf
     - name: Move stuff
       run: |
           set -ev
