@@ -95,21 +95,100 @@ saveas(gcf,fullfile('path','to','figure1.png'))
 ```
 :::
 
+:::{tab-item} Mathematica
+
+
+Use [`Export[]`](https://reference.wolfram.com/language/ref/Export.html) to explicitly write out figures, rather than extracting them from a notebook.
+
+:::
+
+
 ::::
 
 
-# Same for tables 
+## Same for tables 
 
 Learn how to save tables in robust, reproducible ways. Do not try to copy-paste from console!
 
-## Stata
 
-`esttab` or `outreg2`, also `putexcel`. For fancier stuff, treat tables as data, use `regsave` or `export excel` to manipulate.
+::::{tab-set}
 
-## R
 
-`xtable`, `stargazer`, others.
+:::{tab-item} Stata
 
+For regression tables, use `esttab` or `outreg2`.
+
+To output generic tables, use `export excel`. Can also be used to create more complex tables that are then re-arranged in Excel using cell references.
+
+For fancier stuff, treat tables as data, use `regsave`, or write custom tables with pinpoint precision using  `putexcel`, possibly in combination with in combination with `r()` or `e()`.
+
+:::
+
+::: {tab-item} R
+
+Use `xtable`, `stargazer` and its variants. For many objects, `print()`, `kable()` can output LaTeX or other formats. Most model output in R can be treated natively as an object, and manipulated or coerced into desired formats. For generic writing to Excel formats, possible to then further manipulate (with cell references!) into custom tables or figures, consider [`openxlsx`](https://cran.r-project.org/web/packages/openxlsx/index.html) or [`openxlsx::write.xlsx()`](https://ycphs.github.io/openxlsx/reference/write.xlsx.html).[^alsoexcel]
+
+[^alsoexcel]: There is also a [`xlsx`](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf) package, but it has a Java dependency, which is not as robust cross-platform.
+
+:::
+
+::: {tab-item} MATLAB
+
+To write out Excel files, consider the modern  [`writematrix`](https://www.mathworks.com/help/matlab/ref/writematrix.html) and [`writetable`](https://www.mathworks.com/help/matlab/ref/writetable.html). Do not use older methods that require the presence of Microsoft Excel, since they uselessly limit the portability of your code.
+
+For more complex tables, consider using [`fprintf`](https://www.mathworks.com/help/matlab/ref/fprintf.html) to write out text files, which can then be imported into Excel or other software.
+
+:::
+
+::::
+
+
+## Combining table output and figure generation
+
+If you must use Excel to create figures, you can still automate the process of writing the data to Excel. Do not copy-and-paste data, and generally, there is no need to export/import CSV files. By writing directly to Excel, you can use an Excel "shell" file that does all the graphing and formatting, and your Stata/R/etc. code simply updates the data that drives the figure. Simply reference in your figure the cells written by the various export commands noted above. 
+
+
+## Some examples
+
+:::: {tab-set}
+
+:::{tab-item} Stata
+
+```stata
+// run gmm model
+use http://www.stata-press.com/data/r13/auto
+gmm (mpg - {b1}*weight - {b2}*length - {b0}), instruments(weight length)
+matrix b = e(b)'
+// prepare sheet
+putexcel set myresults, sheet("GMM Results")
+// write out results
+putexcel B1 = "Coefficients"
+putexcel A2 = matrix(b), rownames nformat(number_d2)
+```
+
+The resulting Excel sheet 
+[myresults.xlsx](https://github.com/labordynamicsinstitute/replicability-training/files/12752468/myresults.xlsx) looks like this:
+
+|  | Coefficients| |
+|-- | --| -- |
+|b1 | _cons | 0.00 |
+|b2 | _cons | -0.08|
+|b0 | _cons | 47.88|
+
+
+An Excel formula could now collect specific coefficients across multiple regressions into a summary table, possibly easier than to program it in Stata. For more information, see [`putexcel`](https://www.stata.com/manuals/rptputexcel.pdf) (available since [at least Stata 13](https://www.stata.com/manuals13/pputexcel.pdf))
+
+:::
+
+::: {tab-item} MATLAB
+
+```
+    fileName = "./tables/table_6.xlsx";
+    writetable(tDeltaChannelsAll, fileName, "Sheet", "default", "WriteRowNames", true, "Range", "A1");
+```
+
+:::
+::::
 
 ## Takeaways
 
