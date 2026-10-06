@@ -137,11 +137,41 @@ Use `xtable`, `stargazer` and its variants. For many objects, `print()`, `kable(
 
 :::
 
+::: {tab-item} Python
+
+With a pandas `DataFrame`, write the same table to LaTeX and Excel. The `index=False` option omits the row index from both files.
+
+```python
+import pandas as pd
+
+results = pd.DataFrame({"Variable": ["Intercept", "Slope"], "Estimate": [1.2, 0.8]})
+results.to_latex("table.tex", index=False)
+results.to_excel("table.xlsx", index=False)
+```
+
+For more information, see [`DataFrame.to_latex()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_latex.html) and [`DataFrame.to_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html). Writing Excel files requires an engine such as `openpyxl`.
+
+:::
+
 ::: {tab-item} MATLAB
 
 To write out Excel files, consider the modern  [`writematrix`](https://www.mathworks.com/help/matlab/ref/writematrix.html) and [`writetable`](https://www.mathworks.com/help/matlab/ref/writetable.html). Do not use older methods that require the presence of Microsoft Excel, since they uselessly limit the portability of your code.
 
 For more complex tables, consider using [`fprintf`](https://www.mathworks.com/help/matlab/ref/fprintf.html) to write out text files, which can then be imported into Excel or other software.
+
+:::
+
+::: {tab-item} Mathematica
+
+Use `Export[]` to write a list of rows to a LaTeX file or an Excel workbook. The first row below contains the column headings.
+
+```mathematica
+table = {{"Variable", "Estimate"}, {"Intercept", 1.2}, {"Slope", 0.8}};
+Export["table.tex", table, "TeX"]
+Export["table.xlsx", table]
+```
+
+The `.tex` file contains a TeX `array`, which can be included in math mode in a LaTeX document. For more information, see [`Export[]`](https://reference.wolfram.com/language/ref/Export.html).
 
 :::
 
