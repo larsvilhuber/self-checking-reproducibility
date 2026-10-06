@@ -100,6 +100,11 @@ saveas(gcf,fullfile('path','to','figure1.png'))
 
 Use [`Export[]`](https://reference.wolfram.com/language/ref/Export.html) to explicitly write out figures, rather than extracting them from a notebook.
 
+```mathematica
+plot = Plot[Sin[x], {x, 0, 2 Pi}];
+Export["path/to/figure1.png", plot]
+```
+
 :::
 
 
