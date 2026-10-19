@@ -37,6 +37,10 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 *A PDF of this presentation is available [here](presentation.pdf).*
 
+## You started here {.center}
+
+![](images/publication-process-early-dark.svg){fig-alt="Ideation" width="85%" fig-align="center"}
+
 ## You followed all the best practices for reproducibility
 
 ... and then.... 
@@ -52,10 +56,15 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 ## Day T {auto-animate=true .smaller}
 
-## Day T**-1** {auto-animate=true .smaller}
+## Day T**-1** {.center auto-animate=true .smaller}
+
+
+![](images/publication-process-data-editor-dark.svg){fig-alt="Submission!" width="85%" fig-align="center"}
+
 
 ```{r, child=c('00-index-mod.md')}
 ```
+
 
 ```{r, child=c('00-targets.md')}	
 ```
