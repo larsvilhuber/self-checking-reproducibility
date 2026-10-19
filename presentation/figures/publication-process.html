@@ -34,6 +34,8 @@
   .stage .icon { font-size: 34px; }
   .stage.active rect { fill: var(--hl); stroke: var(--hl-stroke); stroke-width: 4; }
   .stage.active text { font-weight: 700; }
+  .band rect { fill: none; stroke: var(--line); stroke-width: 2; stroke-dasharray: 8 6; }
+  .band text { fill: var(--muted); font-size: 22px; font-style: italic; text-anchor: middle; }
   .link { stroke: var(--line); stroke-width: 3; fill: none; marker-end: url(#arrow); }
   .marker { transition: opacity .3s; }
   .marker .pin { fill: var(--marker); }
@@ -53,7 +55,7 @@
   <button id="dl-svg">Download SVG</button>
   <button id="dl-png">Download PNG</button>
 </div>
-<svg id="fig" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 340" role="img"
+<svg id="fig" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 580" role="img"
      aria-labelledby="fig-title">
   <title id="fig-title">Generic publication process</title>
   <defs>
@@ -90,8 +92,11 @@ const el = (name, attrs = {}, parent) => {
   return e;
 };
 
-const W = 160, H = 130, GAP = 50, X0 = 25, Y = 170;
-const xOf = i => X0 + i * (W + GAP);
+const W = 160, H = 130, GAP = 50, X0 = 25;
+const ROW1_Y = 100, BAND_Y = 250, BAND_H = 64, ROW3_Y = 420, BAND_LABEL = "Long process of research and writing";
+const EARLY_COUNT = 2;  // the first EARLY_COUNT stages sit in row 1; the rest in row 3
+const xOf = i => X0 + (i < EARLY_COUNT ? i : i - EARLY_COUNT) * (W + GAP);
+const yOf = i => i < EARLY_COUNT ? ROW1_Y : ROW3_Y;
 
 function draw(view) {
   const cfg = VIEWS[view] || VIEWS.none;
@@ -99,8 +104,17 @@ function draw(view) {
         marker = document.getElementById("marker");
   [links, stages, marker].forEach(g => g.replaceChildren());
 
+  // middle row: the long research-and-writing band, linked from the last early stage to the first later one
+  const bandW = xOf(STAGES.length - 1) + W - X0;
+  const band = el("g", { class: "band" }, links);
+  el("rect", { x: X0, y: BAND_Y, width: bandW, height: BAND_H, rx: 32 }, band);
+  el("text", { x: X0 + bandW / 2, y: BAND_Y + BAND_H / 2 + 8 }, band).textContent = BAND_LABEL;
+  el("path", { class: "link", d: `M${xOf(EARLY_COUNT-1)+W/2} ${ROW1_Y+H+4} V${BAND_Y-6}` }, links);
+  el("path", { class: "link", d: `M${xOf(EARLY_COUNT)+W/2} ${BAND_Y+BAND_H+4} V${ROW3_Y-6}` }, links);
+
   STAGES.forEach((s, i) => {
-    if (i > 0) el("path", { class: "link", d: `M${xOf(i-1)+W+4} ${Y+H/2} H${xOf(i)-6}` }, links);
+    const Y = yOf(i);
+    if (i > 0 && i !== EARLY_COUNT) el("path", { class: "link", d: `M${xOf(i-1)+W+4} ${Y+H/2} H${xOf(i)-6}` }, links);
     const g = el("g", { class: "stage" + (cfg.test(s) ? " active" : "") }, stages);
     el("rect", { x: xOf(i), y: Y, width: W, height: H, rx: 14 }, g);
     el("text", { class: "num", x: xOf(i)+W/2, y: Y+22 }, g).textContent = i + 1;
@@ -113,7 +127,7 @@ function draw(view) {
   const hit = STAGES.map((s, i) => cfg.test(s) ? i : -1).filter(i => i >= 0);
   if (hit.length && cfg.text) {
     const x1 = xOf(hit[0]), x2 = xOf(hit[hit.length-1]) + W, cx = (x1 + x2) / 2;
-    const w = 200, h = 48, top = 40;
+    const w = 200, h = 48, top = yOf(hit[0]) - 80;
     el("path", { class: "pin",
       d: `M${cx-w/2+10} ${top} h${w-20} a10 10 0 0 1 10 10 v${h-20} a10 10 0 0 1 -10 10 H${cx+14} L${cx} ${top+h+16} L${cx-14} ${top+h} H${cx-w/2+10} a10 10 0 0 1 -10 -10 v${-(h-20)} a10 10 0 0 1 10 -10 z` }, marker);
     el("text", { class: "label", x: cx, y: top + 31 }, marker).textContent = cfg.text;
@@ -147,13 +161,15 @@ function standaloneSVG() {
     .stage .icon{font-size:34px}
     .stage.active rect{fill:${v("--hl")};stroke:${v("--hl-stroke")};stroke-width:4}
     .stage.active text{font-weight:700}
+    .band rect{fill:none;stroke:${v("--line")};stroke-width:2;stroke-dasharray:8 6}
+    .band text{fill:${v("--muted")};font-size:22px;font-style:italic;text-anchor:middle;font-family:system-ui,Arial,sans-serif}
     .link{stroke:${v("--line")};stroke-width:3;fill:none;marker-end:url(#arrow)}
     .marker .pin{fill:${v("--marker")}}
     .marker .label{fill:${v("--marker-fg")};font-size:22px;font-weight:700;text-anchor:middle;font-family:system-ui,Arial,sans-serif}`;
   svg.insertBefore(Object.assign(document.createElementNS(NS, "style"), { textContent: css }), svg.firstChild);
-  const bg = el("rect", { width: 1260, height: 340, fill: v("--bg") });
+  const bg = el("rect", { width: 840, height: 580, fill: v("--bg") });
   svg.insertBefore(bg, svg.children[1]);
-  svg.setAttribute("width", 2520); svg.setAttribute("height", 680);
+  svg.setAttribute("width", 1680); svg.setAttribute("height", 1160);
   return new XMLSerializer().serializeToString(svg);
 }
 function save(blob, name) {
@@ -165,7 +181,7 @@ document.getElementById("dl-svg").onclick = () =>
 document.getElementById("dl-png").onclick = () => {
   const img = new Image();
   img.onload = () => {
-    const c = Object.assign(document.createElement("canvas"), { width: 2520, height: 680 });
+    const c = Object.assign(document.createElement("canvas"), { width: 1680, height: 1160 });
     c.getContext("2d").drawImage(img, 0, 0);
     c.toBlob(b => save(b, `publication-process-${current}.png`));
   };
