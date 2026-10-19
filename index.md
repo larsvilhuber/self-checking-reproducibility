@@ -33,5 +33,5 @@ Techy lingo for "too long, didn't read". A summary of the most important takeawa
 
 Open a pull request at the [repository](https://github.com/larsvilhuber/self-checking-reproducibility), which can be done from every page using the buttons at the top right.
 
-![GitHub issues](https://img.shields.io/github/issues-raw/larsvilhuber/self-checking-reproducibility.svg?style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/larsvilhuber/self-checking-reproducibility.svg?style=flat) 
+![GitHub issues](https://img.shields.io/github/issues-raw/larsvilhuber/self-checking-reproducibility.svg?style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/larsvilhuber/self-checking-reproducibility.svg?style=flat) [![Website deployment](https://github.com/larsvilhuber/self-checking-reproducibility/actions/workflows/main.yml/badge.svg)](https://github.com/larsvilhuber/self-checking-reproducibility/actions/workflows/main.yml)
 
