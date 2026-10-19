@@ -20,6 +20,7 @@ One file per view and theme (`night` slides: use `-dark`):
 ```
 images/publication-process-early-dark.svg        images/publication-process-early-light.svg
 images/publication-process-data-editor-dark.svg  images/publication-process-data-editor-light.svg
+images/publication-process-transition-dark.svg   images/publication-process-transition-light.svg
 images/publication-process-none-dark.svg         images/publication-process-none-light.svg
 ```
 
@@ -29,6 +30,9 @@ images/publication-process-none-dark.svg         images/publication-process-none
 
 ## Changing the figure
 
+The `transition` view marks the hand-over from the long process to submission ("You should be here"). Stage icons are rendered
+grey-scale and the long-process band carries faint line-art (writing, gears, slides).
+
 Edit `STAGES`, `VIEWS`, `THEMES` or the layout constants in `publication-process.js`. A new entry in `VIEWS` or
 `THEMES` is exported automatically on the next render. To preview, open `publication-process.html`
-(`?here=early|data-editor|none`, `&theme=light|dark`, `&embed=1` to hide the buttons).
+(`?here=early|data-editor|transition|none`, `&theme=light|dark`, `&embed=1` to hide the buttons).
