@@ -1,3 +1,7 @@
+project:
+  # Regenerates images/publication-process-*.svg on every render (single file or whole project)
+  pre-render: figures/build-figures.ts
+
 format: 
   revealjs:
     scrollable: true
