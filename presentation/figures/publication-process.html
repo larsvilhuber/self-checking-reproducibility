@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publication process</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1f2937; --muted: #6b7280; --line: #cbd5e1;
+    --node: #f1f5f9; --node-stroke: #94a3b8;
+    --hl: #fef3c7; --hl-stroke: #d97706; --marker: #dc2626; --marker-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-bg="white"]) {
+      --bg: #111827; --fg: #f3f4f6; --muted: #9ca3af; --line: #475569;
+      --node: #1f2937; --node-stroke: #64748b;
+      --hl: #78350f; --hl-stroke: #fbbf24;
+    }
+  }
+  html, body { margin: 0; background: var(--bg); color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { padding: 16px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .controls button { font: inherit; padding: 6px 12px; border: 1px solid var(--line);
+    background: var(--node); color: var(--fg); border-radius: 6px; cursor: pointer; }
+  .controls button[aria-pressed="true"] { background: var(--hl-stroke); color: #fff; border-color: var(--hl-stroke); }
+  .controls .sep { flex: 1; }
+  body.embed .controls { display: none; }
+  body.embed { padding: 0; }
+  svg { width: 100%; height: auto; display: block; }
+  .stage rect { fill: var(--node); stroke: var(--node-stroke); stroke-width: 2; transition: fill .3s, stroke .3s; }
+  .stage text { fill: var(--fg); font-size: 20px; text-anchor: middle; }
+  .stage .num { font-size: 15px; fill: var(--muted); font-weight: 600; }
+  .stage .icon { font-size: 34px; }
+  .stage.active rect { fill: var(--hl); stroke: var(--hl-stroke); stroke-width: 4; }
+  .stage.active text { font-weight: 700; }
+  .link { stroke: var(--line); stroke-width: 3; fill: none; marker-end: url(#arrow); }
+  .marker { transition: opacity .3s; }
+  .marker .pin { fill: var(--marker); }
+  .marker .label { fill: var(--marker-fg); font-size: 22px; font-weight: 700; text-anchor: middle; }
+  .marker.bob { animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) { .marker.bob { animation: none; } }
+</style>
+</head>
+<body>
+<div class="controls">
+  <span>You are here:</span>
+  <button data-here="early" aria-pressed="false">Early phases</button>
+  <button data-here="data-editor" aria-pressed="false">Data editor</button>
+  <button data-here="none" aria-pressed="false">No marker</button>
+  <span class="sep"></span>
+  <button id="dl-svg">Download SVG</button>
+  <button id="dl-png">Download PNG</button>
+</div>
+<svg id="fig" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 340" role="img"
+     aria-labelledby="fig-title">
+  <title id="fig-title">Generic publication process</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <g id="links"></g>
+  <g id="stages"></g>
+  <g id="marker" class="marker bob"></g>
+</svg>
+
+<script>
+// Edit this array to change the stages. `early: true` stages are highlighted in the "early phases" view.
+const STAGES = [
+  { id: "idea",      label: ["Research", "idea"],               icon: "💡", early: true },
+  { id: "implement", label: ["First", "implementation"],        icon: "💻", early: true },
+  { id: "submit",    label: ["Submission", "to journal"],       icon: "📤" },
+  { id: "data",      label: ["Inspection by", "data editor"],   icon: "🔍", dataEditor: true },
+  { id: "copy",      label: ["Copy", "editing"],                icon: "✍️" },
+  { id: "publish",   label: ["Publication"],                    icon: "📰" },
+];
+const VIEWS = {
+  "early":       { test: s => s.early,      text: "You are here" },
+  "data-editor": { test: s => s.dataEditor, text: "You are here" },
+  "none":        { test: () => false,       text: "" },
+};
+
+const NS = "http://www.w3.org/2000/svg";
+const el = (name, attrs = {}, parent) => {
+  const e = document.createElementNS(NS, name);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+};
+
+const W = 160, H = 130, GAP = 50, X0 = 25, Y = 170;
+const xOf = i => X0 + i * (W + GAP);
+
+function draw(view) {
+  const cfg = VIEWS[view] || VIEWS.none;
+  const links = document.getElementById("links"), stages = document.getElementById("stages"),
+        marker = document.getElementById("marker");
+  [links, stages, marker].forEach(g => g.replaceChildren());
+
+  STAGES.forEach((s, i) => {
+    if (i > 0) el("path", { class: "link", d: `M${xOf(i-1)+W+4} ${Y+H/2} H${xOf(i)-6}` }, links);
+    const g = el("g", { class: "stage" + (cfg.test(s) ? " active" : "") }, stages);
+    el("rect", { x: xOf(i), y: Y, width: W, height: H, rx: 14 }, g);
+    el("text", { class: "num", x: xOf(i)+W/2, y: Y+22 }, g).textContent = i + 1;
+    el("text", { class: "icon", x: xOf(i)+W/2, y: Y+66 }, g).textContent = s.icon;
+    s.label.forEach((line, j) =>
+      el("text", { x: xOf(i)+W/2, y: Y+92+j*22 }, g).textContent = line);
+  });
+
+  // "You are here" marker centred over the highlighted stage(s)
+  const hit = STAGES.map((s, i) => cfg.test(s) ? i : -1).filter(i => i >= 0);
+  if (hit.length && cfg.text) {
+    const x1 = xOf(hit[0]), x2 = xOf(hit[hit.length-1]) + W, cx = (x1 + x2) / 2;
+    const w = 200, h = 48, top = 40;
+    el("path", { class: "pin",
+      d: `M${cx-w/2+10} ${top} h${w-20} a10 10 0 0 1 10 10 v${h-20} a10 10 0 0 1 -10 10 H${cx+14} L${cx} ${top+h+16} L${cx-14} ${top+h} H${cx-w/2+10} a10 10 0 0 1 -10 -10 v${-(h-20)} a10 10 0 0 1 10 -10 z` }, marker);
+    el("text", { class: "label", x: cx, y: top + 31 }, marker).textContent = cfg.text;
+  }
+}
+
+// ---- view selection: ?here=early|data-editor|none  &embed=1 hides the controls  &bg=white forces a light background
+const params = new URLSearchParams(location.search);
+let current = params.get("here") in VIEWS ? params.get("here") : "early";
+if (params.get("embed")) document.body.classList.add("embed");
+if (params.get("bg") === "white") document.documentElement.dataset.bg = "white";
+
+function setView(v) {
+  current = v;
+  draw(v);
+  document.querySelectorAll("[data-here]").forEach(b =>
+    b.setAttribute("aria-pressed", b.dataset.here === v));
+  const u = new URL(location); u.searchParams.set("here", v); history.replaceState(null, "", u);
+}
+document.querySelectorAll("[data-here]").forEach(b => b.onclick = () => setView(b.dataset.here));
+
+// ---- export: serialise with computed colours so the file is self-contained
+function standaloneSVG() {
+  const svg = document.getElementById("fig").cloneNode(true);
+  const cs = getComputedStyle(document.documentElement);
+  const v = n => cs.getPropertyValue(n).trim();
+  const css = `
+    .stage rect{fill:${v("--node")};stroke:${v("--node-stroke")};stroke-width:2}
+    .stage text{fill:${v("--fg")};font-size:20px;text-anchor:middle;font-family:system-ui,Arial,sans-serif}
+    .stage .num{font-size:15px;fill:${v("--muted")};font-weight:600}
+    .stage .icon{font-size:34px}
+    .stage.active rect{fill:${v("--hl")};stroke:${v("--hl-stroke")};stroke-width:4}
+    .stage.active text{font-weight:700}
+    .link{stroke:${v("--line")};stroke-width:3;fill:none;marker-end:url(#arrow)}
+    .marker .pin{fill:${v("--marker")}}
+    .marker .label{fill:${v("--marker-fg")};font-size:22px;font-weight:700;text-anchor:middle;font-family:system-ui,Arial,sans-serif}`;
+  svg.insertBefore(Object.assign(document.createElementNS(NS, "style"), { textContent: css }), svg.firstChild);
+  const bg = el("rect", { width: 1260, height: 340, fill: v("--bg") });
+  svg.insertBefore(bg, svg.children[1]);
+  svg.setAttribute("width", 2520); svg.setAttribute("height", 680);
+  return new XMLSerializer().serializeToString(svg);
+}
+function save(blob, name) {
+  const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: name });
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+document.getElementById("dl-svg").onclick = () =>
+  save(new Blob([standaloneSVG()], { type: "image/svg+xml" }), `publication-process-${current}.svg`);
+document.getElementById("dl-png").onclick = () => {
+  const img = new Image();
+  img.onload = () => {
+    const c = Object.assign(document.createElement("canvas"), { width: 2520, height: 680 });
+    c.getContext("2d").drawImage(img, 0, 0);
+    c.toBlob(b => save(b, `publication-process-${current}.png`));
+  };
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(standaloneSVG());
+};
+
+setView(current);
+</script>
+</body>
+</html>
