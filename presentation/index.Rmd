@@ -56,11 +56,12 @@ WEBSITE_SHORT <- paste0(GITHUB_REPOSITORY_PARTS[1], ".github.io/", GITHUB_REPOSI
 
 ## Day T {auto-animate=true .smaller}
 
+![](images/publication-process-data-editor-dark.svg){fig-alt="Scrutiny" width="85%" fig-align="center"}
+
 ## Day T**-1** {.center auto-animate=true .smaller}
 
 
-![](images/publication-process-data-editor-dark.svg){fig-alt="Submission!" width="85%" fig-align="center"}
-
+![](images/publication-process-transition-dark.svg){fig-alt="Pre-submission!" width="85%" fig-align="center"}
 
 ```{r, child=c('00-index-mod.md')}
 ```
@@ -124,6 +125,12 @@ Unpredictable things happening to your computing environment:
 
 ```{r, child=c('99-confidential_data.md')}	
 ```
+
+# Knowing all of this... {.center}
+
+You should really think about all of this here:
+
+![](images/publication-process-early-dark.svg){fig-alt="Ideation" width="85%" fig-align="center"}
 
 # Questions
 
